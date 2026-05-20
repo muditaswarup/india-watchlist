@@ -212,7 +212,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 <div class="hdr">
   <div>
     <div class="title">India Equity Masterlist <em>v3</em></div>
-    <div style="font-size:12px;color:var(--text2);margin-top:2px">28 stocks · Defence · Pharma · Power · Fintech · Consumption</div>
+    <div style="font-size:12px;color:var(--text2);margin-top:2px">28 stocks Â· Defence Â· Pharma Â· Power Â· Fintech Â· Consumption</div>
   </div>
   <div class="hdr-right">
     <div class="live-badge"><span class="live-dot"></span>Prices Live</div>
@@ -230,12 +230,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="stat-card">
     <div class="stat-label">Highest Conviction</div>
     <div class="stat-val sv-green">6</div>
-    <div class="stat-sub">⭐⭐⭐⭐⭐ names</div>
+    <div class="stat-sub">â­â­â­â­â­ names</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">Results This Week</div>
     <div class="stat-val sv-amber">4</div>
-    <div class="stat-sub">BEL · GVT&D · KEC · Solar</div>
+    <div class="stat-sub">BEL Â· GVT&D Â· KEC Â· Solar</div>
   </div>
   <div class="stat-card">
     <div class="stat-label">On Watchlist</div>
@@ -247,14 +247,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 <!-- NAV -->
 <div class="nav">
   <button class="nav-pill active" onclick="filterSection('all',this)">All</button>
-  <button class="nav-pill" onclick="filterSection('holds',this)">📌 Existing Holds</button>
-  <button class="nav-pill" onclick="filterSection('hc',this)">⭐⭐⭐⭐⭐ Highest</button>
-  <button class="nav-pill" onclick="filterSection('high',this)">⭐⭐⭐⭐ High</button>
-  <button class="nav-pill" onclick="filterSection('special',this)">⚡ Special Situation</button>
-  <button class="nav-pill" onclick="filterSection('trades',this)">📈 Trade Setups</button>
-  <button class="nav-pill" onclick="filterSection('growth',this)">🌱 Growth</button>
-  <button class="nav-pill" onclick="filterSection('caution',this)">⚠️ Caution</button>
-  <button class="nav-pill" onclick="filterSection('watchlist',this)">👁 Watchlist</button>
+  <button class="nav-pill" onclick="filterSection('holds',this)">ð Existing Holds</button>
+  <button class="nav-pill" onclick="filterSection('hc',this)">â­â­â­â­â­ Highest</button>
+  <button class="nav-pill" onclick="filterSection('high',this)">â­â­â­â­ High</button>
+  <button class="nav-pill" onclick="filterSection('special',this)">â¡ Special Situation</button>
+  <button class="nav-pill" onclick="filterSection('trades',this)">ð Trade Setups</button>
+  <button class="nav-pill" onclick="filterSection('growth',this)">ð± Growth</button>
+  <button class="nav-pill" onclick="filterSection('caution',this)">â ï¸ Caution</button>
+  <button class="nav-pill" onclick="filterSection('watchlist',this)">ð Watchlist</button>
 </div>
 
 <!-- LEGEND -->
@@ -272,16 +272,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 <!-- helper macro for a stock card -->
 <!-- each card is written out fully below -->
 
-<!-- ═══ EXISTING HOLDS ═══ -->
+<!-- âââ EXISTING HOLDS âââ -->
 <div class="sec sec-filter sec-filter-holds">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Existing holds — updated action</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Existing holds â updated action</div>
 
 <!-- HAL -->
 <div class="card hc" id="c-HAL">
   <div class="card-hd">
     <div>
-      <div class="cname">HAL — Hindustan Aeronautics <span class="cticker">HAL</span><span class="delta dd">▼ −5.9% since 8 May</span></div>
-      <div class="cmeta">Q4 EPS +17% beat. FY26 EPS ₹136.30. Pullback = better add opportunity. Operation Sindoor = defence budget acceleration.</div>
+      <div class="cname">HAL â Hindustan Aeronautics <span class="cticker">HAL</span><span id="delta-HAL" class="delta df" style="display:none"></span></div>
+      <div class="cmeta">Q4 EPS +17% beat. FY26 EPS â¹136.30. Pullback = better add opportunity. Operation Sindoor = defence budget acceleration.</div>
     </div>
     <span class="tag t-hold">Hold / add</span>
   </div>
@@ -297,11 +297,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="HAL-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-HAL">₹4,421</div></div>
-      <div class="lc"><div class="ll">Add zone</div><div class="lv en">₹4,200–4,400</div><div class="ls">Pullback = buy</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹5,000</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹5,500</div><div class="ls">+24%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,900</div><div class="ls">Below 200DMA</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-HAL">â¹4,421</div></div>
+      <div class="lc"><div class="ll">Add zone</div><div class="lv en">â¹4,200â4,400</div><div class="ls">Pullback = buy</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹5,000</div><div class="ls">+13%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹5,500</div><div class="ls">+24%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹3,900</div><div class="ls">Below 200DMA</div></div>
     </div>
   </div>
   <div class="tab-panel" id="HAL-chart">
@@ -317,44 +317,44 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="HAL-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">HAL makes India's fighter jets, helicopters, and military aircraft — and it's the <em>only</em> company in India that can do this at scale. Think of it like a government-protected monopoly in defence manufacturing. Every time India needs to upgrade its air force (which it does regularly), the money flows to HAL. After the India-Pakistan tensions in May 2026, the government is expected to increase the defence budget significantly — which means more orders for HAL. The recent price dip is just normal market noise after a big run-up, not a sign of anything wrong with the business.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">HAL makes India's fighter jets, helicopters, and military aircraft â and it's the <em>only</em> company in India that can do this at scale. Think of it like a government-protected monopoly in defence manufacturing. Every time India needs to upgrade its air force (which it does regularly), the money flows to HAL. After the India-Pakistan tensions in May 2026, the government is expected to increase the defence budget significantly â which means more orders for HAL. The recent price dip is just normal market noise after a big run-up, not a sign of anything wrong with the business.</div>
       </div>
       <div class="conv-grid">
         <div class="conv-box">
           <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Price above 200-day average<div class="gate-sub">₹4,421 vs 200DMA ₹4,180 — uptrend intact</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Earnings beat last quarter by 17%<div class="gate-sub">EPS ₹62.74 vs estimate ₹53.42</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">26 analysts say Buy, 0 say Sell<div class="gate-sub">Strong institutional conviction</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">FY26 EPS grew 25% year on year<div class="gate-sub">₹136.30 vs ₹109 — earnings accelerating</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Price above 200-day average<div class="gate-sub">â¹4,421 vs 200DMA â¹4,180 â uptrend intact</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Earnings beat last quarter by 17%<div class="gate-sub">EPS â¹62.74 vs estimate â¹53.42</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">26 analysts say Buy, 0 say Sell<div class="gate-sub">Strong institutional conviction</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">FY26 EPS grew 25% year on year<div class="gate-sub">â¹136.30 vs â¹109 â earnings accelerating</div></div></div>
         </div>
         <div class="conv-box">
           <div class="conv-box-title bull-t">Bull case</div>
           <ul class="bull-list">
-            <li>India's only large-scale aerospace manufacturer — no private competition</li>
+            <li>India's only large-scale aerospace manufacturer â no private competition</li>
             <li>83 Tejas Mk1A jets confirmed, deliveries through FY30</li>
             <li>Operation Sindoor = structural shift in defence spending priority</li>
-            <li>ALH helicopter orders ₹2,901 cr recently confirmed</li>
+            <li>ALH helicopter orders â¹2,901 cr recently confirmed</li>
           </ul>
           <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
           <ul class="bear-list">
-            <li>PE of 34x is high for a PSU — any delivery delay is punished</li>
-            <li>Revenue recognition is lumpy — some quarters will disappoint</li>
+            <li>PE of 34x is high for a PSU â any delivery delay is punished</li>
+            <li>Revenue recognition is lumpy â some quarters will disappoint</li>
           </ul>
         </div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> HAL is India's highest-conviction defence name. The Q4 beat (+17%) combined with Operation Sindoor creating a structural defence spending shift makes this the most defensible defence hold in the portfolio. Current pullback to ₹4,421 from ₹4,700 is a add opportunity, not a reason to sell. Next catalyst: Q1 FY27 results Aug 7.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> HAL is India's highest-conviction defence name. The Q4 beat (+17%) combined with Operation Sindoor creating a structural defence spending shift makes this the most defensible defence hold in the portfolio. Current pullback to â¹4,421 from â¹4,700 is a add opportunity, not a reason to sell. Next catalyst: Q1 FY27 results Aug 7.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 12–18 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Q1 results Aug 7 · Tejas Mk1A deliveries accelerating</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 12â18 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Q1 results Aug 7 Â· Tejas Mk1A deliveries accelerating</span></div>
 </div>
 
 <!-- BSE -->
 <div class="card" id="c-BSE">
   <div class="card-hd">
     <div>
-      <div class="cname">BSE Ltd <span class="cticker">BSE</span><span class="delta du">▲ +12.2% since 8 May</span></div>
-      <div class="cmeta">Broke above ₹3,600 resistance — near 52W high ₹4,065. ₹10 dividend record Jul 10. Easy money made — trail stop.</div>
+      <div class="cname">BSE Ltd <span class="cticker">BSE</span><span id="delta-BSE" class="delta df" style="display:none"></span></div>
+      <div class="cmeta">Broke above â¹3,600 resistance â near 52W high â¹4,065. â¹10 dividend record Jul 10. Easy money made â trail stop.</div>
     </div>
     <span class="tag t-hold">Hold / trail stop</span>
   </div>
@@ -367,10 +367,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="BSE-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BSE">₹4,038</div></div>
-      <div class="lc"><div class="ll">Trail stop</div><div class="lv en">₹3,700</div><div class="ls">Lock gains</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹4,400</div><div class="ls">+9%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹4,800</div><div class="ls">+19%</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BSE">â¹4,038</div></div>
+      <div class="lc"><div class="ll">Trail stop</div><div class="lv en">â¹3,700</div><div class="ls">Lock gains</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹4,400</div><div class="ls">+9%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹4,800</div><div class="ls">+19%</div></div>
       <div class="lc"><div class="ll">Action</div><div class="lv na">Don't add</div><div class="ls">Near ATH</div></div>
     </div>
   </div>
@@ -380,26 +380,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="BSE-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">BSE is one of India's two stock exchanges. Think of it like a toll booth — every trade that happens on BSE earns BSE a small fee. As more Indians start investing (India is adding 3–4 million new investors every month), BSE's toll booth gets busier. The stock has already delivered +12% since we highlighted it. The key now is to protect that profit — we've raised the stop loss to ₹3,700 so if the stock falls, we lock in most of the gain.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">BSE is one of India's two stock exchanges. Think of it like a toll booth â every trade that happens on BSE earns BSE a small fee. As more Indians start investing (India is adding 3â4 million new investors every month), BSE's toll booth gets busier. The stock has already delivered +12% since we highlighted it. The key now is to protect that profit â we've raised the stop loss to â¹3,700 so if the stock falls, we lock in most of the gain.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> BSE has delivered the return. Now it's about protecting it. Trail stop to ₹3,700. Don't add here near ATH. Next meaningful entry is a dip to ₹3,700–3,900, which may come post the Jul 10 dividend record date as some holders exit post-dividend.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> BSE has delivered the return. Now it's about protecting it. Trail stop to â¹3,700. Don't add here near ATH. Next meaningful entry is a dip to â¹3,700â3,900, which may come post the Jul 10 dividend record date as some holders exit post-dividend.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:1.5 at CMP</span><span class="cf-note">Trail stop → ₹3,700 · Add only on dips</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â9 months</span><span class="cf-rr">R/R 1:1.5 at CMP</span><span class="cf-note">Trail stop â â¹3,700 Â· Add only on dips</span></div>
 </div>
 </div>
 
-<!-- ═══ HIGHEST CONVICTION ═══ -->
+<!-- âââ HIGHEST CONVICTION âââ -->
 <div class="sec sec-filter sec-filter-hc">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--green)"></span>Highest conviction — buy now or on dips ⭐⭐⭐⭐⭐</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--green)"></span>Highest conviction â buy now or on dips â­â­â­â­â­</div>
 
 <!-- BEL -->
 <div class="card hc" id="c-BEL">
   <div class="card-hd">
     <div>
-      <div class="cname">BEL — Bharat Electronics <span class="cticker">BEL</span><span class="delta dd">▼ −1.9%</span><span class="alert-p">⚡ Results 19 May</span></div>
-      <div class="cmeta">RSI divergence breakout. ₹1,251 cr Army order won. ₹73,000 cr order book. 50DMA ₹437 = resistance to clear for T1.</div>
+      <div class="cname">BEL â Bharat Electronics <span class="cticker">BEL</span><span id="delta-BEL" class="delta df" style="display:none"></span><span class="delta dd">â¼ â1.9%</span><span class="alert-p">â¡ Results 19 May</span></div>
+      <div class="cmeta">RSI divergence breakout. â¹1,251 cr Army order won. â¹73,000 cr order book. 50DMA â¹437 = resistance to clear for T1.</div>
     </div>
     <span class="tag t-both">Both F+T</span>
   </div>
@@ -412,11 +412,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="BEL-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BEL">₹423</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹410–425</div><div class="ls">Current = entry</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹480</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹530</div><div class="ls">+25%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹390</div><div class="ls">Swing low</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BEL">â¹423</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹410â425</div><div class="ls">Current = entry</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹480</div><div class="ls">+13%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹530</div><div class="ls">+25%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹390</div><div class="ls">Swing low</div></div>
     </div>
   </div>
   <div class="tab-panel" id="BEL-chart">
@@ -425,17 +425,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="BEL-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">BEL is like the "brain" of India's military — it makes the radars, sonar systems, electronic warfare equipment, and communication systems that go inside jets, ships, and tanks. It doesn't make the hardware itself (HAL does that), it makes the intelligent electronics inside. The business is incredibly profitable (29% EBITDA margin — think of it like keeping 29 paise of every rupee earned, which is exceptional). On top of that, it's just been added to the Sensex 30, which means large mutual funds are forced to buy it every month automatically. The results on 19 May are expected to be strong.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">BEL is like the "brain" of India's military â it makes the radars, sonar systems, electronic warfare equipment, and communication systems that go inside jets, ships, and tanks. It doesn't make the hardware itself (HAL does that), it makes the intelligent electronics inside. The business is incredibly profitable (29% EBITDA margin â think of it like keeping 29 paise of every rupee earned, which is exceptional). On top of that, it's just been added to the Sensex 30, which means large mutual funds are forced to buy it every month automatically. The results on 19 May are expected to be strong.</div>
       </div>
       <div class="conv-grid">
         <div class="conv-box">
           <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">RSI chart pattern breakout<div class="gate-sub">Price fell but momentum rose = classic reversal signal</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">₹73,000 cr order book<div class="gate-sub">3+ years of revenue already locked in</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">EBITDA margin 29%<div class="gate-sub">Exceptional profitability for a PSU</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Sensex 30 inclusion<div class="gate-sub">Auto buying from index funds every month</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-fail">✗</div><div class="gate-text">PE 53x above sector avg 42x<div class="gate-sub">Slight premium — acceptable given quality</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">RSI chart pattern breakout<div class="gate-sub">Price fell but momentum rose = classic reversal signal</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">â¹73,000 cr order book<div class="gate-sub">3+ years of revenue already locked in</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">EBITDA margin 29%<div class="gate-sub">Exceptional profitability for a PSU</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Sensex 30 inclusion<div class="gate-sub">Auto buying from index funds every month</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-fail">â</div><div class="gate-text">PE 53x above sector avg 42x<div class="gate-sub">Slight premium â acceptable given quality</div></div></div>
         </div>
         <div class="conv-box">
           <div class="conv-box-title bull-t">Bull case</div>
@@ -447,23 +447,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
           </ul>
           <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
           <ul class="bear-list">
-            <li>19 May results = binary — any miss punished hard</li>
+            <li>19 May results = binary â any miss punished hard</li>
             <li>PE 53x is stretched; little room for error</li>
           </ul>
         </div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> BEL is the single highest-conviction name on this list. RSI divergence breakout (technical) + 4-quarter earnings acceleration (fundamental) + ₹73,000 cr order book + imminent results catalyst = unusually clean timing. Beat expected. R/R 1:2.5 with a binary catalyst is rare.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> BEL is the single highest-conviction name on this list. RSI divergence breakout (technical) + 4-quarter earnings acceleration (fundamental) + â¹73,000 cr order book + imminent results catalyst = unusually clean timing. Beat expected. R/R 1:2.5 with a binary catalyst is rare.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 1–3 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Results 19 May · Beat strongly expected</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 1â3 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Results 19 May Â· Beat strongly expected</span></div>
 </div>
 
 <!-- NATCO -->
 <div class="card hc" id="c-NATCO">
   <div class="card-hd">
     <div>
-      <div class="cname">Natco Pharma <span class="cticker">NATCOPHARM</span><span class="delta du">▲ +1.8%</span></div>
-      <div class="cmeta">PE 13.9x — cheapest quality pharma on NSE. Near 52W high. Semaglutide generic launch. Revenue +36% YoY. Biggest upgrade this cycle.</div>
+      <div class="cname">Natco Pharma <span class="cticker">NATCOPHARM</span><span id="delta-NATCO" class="delta df" style="display:none"></span><span class="delta du">â² +1.8%</span></div>
+      <div class="cmeta">PE 13.9x â cheapest quality pharma on NSE. Near 52W high. Semaglutide generic launch. Revenue +36% YoY. Biggest upgrade this cycle.</div>
     </div>
     <span class="tag t-both">Both F+T</span>
   </div>
@@ -476,11 +476,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="NATCO-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-NATCO">₹1,215</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,100–1,180</div><div class="ls">Any dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,420</div><div class="ls">+17%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,600</div><div class="ls">+32%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,010</div><div class="ls">Demand zone</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-NATCO">â¹1,215</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹1,100â1,180</div><div class="ls">Any dip</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹1,420</div><div class="ls">+17%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹1,600</div><div class="ls">+32%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹1,010</div><div class="ls">Demand zone</div></div>
     </div>
   </div>
   <div class="tab-panel" id="NATCO-chart">
@@ -489,16 +489,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="NATCO-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Natco makes generic versions of very expensive medicines — things like cancer drugs and Hepatitis C treatments — at a fraction of the original cost. The big new product is a generic version of Ozempic (Semaglutide), the blockbuster diabetes and weight-loss drug, launched in India at 90% lower cost than the original. Here's why the valuation is exciting: the stock is near its highest price ever, yet it's one of the cheapest pharma companies by PE ratio. That's unusual — normally expensive stocks have high PEs. When a stock reaches new highs while still being cheap, it usually means the market is just beginning to discover it.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Natco makes generic versions of very expensive medicines â things like cancer drugs and Hepatitis C treatments â at a fraction of the original cost. The big new product is a generic version of Ozempic (Semaglutide), the blockbuster diabetes and weight-loss drug, launched in India at 90% lower cost than the original. Here's why the valuation is exciting: the stock is near its highest price ever, yet it's one of the cheapest pharma companies by PE ratio. That's unusual â normally expensive stocks have high PEs. When a stock reaches new highs while still being cheap, it usually means the market is just beginning to discover it.</div>
       </div>
       <div class="conv-grid">
         <div class="conv-box">
           <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">PE 13.9x vs industry 42x average<div class="gate-sub">The single most attractive valuation gap on this list</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Revenue +36% year on year<div class="gate-sub">Accelerating, not slowing</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Near 52W high = Stage 2 breakout<div class="gate-sub">Strong stocks make new highs — this is a good sign</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Semaglutide generic launch<div class="gate-sub">Huge TAM — 77M diabetics in India alone</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">PE 13.9x vs industry 42x average<div class="gate-sub">The single most attractive valuation gap on this list</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Revenue +36% year on year<div class="gate-sub">Accelerating, not slowing</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Near 52W high = Stage 2 breakout<div class="gate-sub">Strong stocks make new highs â this is a good sign</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Semaglutide generic launch<div class="gate-sub">Huge TAM â 77M diabetics in India alone</div></div></div>
         </div>
         <div class="conv-box">
           <div class="conv-box-title bull-t">Bull case</div>
@@ -506,26 +506,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
             <li>Semaglutide (generic Ozempic) at Indian prices = transformational product</li>
             <li>First-to-file strategy in US = market exclusivity periods</li>
             <li>Oncology generics = high barriers, durable margins</li>
-            <li>FII ownership increasing — institutional discovery early</li>
+            <li>FII ownership increasing â institutional discovery early</li>
           </ul>
           <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
           <ul class="bear-list">
-            <li>Q3 profit fell -71% QoQ — volatile quarterly earnings</li>
-            <li>Small company (₹21,600 cr) — thin float, big moves both ways</li>
+            <li>Q3 profit fell -71% QoQ â volatile quarterly earnings</li>
+            <li>Small company (â¹21,600 cr) â thin float, big moves both ways</li>
           </ul>
         </div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> PE of 13.9x at Stage 2 breakout is a textbook Weinstein setup. The market simply hasn't re-rated it yet despite +36% revenue growth. Semaglutide is the optionality that could cause a sharp re-rating. Buy on any dip to ₹1,100–1,180.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> PE of 13.9x at Stage 2 breakout is a textbook Weinstein setup. The market simply hasn't re-rated it yet despite +36% revenue growth. Semaglutide is the optionality that could cause a sharp re-rating. Buy on any dip to â¹1,100â1,180.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Biggest conviction upgrade · Semaglutide = optionality</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â12 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Biggest conviction upgrade Â· Semaglutide = optionality</span></div>
 </div>
 
 <!-- AJANTA -->
 <div class="card hc" id="c-AJANTA">
   <div class="card-hd">
     <div>
-      <div class="cname">Ajanta Pharma <span class="cticker">AJANTPHARM</span><span class="delta df">= flat</span></div>
+      <div class="cname">Ajanta Pharma <span class="cticker">AJANTPHARM</span><span id="delta-AJANTA" class="delta df" style="display:none"></span><span class="delta df">= flat</span></div>
       <div class="cmeta">Debt-free. ROCE 33%, ROE 26%. PE below industry. Q4 profit +20% YoY. FDA Form 483 resolution = pending re-rating catalyst.</div>
     </div>
     <span class="tag t-fund">Fundamental</span>
@@ -539,11 +539,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="AJANTA-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AJANTA">₹2,910</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹2,750–2,900</div><div class="ls">Accumulate</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹3,228</div><div class="ls">52W high</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹3,500</div><div class="ls">+20%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹2,550</div><div class="ls">200DMA</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AJANTA">â¹2,910</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹2,750â2,900</div><div class="ls">Accumulate</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹3,228</div><div class="ls">52W high</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹3,500</div><div class="ls">+20%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹2,550</div><div class="ls">200DMA</div></div>
     </div>
   </div>
   <div class="tab-panel" id="AJANTA-chart">
@@ -552,36 +552,36 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="AJANTA-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Ajanta is a "sleep well at night" pharma stock. It has zero debt, earns back 33p for every ₹1 invested in the business (that's what ROCE 33% means — exceptional), and sells branded medicines in Africa and Asia where it has strong market recognition. It's cheaper than its competitors despite being better run. The only current worry is a US FDA inspection finding (Form 483) at one of its factories — if the company fixes this, the stock should re-rate sharply upward. Think of it as a quality business temporarily on sale.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Ajanta is a "sleep well at night" pharma stock. It has zero debt, earns back 33p for every â¹1 invested in the business (that's what ROCE 33% means â exceptional), and sells branded medicines in Africa and Asia where it has strong market recognition. It's cheaper than its competitors despite being better run. The only current worry is a US FDA inspection finding (Form 483) at one of its factories â if the company fixes this, the stock should re-rate sharply upward. Think of it as a quality business temporarily on sale.</div>
       </div>
       <div class="conv-grid">
         <div class="conv-box">
           <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Zero debt balance sheet<div class="gate-sub">Net cash positive — company owns more than it owes</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">ROCE 33%, ROE 26%<div class="gate-sub">Top quartile — earns exceptional returns on capital</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">PE below industry average<div class="gate-sub">38x vs industry 43x — undervalued vs peers</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-warn">!</div><div class="gate-text">FDA Form 483 — Paithan plant<div class="gate-sub">5 observations under review. VETO risk if escalates.</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">Zero debt balance sheet<div class="gate-sub">Net cash positive â company owns more than it owes</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">ROCE 33%, ROE 26%<div class="gate-sub">Top quartile â earns exceptional returns on capital</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-pass">â</div><div class="gate-text">PE below industry average<div class="gate-sub">38x vs industry 43x â undervalued vs peers</div></div></div>
+          <div class="gate-row"><div class="gate-icon gi-warn">!</div><div class="gate-text">FDA Form 483 â Paithan plant<div class="gate-sub">5 observations under review. VETO risk if escalates.</div></div></div>
         </div>
         <div class="conv-box">
           <div class="conv-box-title bull-t">Bull case</div>
-          <ul class="bull-list"><li>Debt-free with 33% ROCE — rare in mid-cap pharma</li><li>Africa + Asia branded generics = sticky, less US pricing risk</li><li>FDA 483 resolution = sharp re-rating catalyst</li><li>Working capital days improved 42→32.7 — executing well</li></ul>
+          <ul class="bull-list"><li>Debt-free with 33% ROCE â rare in mid-cap pharma</li><li>Africa + Asia branded generics = sticky, less US pricing risk</li><li>FDA 483 resolution = sharp re-rating catalyst</li><li>Working capital days improved 42â32.7 â executing well</li></ul>
           <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
-          <ul class="bear-list"><li>FDA Form 483 escalation to Warning Letter = US revenue risk</li><li>Revenue growth modest ~6% QoQ — not a high-growth stock</li></ul>
+          <ul class="bear-list"><li>FDA Form 483 escalation to Warning Letter = US revenue risk</li><li>Revenue growth modest ~6% QoQ â not a high-growth stock</li></ul>
         </div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Best risk/reward fundamental entry on this list. Accumulate in tranches at ₹2,750–2,900. FDA 483 resolution = the catalyst for ₹3,500+.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Best risk/reward fundamental entry on this list. Accumulate in tranches at â¹2,750â2,900. FDA 483 resolution = the catalyst for â¹3,500+.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">FDA 483 watch · Cleanest quality entry</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">FDA 483 watch Â· Cleanest quality entry</span></div>
 </div>
 
 <!-- SOLAR INDUSTRIES -->
 <div class="card hc" id="c-SOLAR">
   <div class="card-hd">
     <div>
-      <div class="cname">Solar Industries India <span class="cticker">SOLARINDS</span><span class="delta du">▲ +12.3%</span></div>
-      <div class="cmeta">Defence revenue +72% YoY. ₹18,000 cr order book. Goldman Sachs Buy ₹18,900. CRISIL AA+ upgrade Apr 2026.</div>
+      <div class="cname">Solar Industries India <span class="cticker">SOLARINDS</span><span id="delta-SOLAR" class="delta df" style="display:none"></span><span class="delta du">â² +12.3%</span></div>
+      <div class="cmeta">Defence revenue +72% YoY. â¹18,000 cr order book. Goldman Sachs Buy â¹18,900. CRISIL AA+ upgrade Apr 2026.</div>
     </div>
     <span class="tag t-fund">Fundamental</span>
   </div>
@@ -594,11 +594,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="SOLAR-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-SOLAR">₹17,340</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹15,800–16,800</div><div class="ls">Post-results dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹19,500</div><div class="ls">+16%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹22,000</div><div class="ls">+31%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹14,800</div><div class="ls">Pre-run base</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-SOLAR">â¹17,340</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹15,800â16,800</div><div class="ls">Post-results dip</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹19,500</div><div class="ls">+16%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹22,000</div><div class="ls">+31%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹14,800</div><div class="ls">Pre-run base</div></div>
     </div>
   </div>
   <div class="tab-panel" id="SOLAR-chart">
@@ -607,26 +607,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="SOLAR-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Solar Industries started as a company that makes explosives for coal mines. But over the last 3 years it has quietly become India's only private-sector manufacturer of rockets, propellants, and ammunition for the military. Think of it as "HAL's ammunition supplier" — while HAL makes the aircraft, Solar makes what the aircraft fires. The government's "Make in India" defence policy means the Army and Air Force must buy ammunition domestically, and Solar is practically the only private company that can supply it. Defence revenue grew 72% last year alone.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Solar Industries started as a company that makes explosives for coal mines. But over the last 3 years it has quietly become India's only private-sector manufacturer of rockets, propellants, and ammunition for the military. Think of it as "HAL's ammunition supplier" â while HAL makes the aircraft, Solar makes what the aircraft fires. The government's "Make in India" defence policy means the Army and Air Force must buy ammunition domestically, and Solar is practically the only private company that can supply it. Defence revenue grew 72% last year alone.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Most underrated defence name on NSE. Near-monopoly in private-sector propellants. Goldman Sachs Buy target ₹18,900. Post-results entry at ₹15,800–16,800 preferred over chasing the pre-results run.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Most underrated defence name on NSE. Near-monopoly in private-sector propellants. Goldman Sachs Buy target â¹18,900. Post-results entry at â¹15,800â16,800 preferred over chasing the pre-results run.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Wait for post-results entry · Goldman Buy ₹18,900</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â12 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Wait for post-results entry Â· Goldman Buy â¹18,900</span></div>
 </div>
 </div>
 
-<!-- ═══ HIGH CONVICTION ═══ -->
+<!-- âââ HIGH CONVICTION âââ -->
 <div class="sec sec-filter sec-filter-high">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--blue)"></span>High conviction — build position ⭐⭐⭐⭐</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--blue)"></span>High conviction â build position â­â­â­â­</div>
 
 <!-- POWER GRID -->
 <div class="card" id="c-POWERGRID">
   <div class="card-hd">
     <div>
-      <div class="cname">Power Grid Corp <span class="cticker">POWERGRID</span><span class="delta dd">▼ −4.4%</span><span class="alert-p">⚡ Results 16 May</span></div>
-      <div class="cmeta">Pulled back ₹320→₹306 — better entry. PE 18x. Dividend yield 3.85%. 500 GW renewable target = decade-long capex.</div>
+      <div class="cname">Power Grid Corp <span class="cticker">POWERGRID</span><span id="delta-POWERGRID" class="delta df" style="display:none"></span><span class="delta dd">â¼ â4.4%</span><span class="alert-p">â¡ Results 16 May</span></div>
+      <div class="cmeta">Pulled back â¹320ââ¹306 â better entry. PE 18x. Dividend yield 3.85%. 500 GW renewable target = decade-long capex.</div>
     </div>
     <span class="tag t-both">Both F+T</span>
   </div>
@@ -639,11 +639,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="POWERGRID-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-POWERGRID">₹306</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹295–308</div><div class="ls">Now = entry</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹345</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹380</div><div class="ls">+24%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹280</div><div class="ls">Below 50DMA</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-POWERGRID">â¹306</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹295â308</div><div class="ls">Now = entry</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹345</div><div class="ls">+13%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹380</div><div class="ls">+24%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹280</div><div class="ls">Below 50DMA</div></div>
     </div>
   </div>
   <div class="tab-panel" id="POWERGRID-chart">
@@ -652,21 +652,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="POWERGRID-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Power Grid owns and operates the highways that electricity travels on across India — over 172,000 km of high-voltage transmission lines. It's a government company that earns a fixed 15.5% return on every rupee it invests, guaranteed by regulation. Think of it like a toll road, except the government guarantees you'll always get your toll regardless of traffic. As India builds solar and wind farms across the country, all that electricity needs new highways to reach cities — Power Grid builds and owns those highways. It also pays you a 3.85% dividend annually just for holding it.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Power Grid owns and operates the highways that electricity travels on across India â over 172,000 km of high-voltage transmission lines. It's a government company that earns a fixed 15.5% return on every rupee it invests, guaranteed by regulation. Think of it like a toll road, except the government guarantees you'll always get your toll regardless of traffic. As India builds solar and wind farms across the country, all that electricity needs new highways to reach cities â Power Grid builds and owns those highways. It also pays you a 3.85% dividend annually just for holding it.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Most predictable large-cap on this list. Government-guaranteed 15.5% ROE, 88–90% EBITDA margins, PE 18x. The ₹306 pullback is a gift — results 16 May expected to be another beat. Dividend yield means the downside is cushioned.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Most predictable large-cap on this list. Government-guaranteed 15.5% ROE, 88â90% EBITDA margins, PE 18x. The â¹306 pullback is a gift â results 16 May expected to be another beat. Dividend yield means the downside is cushioned.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Results 16 May · Better entry than 8 May</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 3â6 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Results 16 May Â· Better entry than 8 May</span></div>
 </div>
 
 <!-- TITAN -->
 <div class="card" id="c-TITAN">
   <div class="card-hd">
     <div>
-      <div class="cname">Titan Company <span class="cticker">TITAN</span><span class="delta dd">▼ −3.5%</span></div>
-      <div class="cmeta">✅ Q4: PAT +35% YoY, revenue +80%, ₹15 dividend. PE re-rated to 72x. Morgan Stanley TP ₹5,102.</div>
+      <div class="cname">Titan Company <span class="cticker">TITAN</span><span id="delta-TITAN" class="delta df" style="display:none"></span><span class="delta dd">â¼ â3.5%</span></div>
+      <div class="cmeta">â Q4: PAT +35% YoY, revenue +80%, â¹15 dividend. PE re-rated to 72x. Morgan Stanley TP â¹5,102.</div>
     </div>
     <span class="tag t-fund">Fundamental</span>
   </div>
@@ -679,11 +679,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="TITAN-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-TITAN">₹4,155</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹4,000–4,200</div><div class="ls">Now = zone</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹4,880</div><div class="ls">+17% consensus</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹5,100</div><div class="ls">+23% MS/CLSA</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,750</div><div class="ls">Support base</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-TITAN">â¹4,155</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹4,000â4,200</div><div class="ls">Now = zone</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹4,880</div><div class="ls">+17% consensus</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹5,100</div><div class="ls">+23% MS/CLSA</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹3,750</div><div class="ls">Support base</div></div>
     </div>
   </div>
   <div class="tab-panel" id="TITAN-chart">
@@ -692,21 +692,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="TITAN-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Titan owns Tanishq (India's most trusted jewellery brand), Titan watches, Fastrack, and Caratlane. It's the Tata Group's consumer brand empire. Here's why it's compelling: jewellery in India is still mostly bought from unorganised local jewellers, but Indians are rapidly shifting to trusted brands like Tanishq. Titan is only 8% of a ₹6 lakh crore market — there's enormous room to grow. The Q4 results were strong (revenue +80% — partly because gold prices jumped) and management has now expanded into the Middle East via Damas (149 stores in UAE, Saudi, Qatar). The stock dipped after results — that's the entry window.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Titan owns Tanishq (India's most trusted jewellery brand), Titan watches, Fastrack, and Caratlane. It's the Tata Group's consumer brand empire. Here's why it's compelling: jewellery in India is still mostly bought from unorganised local jewellers, but Indians are rapidly shifting to trusted brands like Tanishq. Titan is only 8% of a â¹6 lakh crore market â there's enormous room to grow. The Q4 results were strong (revenue +80% â partly because gold prices jumped) and management has now expanded into the Middle East via Damas (149 stores in UAE, Saudi, Qatar). The stock dipped after results â that's the entry window.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> PE re-rated from 114x to 72x as earnings grew faster than the price — the stock is getting cheaper. Damas + North America are new growth vectors not in the thesis a year ago. Morgan Stanley TP ₹5,102.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> PE re-rated from 114x to 72x as earnings grew faster than the price â the stock is getting cheaper. Damas + North America are new growth vectors not in the thesis a year ago. Morgan Stanley TP â¹5,102.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 9–12 months</span><span class="cf-rr">R/R 1:2.0</span><span class="cf-note">Q4 cleared · Damas = new growth vector · MS TP ₹5,102</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 9â12 months</span><span class="cf-rr">R/R 1:2.0</span><span class="cf-note">Q4 cleared Â· Damas = new growth vector Â· MS TP â¹5,102</span></div>
 </div>
 
 <!-- AUROBINDO -->
 <div class="card" id="c-AURO">
   <div class="card-hd">
     <div>
-      <div class="cname">Aurobindo Pharma <span class="cticker">AUROPHARMA</span><span class="delta du">▲ +7.4%</span></div>
-      <div class="cmeta">Rounding bottom breakout playing out. ₹1,487 — below 52W high ₹1,513. 579 USFDA approvals. PE 23x vs industry 43x.</div>
+      <div class="cname">Aurobindo Pharma <span class="cticker">AUROPHARMA</span><span id="delta-AURO" class="delta df" style="display:none"></span><span class="delta du">â² +7.4%</span></div>
+      <div class="cmeta">Rounding bottom breakout playing out. â¹1,487 â below 52W high â¹1,513. 579 USFDA approvals. PE 23x vs industry 43x.</div>
     </div>
     <span class="tag t-both">Both F+T</span>
   </div>
@@ -719,11 +719,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="AURO-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AURO">₹1,487</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,420–1,480</div><div class="ls">Wait for dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,620</div><div class="ls">+9%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,800</div><div class="ls">+21%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,300</div><div class="ls">Below breakout</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AURO">â¹1,487</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹1,420â1,480</div><div class="ls">Wait for dip</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹1,620</div><div class="ls">+9%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹1,800</div><div class="ls">+21%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹1,300</div><div class="ls">Below breakout</div></div>
     </div>
   </div>
   <div class="tab-panel" id="AURO-chart">
@@ -732,21 +732,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="AURO-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Aurobindo is India's largest generic medicines exporter by volume — it sells affordable versions of branded drugs to the US, Europe, and emerging markets. It has 579 approved products in the US alone (the most of any Indian pharma company). The interesting thing about the stock right now is technical: the price chart formed a "rounding bottom" pattern — like a ball rolling along the bottom of a bowl before gaining upward momentum. This pattern often precedes a strong move up. The PE of 23x is half the industry average of 43x, meaning you're getting a large-cap pharma leader at a mid-cap valuation.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Aurobindo is India's largest generic medicines exporter by volume â it sells affordable versions of branded drugs to the US, Europe, and emerging markets. It has 579 approved products in the US alone (the most of any Indian pharma company). The interesting thing about the stock right now is technical: the price chart formed a "rounding bottom" pattern â like a ball rolling along the bottom of a bowl before gaining upward momentum. This pattern often precedes a strong move up. The PE of 23x is half the industry average of 43x, meaning you're getting a large-cap pharma leader at a mid-cap valuation.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Largest-cap pharma at cheapest relative valuation on NSE. Rounding bottom playing out as forecast. Don't chase — wait for dip to ₹1,420–1,480. USFDA injectables approval accelerating is the next catalyst.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Largest-cap pharma at cheapest relative valuation on NSE. Rounding bottom playing out as forecast. Don't chase â wait for dip to â¹1,420â1,480. USFDA injectables approval accelerating is the next catalyst.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:1.8</span><span class="cf-note">Setup playing out · Wait for dip · 579 USFDA approvals</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 3â6 months</span><span class="cf-rr">R/R 1:1.8</span><span class="cf-note">Setup playing out Â· Wait for dip Â· 579 USFDA approvals</span></div>
 </div>
 
 <!-- CDSL -->
 <div class="card" id="c-CDSL">
   <div class="card-hd">
     <div>
-      <div class="cname">CDSL <span class="cticker">CDSL</span><span class="delta dd">▼ −2.2%</span></div>
-      <div class="cmeta">ROE 36%, ROCE 46%. 33% below ATH ₹1,828. Q4 dip on tech costs = temporary. India demat boom = permanent.</div>
+      <div class="cname">CDSL <span class="cticker">CDSL</span><span id="delta-CDSL" class="delta df" style="display:none"></span><span class="delta dd">â¼ â2.2%</span></div>
+      <div class="cmeta">ROE 36%, ROCE 46%. 33% below ATH â¹1,828. Q4 dip on tech costs = temporary. India demat boom = permanent.</div>
     </div>
     <span class="tag t-both">Both F+T</span>
   </div>
@@ -759,11 +759,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="CDSL-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-CDSL">₹1,227</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,150–1,230</div><div class="ls">Near support</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,500</div><div class="ls">+22%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,750</div><div class="ls">+43%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,050</div><div class="ls">52W low buffer</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-CDSL">â¹1,227</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹1,150â1,230</div><div class="ls">Near support</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹1,500</div><div class="ls">+22%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹1,750</div><div class="ls">+43%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹1,050</div><div class="ls">52W low buffer</div></div>
     </div>
   </div>
   <div class="tab-panel" id="CDSL-chart">
@@ -772,26 +772,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="CDSL-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">CDSL is where your demat account lives. Every time someone in India opens a demat account to invest in stocks, their holdings are stored at either CDSL or NSDL — there are only two companies in India that can do this. Think of CDSL as a digital safe-deposit vault for shares. Every trade, every SIP, every dividend processed — CDSL earns a tiny fee. India is adding 3–4 million new investors every single month. The stock is 33% below its peak because last quarter's profits dipped — but only because they spent money upgrading their technology platform. The underlying business is growing faster than ever.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">CDSL is where your demat account lives. Every time someone in India opens a demat account to invest in stocks, their holdings are stored at either CDSL or NSDL â there are only two companies in India that can do this. Think of CDSL as a digital safe-deposit vault for shares. Every trade, every SIP, every dividend processed â CDSL earns a tiny fee. India is adding 3â4 million new investors every single month. The stock is 33% below its peak because last quarter's profits dipped â but only because they spent money upgrading their technology platform. The underlying business is growing faster than ever.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> One of India's few genuine quasi-monopolies. Q4 profit dip is capex (building next-gen platform), not deterioration. At 33% below ATH with ROE 36%, entry here is structurally sound. India's SIP revolution (₹26,000 cr/month) directly drives CDSL volumes.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> One of India's few genuine quasi-monopolies. Q4 profit dip is capex (building next-gen platform), not deterioration. At 33% below ATH with ROE 36%, entry here is structurally sound. India's SIP revolution (â¹26,000 cr/month) directly drives CDSL volumes.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">India demat boom structural · Q4 dip = noise</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">India demat boom structural Â· Q4 dip = noise</span></div>
 </div>
 </div>
 
-<!-- ═══ SPECIAL SITUATION ═══ -->
+<!-- âââ SPECIAL SITUATION âââ -->
 <div class="sec sec-filter sec-filter-special">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Special situation — act on the event ⚡</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Special situation â act on the event â¡</div>
 
 <!-- GVT&D -->
 <div class="card hc-amber" id="c-GVTD">
   <div class="card-hd">
     <div>
-      <div class="cname">GE Vernova T&D India <span class="cticker">GVT&D</span><span class="delta dd">▼ −5.7%</span><span class="alert-p">⚡ Board 18 May</span></div>
-      <div class="cmeta">FY26 results + dividend on 18 May. Last quarter +28% EPS surprise. Two scenarios — beat or miss. Do NOT enter before results.</div>
+      <div class="cname">GE Vernova T&D India <span class="cticker">GVT&D</span><span class="delta dd">â¼ â5.7%</span><span class="alert-p">â¡ Board 18 May</span></div>
+      <div class="cmeta">FY26 results + dividend on 18 May. Last quarter +28% EPS surprise. Two scenarios â beat or miss. Do NOT enter before results.</div>
     </div>
     <span class="tag t-watch">Wait</span>
   </div>
@@ -804,11 +804,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="GVTD-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-GVTD">₹4,274</div></div>
-      <div class="lc"><div class="ll">If beat</div><div class="lv en">Buy ₹4,500+</div><div class="ls">Post-results gap</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹5,000</div><div class="ls">ATH break</div></div>
-      <div class="lc"><div class="ll">If miss</div><div class="lv t2">Buy ₹3,800–4,000</div><div class="ls">Better entry</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,600</div><div class="ls">Pre-breakout</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-GVTD">â¹4,274</div></div>
+      <div class="lc"><div class="ll">If beat</div><div class="lv en">Buy â¹4,500+</div><div class="ls">Post-results gap</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹5,000</div><div class="ls">ATH break</div></div>
+      <div class="lc"><div class="ll">If miss</div><div class="lv t2">Buy â¹3,800â4,000</div><div class="ls">Better entry</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹3,600</div><div class="ls">Pre-breakout</div></div>
     </div>
   </div>
   <div class="tab-panel" id="GVTD-chart">
@@ -817,26 +817,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="GVTD-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">GE Vernova T&D India makes the big transformers and high-voltage equipment that move electricity across India's national grid. Think of it as the "plumbing" of India's power network — without their equipment, the electricity from solar farms can't reach cities. The company is backed by GE (the American industrial giant) and has over 100 years of experience. The stock is currently sitting in what traders call "no man's land" — it's neither cheap enough to buy now nor has it had the results announcement that would confirm direction. The smart move is to wait for the 18 May board meeting results before deciding.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">GE Vernova T&D India makes the big transformers and high-voltage equipment that move electricity across India's national grid. Think of it as the "plumbing" of India's power network â without their equipment, the electricity from solar farms can't reach cities. The company is backed by GE (the American industrial giant) and has over 100 years of experience. The stock is currently sitting in what traders call "no man's land" â it's neither cheap enough to buy now nor has it had the results announcement that would confirm direction. The smart move is to wait for the 18 May board meeting results before deciding.</div>
       </div>
-      <div class="analyst-note note-warn">⚠️ <strong>Analyst note:</strong> Do NOT enter before 18 May results. Current ₹4,274 is between both scenarios — no edge at this price. Wait for the event, then act on the reaction. Beat = buy ₹4,500+. Miss = buy ₹3,800–4,000.</div>
+      <div class="analyst-note note-warn">â ï¸ <strong>Analyst note:</strong> Do NOT enter before 18 May results. Current â¹4,274 is between both scenarios â no edge at this price. Wait for the event, then act on the reaction. Beat = buy â¹4,500+. Miss = buy â¹3,800â4,000.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Results 18 May → 3–6M</span><span class="cf-rr">Event-driven</span><span class="cf-note">Two clear scenarios · Both have better entries than today</span></div>
+  <div class="card-ft"><span class="cf-hz">â± Results 18 May â 3â6M</span><span class="cf-rr">Event-driven</span><span class="cf-note">Two clear scenarios Â· Both have better entries than today</span></div>
 </div>
 </div>
 
-<!-- ═══ TRADE SETUPS ═══ -->
+<!-- âââ TRADE SETUPS âââ -->
 <div class="sec sec-filter sec-filter-trades">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Trade setups — momentum and recovery ⭐⭐⭐</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Trade setups â momentum and recovery â­â­â­</div>
 
 <!-- COFORGE -->
 <div class="card" id="c-COFORGE">
   <div class="card-hd">
     <div>
-      <div class="cname">Coforge <span class="cticker">COFORGE</span><span class="delta df">≈ flat</span></div>
-      <div class="cmeta">Q4 PAT +134% YoY. EBITDA margin +370bps. FY27 EBITDA guidance 20.5%+. PL Capital TP ₹2,020. 37% below ATH ₹1,994.</div>
+      <div class="cname">Coforge <span class="cticker">COFORGE</span><span id="delta-COFORGE" class="delta df" style="display:none"></span><span class="delta df">â flat</span></div>
+      <div class="cmeta">Q4 PAT +134% YoY. EBITDA margin +370bps. FY27 EBITDA guidance 20.5%+. PL Capital TP â¹2,020. 37% below ATH â¹1,994.</div>
     </div>
     <span class="tag t-trade">Trade setup</span>
   </div>
@@ -849,11 +849,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="COFORGE-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-COFORGE">₹1,285</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,200–1,275</div><div class="ls">On weakness</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,600</div><div class="ls">+25%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹2,020</div><div class="ls">+57% PL TP</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,020</div><div class="ls">52W low</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-COFORGE">â¹1,285</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹1,200â1,275</div><div class="ls">On weakness</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹1,600</div><div class="ls">+25%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹2,020</div><div class="ls">+57% PL TP</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹1,020</div><div class="ls">52W low</div></div>
     </div>
   </div>
   <div class="tab-panel" id="COFORGE-chart">
@@ -862,21 +862,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="COFORGE-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Coforge is a mid-sized IT services company (like a smaller version of Infosys or TCS) that has quietly had an excellent year while the broader IT sector has been struggling. It recently acquired Encora, an AI and digital engineering firm, which nearly doubles its size and gives it strong capabilities in the US market. The stock is 37% below its peak — not because the business is bad, but because IT stocks across the board have been out of favour. If/when investor sentiment toward IT improves, Coforge should bounce sharply given its strong underlying results. Treat it as a small, recovery-focused position — not a core holding.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Coforge is a mid-sized IT services company (like a smaller version of Infosys or TCS) that has quietly had an excellent year while the broader IT sector has been struggling. It recently acquired Encora, an AI and digital engineering firm, which nearly doubles its size and gives it strong capabilities in the US market. The stock is 37% below its peak â not because the business is bad, but because IT stocks across the board have been out of favour. If/when investor sentiment toward IT improves, Coforge should bounce sharply given its strong underlying results. Treat it as a small, recovery-focused position â not a core holding.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Best individual IT story on NSE in a tough sector. Encora deal creates $2.5Bn AI-native platform. PL Capital TP ₹2,020 = +57% from here. Keep position small (3–5%) until sector turns.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Best individual IT story on NSE in a tough sector. Encora deal creates $2.5Bn AI-native platform. PL Capital TP â¹2,020 = +57% from here. Keep position small (3â5%) until sector turns.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Small position only · IT sector headwind persists</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 3â6 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Small position only Â· IT sector headwind persists</span></div>
 </div>
 
 <!-- ETERNAL -->
 <div class="card" id="c-ETERNAL">
   <div class="card-hd">
     <div>
-      <div class="cname">Eternal (Zomato) <span class="cticker">ETERNAL</span><span class="delta dd">▼ −5.0%</span></div>
-      <div class="cmeta">₹244 — near 52W support ₹212. 34% below ATH ₹368. Blinkit GOV accelerating. Quick commerce structural play.</div>
+      <div class="cname">Eternal (Zomato) <span class="cticker">ETERNAL</span><span id="delta-ETERNAL" class="delta df" style="display:none"></span><span class="delta dd">â¼ â5.0%</span></div>
+      <div class="cmeta">â¹244 â near 52W support â¹212. 34% below ATH â¹368. Blinkit GOV accelerating. Quick commerce structural play.</div>
     </div>
     <span class="tag t-trade">Trade setup</span>
   </div>
@@ -889,11 +889,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="ETERNAL-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ETERNAL">₹244</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹220–245</div><div class="ls">Near support</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹295</div><div class="ls">+21%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹345</div><div class="ls">+41%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹200</div><div class="ls">52W low</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ETERNAL">â¹244</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹220â245</div><div class="ls">Near support</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹295</div><div class="ls">+21%</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹345</div><div class="ls">+41%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹200</div><div class="ls">52W low</div></div>
     </div>
   </div>
   <div class="tab-panel" id="ETERNAL-chart">
@@ -902,26 +902,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="ETERNAL-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Eternal (formerly Zomato) is best known for food delivery, but the real story is Blinkit — its 10-minute grocery and essentials delivery service. Blinkit is growing at 80%+ annually and is close to becoming consistently profitable. The stock has fallen 34% from its peak, putting it near its lowest price in a year — which is why the risk/reward looks interesting now. The maximum downside is roughly ₹44 to the 52W low, while the upside to the previous high is over ₹100. That's an asymmetric bet on India's urban consumption and quick commerce trend.</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Eternal (formerly Zomato) is best known for food delivery, but the real story is Blinkit â its 10-minute grocery and essentials delivery service. Blinkit is growing at 80%+ annually and is close to becoming consistently profitable. The stock has fallen 34% from its peak, putting it near its lowest price in a year â which is why the risk/reward looks interesting now. The maximum downside is roughly â¹44 to the 52W low, while the upside to the previous high is over â¹100. That's an asymmetric bet on India's urban consumption and quick commerce trend.</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Near 52W support = asymmetric setup. ₹44 downside vs ₹100+ upside. Blinkit GOV acceleration is the key metric — not headline PE. 6–9 month trade, not a long-term hold.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Near 52W support = asymmetric setup. â¹44 downside vs â¹100+ upside. Blinkit GOV acceleration is the key metric â not headline PE. 6â9 month trade, not a long-term hold.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Near 52W support · Blinkit profitability = catalyst</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â9 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Near 52W support Â· Blinkit profitability = catalyst</span></div>
 </div>
 </div>
 
-<!-- ═══ GROWTH ═══ -->
+<!-- âââ GROWTH âââ -->
 <div class="sec sec-filter sec-filter-growth">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Growth / pre-profit — max 5% allocation ⭐⭐</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Growth / pre-profit â max 5% allocation â­â­</div>
 
 <!-- ATHER -->
 <div class="card" id="c-ATHER">
   <div class="card-hd">
     <div>
-      <div class="cname">Ather Energy <span class="cticker">ATHERENERG</span><span class="delta du">▲ +3.3%</span></div>
-      <div class="cmeta">₹940, near ATH ₹989. Revenue +66% FY26. First operating cash flow positive. Ola Electric collapsing = Ather gains. 18.6% market share.</div>
+      <div class="cname">Ather Energy <span class="cticker">ATHERENERG</span><span id="delta-ATHER" class="delta df" style="display:none"></span><span class="delta du">â² +3.3%</span></div>
+      <div class="cmeta">â¹940, near ATH â¹989. Revenue +66% FY26. First operating cash flow positive. Ola Electric collapsing = Ather gains. 18.6% market share.</div>
     </div>
     <span class="tag t-growth">Growth</span>
   </div>
@@ -934,11 +934,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="ATHER-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ATHER">₹940</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹850–920</div><div class="ls">On pullback</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,050</div><div class="ls">HSBC TP</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,200</div><div class="ls">+28%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹750</div><div class="ls">Below 50DMA</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ATHER">â¹940</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹850â920</div><div class="ls">On pullback</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹1,050</div><div class="ls">HSBC TP</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹1,200</div><div class="ls">+28%</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹750</div><div class="ls">Below 50DMA</div></div>
     </div>
   </div>
   <div class="tab-panel" id="ATHER-chart">
@@ -947,26 +947,26 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="ATHER-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Ather makes premium electric scooters (Rizta, 450X). Unlike most EV companies that just assemble parts, Ather designs everything in-house including the software — more like Tesla than a traditional scooter company. The business is still losing money, but the losses are shrinking fast. For the first time ever, it generated positive operating cash flow in FY26 — a major milestone. Meanwhile, Ola Electric (its main competitor) is in serious trouble with falling sales and customer complaints. Every scooter Ola loses is a potential Ather sale. India's EV policy will make electric-only scooters mandatory from FY29 — Ather is well-positioned for that shift. But because it's still loss-making, keep this to a small bet (5% of your portfolio).</div>
+        <div class="plain-eng-title">ð¡ In plain English</div>
+        <div class="plain-eng-text">Ather makes premium electric scooters (Rizta, 450X). Unlike most EV companies that just assemble parts, Ather designs everything in-house including the software â more like Tesla than a traditional scooter company. The business is still losing money, but the losses are shrinking fast. For the first time ever, it generated positive operating cash flow in FY26 â a major milestone. Meanwhile, Ola Electric (its main competitor) is in serious trouble with falling sales and customer complaints. Every scooter Ola loses is a potential Ather sale. India's EV policy will make electric-only scooters mandatory from FY29 â Ather is well-positioned for that shift. But because it's still loss-making, keep this to a small bet (5% of your portfolio).</div>
       </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Highest-quality pure EV 2W play in India. Operating cash flow positive FY26 = major milestone. Max 5% allocation. Key milestone to watch: 50,000 units/month consistently = EBITDA breakeven.</div>
+      <div class="analyst-note">ð <strong>Analyst note:</strong> Highest-quality pure EV 2W play in India. Operating cash flow positive FY26 = major milestone. Max 5% allocation. Key milestone to watch: 50,000 units/month consistently = EBITDA breakeven.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 12–18 months</span><span class="cf-rr">R/R 1:1.5</span><span class="cf-note">Max 5% · Milestone: 50k units/month = breakeven</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 12â18 months</span><span class="cf-rr">R/R 1:1.5</span><span class="cf-note">Max 5% Â· Milestone: 50k units/month = breakeven</span></div>
 </div>
 </div>
 
-<!-- ═══ CAUTION ═══ -->
+<!-- âââ CAUTION âââ -->
 <div class="sec sec-filter sec-filter-caution">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--red)"></span>Caution / downgraded — re-evaluate</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--red)"></span>Caution / downgraded â re-evaluate</div>
 
 <!-- KEC -->
 <div class="card hc-red" id="c-KEC">
   <div class="card-hd">
     <div>
-      <div class="cname">KEC International <span class="cticker">KEC</span><span class="delta dd">▼ −10% TODAY</span><span class="alert-p">⚠ Earnings call 10am</span></div>
-      <div class="cmeta">Q4 profit −28% YoY. NWC stuck at 137 days. FY26 full year was record. Conviction downgraded from ⭐⭐⭐ to ⭐⭐. Stop ₹490 now live.</div>
+      <div class="cname">KEC International <span class="cticker">KEC</span><span id="delta-KEC" class="delta df" style="display:none"></span><span class="delta dd">â¼ â10% TODAY</span><span class="alert-p">â  Earnings call 10am</span></div>
+      <div class="cmeta">Q4 profit â28% YoY. NWC stuck at 137 days. FY26 full year was record. Conviction downgraded from â­â­â­ to â­â­. Stop â¹490 now live.</div>
     </div>
     <span class="tag t-caution">Caution</span>
   </div>
@@ -979,11 +979,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="KEC-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-KEC">~₹530</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-KEC">~â¹530</div></div>
       <div class="lc"><div class="ll">Wait</div><div class="lv na">Hear 10am call</div><div class="ls">No entry now</div></div>
-      <div class="lc"><div class="ll">If call good</div><div class="lv t1">Buy ₹490–540</div><div class="ls">FY27 guidance key</div></div>
-      <div class="lc"><div class="ll">If call poor</div><div class="lv sl">Exit ₹490</div><div class="ls">Thesis broken</div></div>
-      <div class="lc"><div class="ll">Hard stop</div><div class="lv sl">₹490</div><div class="ls">52W low</div></div>
+      <div class="lc"><div class="ll">If call good</div><div class="lv t1">Buy â¹490â540</div><div class="ls">FY27 guidance key</div></div>
+      <div class="lc"><div class="ll">If call poor</div><div class="lv sl">Exit â¹490</div><div class="ls">Thesis broken</div></div>
+      <div class="lc"><div class="ll">Hard stop</div><div class="lv sl">â¹490</div><div class="ls">52W low</div></div>
     </div>
   </div>
   <div class="tab-panel" id="KEC-chart">
@@ -992,21 +992,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="KEC-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — what went wrong</div>
-        <div class="plain-eng-text">KEC builds power transmission towers and railway lines across India and internationally. The long-term story is still good — they just won record new orders. But the Q4 profit fell 28% because: (1) revenue from one segment (civil construction) dropped, and (2) customers owed them a lot of money that they expected to collect in Q4 but didn't. That unpaid money (called "working capital") staying stuck means KEC has to borrow more to fund its own operations, which is expensive. The market is selling because management had promised this would improve, and it didn't. The 10am earnings call today is critical — listen to hear if management has a credible plan to fix this.</div>
+        <div class="plain-eng-title">ð¡ In plain English â what went wrong</div>
+        <div class="plain-eng-text">KEC builds power transmission towers and railway lines across India and internationally. The long-term story is still good â they just won record new orders. But the Q4 profit fell 28% because: (1) revenue from one segment (civil construction) dropped, and (2) customers owed them a lot of money that they expected to collect in Q4 but didn't. That unpaid money (called "working capital") staying stuck means KEC has to borrow more to fund its own operations, which is expensive. The market is selling because management had promised this would improve, and it didn't. The 10am earnings call today is critical â listen to hear if management has a credible plan to fix this.</div>
       </div>
-      <div class="analyst-note note-red">🔴 <strong>Revised view:</strong> Downgraded from ⭐⭐⭐ to ⭐⭐. Business is not broken (record order intake is real) but margin miss + NWC stuck + revenue decline = management credibility dented. Stop ₹490 is now live. Three questions for the 10am call: (1) FY27 revenue + margin guidance, (2) NWC reduction timeline, (3) civil recovery plan. Answers determine whether to hold or exit.</div>
+      <div class="analyst-note note-red">ð´ <strong>Revised view:</strong> Downgraded from â­â­â­ to â­â­. Business is not broken (record order intake is real) but margin miss + NWC stuck + revenue decline = management credibility dented. Stop â¹490 is now live. Three questions for the 10am call: (1) FY27 revenue + margin guidance, (2) NWC reduction timeline, (3) civil recovery plan. Answers determine whether to hold or exit.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Decision today 10am</span><span class="cf-rr">Stop ₹490 live</span><span class="cf-note">Do not add before hearing the call</span></div>
+  <div class="card-ft"><span class="cf-hz">â± Decision today 10am</span><span class="cf-rr">Stop â¹490 live</span><span class="cf-note">Do not add before hearing the call</span></div>
 </div>
 
 <!-- LUPIN -->
 <div class="card" id="c-LUPIN">
   <div class="card-hd">
     <div>
-      <div class="cname">Lupin <span class="cticker">LUPIN</span><span class="delta dd">▼ −7.0%</span></div>
-      <div class="cmeta">⬇️ DOWNGRADED. Q4 PAT +89% YoY but market sold off on results. Avg analyst TP ₹2,435 = only 6.5% upside. Somerset FDA Form 483 new overhang.</div>
+      <div class="cname">Lupin <span class="cticker">LUPIN</span><span id="delta-LUPIN" class="delta df" style="display:none"></span><span class="delta dd">â¼ â7.0%</span></div>
+      <div class="cmeta">â¬ï¸ DOWNGRADED. Q4 PAT +89% YoY but market sold off on results. Avg analyst TP â¹2,435 = only 6.5% upside. Somerset FDA Form 483 new overhang.</div>
     </div>
     <span class="tag t-caution">Caution</span>
   </div>
@@ -1019,11 +1019,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="LUPIN-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-LUPIN">₹2,287</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹2,050–2,150</div><div class="ls">Only if oversold</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹2,450</div><div class="ls">Avg analyst TP</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹2,700</div><div class="ls">Bull case only</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹2,000</div><div class="ls">Round support</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-LUPIN">â¹2,287</div></div>
+      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">â¹2,050â2,150</div><div class="ls">Only if oversold</div></div>
+      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">â¹2,450</div><div class="ls">Avg analyst TP</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹2,700</div><div class="ls">Bull case only</div></div>
+      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">â¹2,000</div><div class="ls">Round support</div></div>
     </div>
   </div>
   <div class="tab-panel" id="LUPIN-chart">
@@ -1032,21 +1032,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="LUPIN-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — why downgraded</div>
-        <div class="plain-eng-text">Lupin is a good business — it makes generic medicines and its profits grew 89% last year. So why is it downgraded? Because the stock fell even on strong results. In investing, when good news doesn't push a stock higher, it's a warning sign that there are bigger sellers than buyers. Combined with a new FDA finding at one of its factories and limited upside to analyst price targets, the risk/reward is not attractive right now. We'd need to see the stock fall further (to ₹2,050–2,150) before it becomes compelling again.</div>
+        <div class="plain-eng-title">ð¡ In plain English â why downgraded</div>
+        <div class="plain-eng-text">Lupin is a good business â it makes generic medicines and its profits grew 89% last year. So why is it downgraded? Because the stock fell even on strong results. In investing, when good news doesn't push a stock higher, it's a warning sign that there are bigger sellers than buyers. Combined with a new FDA finding at one of its factories and limited upside to analyst price targets, the risk/reward is not attractive right now. We'd need to see the stock fall further (to â¹2,050â2,150) before it becomes compelling again.</div>
       </div>
-      <div class="analyst-note note-red">🔴 <strong>Downgrade note:</strong> Strong results + stock selling off = warning signal. Avg analyst TP ₹2,435 = only 6.5% upside from original 8 May price. Somerset FDA Form 483 is new overhang. Wait for ₹2,050–2,150 before reconsidering. Only re-upgrade when Somerset 483 is resolved.</div>
+      <div class="analyst-note note-red">ð´ <strong>Downgrade note:</strong> Strong results + stock selling off = warning signal. Avg analyst TP â¹2,435 = only 6.5% upside from original 8 May price. Somerset FDA Form 483 is new overhang. Wait for â¹2,050â2,150 before reconsidering. Only re-upgrade when Somerset 483 is resolved.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:1.2 — marginal</span><span class="cf-note">Wait for ₹2,050 · Somerset Form 483 watch</span></div>
+  <div class="card-ft"><span class="cf-hz">â± 6â9 months</span><span class="cf-rr">R/R 1:1.2 â marginal</span><span class="cf-note">Wait for â¹2,050 Â· Somerset Form 483 watch</span></div>
 </div>
 
 <!-- STL TECH -->
 <div class="card" id="c-STL">
   <div class="card-hd">
     <div>
-      <div class="cname">STL Tech (Sterlite) <span class="cticker">STLTECH</span><span class="delta df">= at ATH ₹376</span></div>
-      <div class="cmeta">PE 312x on 1.2% margins. AI fibre story is real. Price is not. Set alert ₹260–300. Do not buy at ATH.</div>
+      <div class="cname">STL Tech (Sterlite) <span class="cticker">STLTECH</span><span id="delta-STL" class="delta df" style="display:none"></span><span class="delta df">= at ATH â¹376</span></div>
+      <div class="cmeta">PE 312x on 1.2% margins. AI fibre story is real. Price is not. Set alert â¹260â300. Do not buy at ATH.</div>
     </div>
     <span class="tag t-watch">Watch only</span>
   </div>
@@ -1059,11 +1059,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   </div>
   <div class="tab-panel active" id="STL-levels">
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-STL">₹376 (ATH)</div></div>
-      <div class="lc"><div class="ll">Alert zone</div><div class="lv en">₹260–300</div><div class="ls">Set price alert</div></div>
-      <div class="lc"><div class="ll">Target then</div><div class="lv t1">₹420</div><div class="ls">+40% from entry</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹500</div><div class="ls">+67%</div></div>
-      <div class="lc"><div class="ll">Do not buy</div><div class="lv na">₹376</div><div class="ls">ATH = no entry</div></div>
+      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-STL">â¹376 (ATH)</div></div>
+      <div class="lc"><div class="ll">Alert zone</div><div class="lv en">â¹260â300</div><div class="ls">Set price alert</div></div>
+      <div class="lc"><div class="ll">Target then</div><div class="lv t1">â¹420</div><div class="ls">+40% from entry</div></div>
+      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">â¹500</div><div class="ls">+67%</div></div>
+      <div class="lc"><div class="ll">Do not buy</div><div class="lv na">â¹376</div><div class="ls">ATH = no entry</div></div>
     </div>
   </div>
   <div class="tab-panel" id="STL-chart">
@@ -1072,66 +1072,66 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
   <div class="tab-panel" id="STL-conviction">
     <div class="conv-panel">
       <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — why we're waiting</div>
-        <div class="plain-eng-text">STL makes optical fibre — the cables that carry internet data. As AI data centres get built across the world, they all need massive amounts of fibre. STL has genuinely benefited from this and the business is improving. But the stock has risen 481% in one year, and the company only keeps 1.2p of profit for every ₹1 of revenue. The stock is priced as if the company will be hugely profitable for years — but it's not yet. The rule here is simple: the story is right, the entry price is wrong. We wait for a 25–30% pullback to ₹260–300 before buying. If the stock keeps going up without us, that's fine — there will always be another opportunity.</div>
+        <div class="plain-eng-title">ð¡ In plain English â why we're waiting</div>
+        <div class="plain-eng-text">STL makes optical fibre â the cables that carry internet data. As AI data centres get built across the world, they all need massive amounts of fibre. STL has genuinely benefited from this and the business is improving. But the stock has risen 481% in one year, and the company only keeps 1.2p of profit for every â¹1 of revenue. The stock is priced as if the company will be hugely profitable for years â but it's not yet. The rule here is simple: the story is right, the entry price is wrong. We wait for a 25â30% pullback to â¹260â300 before buying. If the stock keeps going up without us, that's fine â there will always be another opportunity.</div>
       </div>
-      <div class="analyst-note note-warn">⚠️ <strong>Watch note:</strong> Set price alert at ₹260–300. At that level with same story intact = compelling entry with +40–67% upside. Never chase ATH when margins are 1.2%. Next earnings Jul 23.</div>
+      <div class="analyst-note note-warn">â ï¸ <strong>Watch note:</strong> Set price alert at â¹260â300. At that level with same story intact = compelling entry with +40â67% upside. Never chase ATH when margins are 1.2%. Next earnings Jul 23.</div>
     </div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Set alert · wait</span><span class="cf-rr">Not actionable today</span><span class="cf-note">Alert ₹260–300 · Next earnings Jul 23</span></div>
+  <div class="card-ft"><span class="cf-hz">â± Set alert Â· wait</span><span class="cf-rr">Not actionable today</span><span class="cf-note">Alert â¹260â300 Â· Next earnings Jul 23</span></div>
 </div>
 </div>
 
-<!-- ═══ WATCHLIST ═══ -->
+<!-- âââ WATCHLIST âââ -->
 <div class="sec sec-filter sec-filter-watchlist">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--purple)"></span>Watchlist — monitoring, not yet buying</div>
+<div class="sec-hd"><span class="sec-dot" style="background:var(--purple)"></span>Watchlist â monitoring, not yet buying</div>
 
 <div class="wl-card">
-  <div><div class="wl-name">Mazagon Dock Shipbuilders <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">MAZDOCK</span></div><div class="wl-meta">Navy submarines + destroyers · 100% order book from Navy · PE 27x · Excellent quality · Near 52W high</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹2,000–2,200</div><div class="wl-alert">Pullback from ATH ₹3,017 needed</div></div>
+  <div><div class="wl-name">Mazagon Dock Shipbuilders <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">MAZDOCK</span></div><div class="wl-meta">Navy submarines + destroyers Â· 100% order book from Navy Â· PE 27x Â· Excellent quality Â· Near 52W high</div></div>
+  <div class="wl-right"><div class="wl-trigger">Buy â¹2,000â2,200</div><div class="wl-alert">Pullback from ATH â¹3,017 needed</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Hitachi Energy India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">POWERINDIA</span></div><div class="wl-meta">HVDC grid tech · Profit +90% YoY · PE 178x too expensive now · Earnings 27 May</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹28,000–30,000</div><div class="wl-alert">−15% from ATH needed · Earnings 27 May catalyst</div></div>
+  <div><div class="wl-name">Hitachi Energy India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">POWERINDIA</span></div><div class="wl-meta">HVDC grid tech Â· Profit +90% YoY Â· PE 178x too expensive now Â· Earnings 27 May</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹28,000â30,000</div><div class="wl-alert">â15% from ATH needed Â· Earnings 27 May catalyst</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">ABB India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">ABB</span></div><div class="wl-meta">Power + industrial automation · ROE 27% · PE 75x · GVT&D peer · Same theme, also expensive</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹5,800–6,200</div><div class="wl-alert">CMP ~₹7,400 · Wait for 20% correction</div></div>
+  <div><div class="wl-name">ABB India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">ABB</span></div><div class="wl-meta">Power + industrial automation Â· ROE 27% Â· PE 75x Â· GVT&D peer Â· Same theme, also expensive</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹5,800â6,200</div><div class="wl-alert">CMP ~â¹7,400 Â· Wait for 20% correction</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Torrent Pharmaceuticals <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TORNTPHARM</span></div><div class="wl-meta">Quality domestic pharma compounder · ROE 28% · Outperformed sector +29% YoY · Near fair value</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹3,000–3,200</div><div class="wl-alert">CMP ~₹3,400 · Small margin over entry</div></div>
+  <div><div class="wl-name">Torrent Pharmaceuticals <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TORNTPHARM</span></div><div class="wl-meta">Quality domestic pharma compounder Â· ROE 28% Â· Outperformed sector +29% YoY Â· Near fair value</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹3,000â3,200</div><div class="wl-alert">CMP ~â¹3,400 Â· Small margin over entry</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Dixon Technologies <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">DIXON</span></div><div class="wl-meta">India's electronics manufacturer · Apple + Samsung PLI · Revenue +60% YoY · PE 120x = wait for correction</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹13,000–14,000</div><div class="wl-alert">CMP ~₹17,000 · Need 20% pullback</div></div>
+  <div><div class="wl-name">Dixon Technologies <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">DIXON</span></div><div class="wl-meta">India's electronics manufacturer Â· Apple + Samsung PLI Â· Revenue +60% YoY Â· PE 120x = wait for correction</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹13,000â14,000</div><div class="wl-alert">CMP ~â¹17,000 Â· Need 20% pullback</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Tata Elxsi <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TATAELXSI</span></div><div class="wl-meta">Engineering R&D · Automotive + media tech · Deep pullback from ₹9,000 ATH · Quality compounder in distress</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹5,000–5,500</div><div class="wl-alert">CMP ~₹5,800 · Watch for base formation</div></div>
+  <div><div class="wl-name">Tata Elxsi <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TATAELXSI</span></div><div class="wl-meta">Engineering R&D Â· Automotive + media tech Â· Deep pullback from â¹9,000 ATH Â· Quality compounder in distress</div></div>
+  <div class="wl-right"><div class="wl-trigger">Buy â¹5,000â5,500</div><div class="wl-alert">CMP ~â¹5,800 Â· Watch for base formation</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Kaynes Technology <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">KAYNES</span></div><div class="wl-meta">Electronic systems manufacturing · Defence + aerospace + automotive · ESDM play · High quality, expensive</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹4,500–5,000</div><div class="wl-alert">PE 120x currently · Wait for sector correction</div></div>
+  <div><div class="wl-name">Kaynes Technology <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">KAYNES</span></div><div class="wl-meta">Electronic systems manufacturing Â· Defence + aerospace + automotive Â· ESDM play Â· High quality, expensive</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹4,500â5,000</div><div class="wl-alert">PE 120x currently Â· Wait for sector correction</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">IRFC <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">IRFC</span></div><div class="wl-meta">Railway financing arm · PE 14x · Dividend yield 1.8% · Cheap, boring, and approaching entry zone</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹150–165</div><div class="wl-alert">CMP ~₹175 · Near entry</div></div>
+  <div><div class="wl-name">IRFC <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">IRFC</span></div><div class="wl-meta">Railway financing arm Â· PE 14x Â· Dividend yield 1.8% Â· Cheap, boring, and approaching entry zone</div></div>
+  <div class="wl-right"><div class="wl-trigger">Buy â¹150â165</div><div class="wl-alert">CMP ~â¹175 Â· Near entry</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Granules India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">GRANULES</span></div><div class="wl-meta">API + finished dose pharma · PE 20x · Near 52W low · Deep value · USFDA approvals building</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹475–520</div><div class="wl-alert">Near 52W low · Watch for reversal signal</div></div>
+  <div><div class="wl-name">Granules India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">GRANULES</span></div><div class="wl-meta">API + finished dose pharma Â· PE 20x Â· Near 52W low Â· Deep value Â· USFDA approvals building</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹475â520</div><div class="wl-alert">Near 52W low Â· Watch for reversal signal</div></div>
 </div>
 <div class="wl-card">
-  <div><div class="wl-name">Paytm (One97 Comms) <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">PAYTM</span></div><div class="wl-meta">Fintech recovery · Post-RBI ban stabilising · Revenue recovering · Speculative — small bet only</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹750–850</div><div class="wl-alert">CMP ~₹900 · High risk · Wait for base</div></div>
+  <div><div class="wl-name">Paytm (One97 Comms) <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">PAYTM</span></div><div class="wl-meta">Fintech recovery Â· Post-RBI ban stabilising Â· Revenue recovering Â· Speculative â small bet only</div></div>
+  <div class="wl-right"><div class="wl-trigger">Watch â¹750â850</div><div class="wl-alert">CMP ~â¹900 Â· High risk Â· Wait for base</div></div>
 </div>
 </div>
 
 <!-- DISCLAIMER -->
 <div class="disc">
-  INDIA EQUITY MASTERLIST v3 · Prices via TradingView (live on page open) · Analysis updated 20 May 2026<br>
-  Conviction scores and entry/exit levels are qualitative analyst estimates — not guaranteed returns or financial advice.<br>
+  INDIA EQUITY MASTERLIST v3 Â· Prices via TradingView (live on page open) Â· Analysis updated 20 May 2026<br>
+  Conviction scores and entry/exit levels are qualitative analyst estimates â not guaranteed returns or financial advice.<br>
   Stop losses assume EOD closing prices, not intraday wicks. Past performance does not guarantee future results.<br>
   This document is for informational purposes only. Consult a SEBI-registered investment advisor before investing.<br><br>
   HOW TO UPDATE: Share this file with Claude weekly and say "update the masterlist". Prices auto-update via TradingView every time you open the file.
@@ -1140,7 +1140,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 </div><!-- end .page -->
 
 <script>
-// ─── TAB SWITCHING ───
+// âââ TAB SWITCHING âââ
 function switchTab(btn, id, panel) {
   const card = document.getElementById('c-' + id);
   card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1149,40 +1149,44 @@ function switchTab(btn, id, panel) {
   document.getElementById(id + '-' + panel).classList.add('active');
 }
 
-// ─── SECTION FILTER ───
+// âââ SECTION FILTER âââ
 function filterSection(section, btn) {
   document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('page').className = 'page showing-' + section;
 }
 
-// ─── LIVE PRICES via Yahoo Finance (unofficial, free, no API key) ───
+// âââ LIVE PRICES via Yahoo Finance (unofficial, free, no API key) âââ
 const stocks = [
-  { id:'HAL',       sym:'HAL.NS' },
-  { id:'BSE',       sym:'BSE.NS' },
-  { id:'BEL',       sym:'BEL.NS' },
-  { id:'NATCO',     sym:'NATCOPHARM.NS' },
-  { id:'AJANTA',    sym:'AJANTPHARM.NS' },
-  { id:'SOLAR',     sym:'SOLARINDS.NS' },
-  { id:'POWERGRID', sym:'POWERGRID.NS' },
-  { id:'TITAN',     sym:'TITAN.NS' },
-  { id:'AURO',      sym:'AUROPHARMA.NS' },
-  { id:'CDSL',      sym:'CDSL.NS' },
-  { id:'GVTD',      sym:'GVT%26D.NS' },
-  { id:'COFORGE',   sym:'COFORGE.NS' },
-  { id:'ETERNAL',   sym:'ETERNAL.NS' },
-  { id:'ATHER',     sym:'ATHERENERG.NS' },
-  { id:'KEC',       sym:'KEC.NS' },
-  { id:'LUPIN',     sym:'LUPIN.NS' },
-  { id:'STL',       sym:'STLTECH.NS' },
+  { id:'HAL', sym:'HAL.NS', ref:4700 },
+  { id:'BSE', sym:'BSE.NS', ref:3600 },
+  { id:'BEL', sym:'BEL.NS', ref:431 },
+  { id:'NATCO', sym:'NATCOPHARM.NS', ref:1193 },
+  { id:'AJANTA', sym:'AJANTPHARM.NS', ref:2910 },
+  { id:'SOLAR', sym:'SOLARINDS.NS', ref:15439 },
+  { id:'POWERGRID', sym:'POWERGRID.NS', ref:320 },
+  { id:'TITAN', sym:'TITAN.NS', ref:4307 },
+  { id:'AURO', sym:'AUROPHARMA.NS', ref:1385 },
+  { id:'CDSL', sym:'CDSL.NS', ref:1255 },
+  { id:'GVTD', sym:'GVT%26D.NS', ref:4531 },
+  { id:'COFORGE', sym:'COFORGE.NS', ref:1285 },
+  { id:'ETERNAL', sym:'ETERNAL.NS', ref:257 },
+  { id:'ATHER', sym:'ATHERENERG.NS', ref:910 },
+  { id:'KEC', sym:'KEC.NS', ref:602 },
+  { id:'LUPIN', sym:'LUPIN.NS', ref:2460 },
+  { id:'STL', sym:'STLTECH.NS', ref:376 },
 ];
 
 async function fetchPrice(stock) {
   try {
-    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${stock.sym}?interval=1d&range=1d&corsDomain=finance.yahoo.com`;
-    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    const yUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${stock.sym}?interval=1d&range=5d`;
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent(yUrl)}`;
+    const res = await fetch(url);
+    const wrapper = await res.json();
+    if (!wrapper.contents) throw new Error('no content');
+    const parsed = JSON.parse(wrapper.contents);
+    const data = { chart: parsed.chart };
     if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
     const meta = data.chart.result[0].meta;
     const price = meta.regularMarketPrice;
     const prev  = meta.chartPreviousClose || meta.previousClose;
@@ -1198,14 +1202,14 @@ async function fetchPrice(stock) {
 
     const sign = chg >= 0 ? '+' : '';
     const cls  = chg >= 0 ? 'chg-up' : 'chg-dn';
-    const priceStr = '₹' + price.toLocaleString('en-IN', {maximumFractionDigits:2});
+    const priceStr = 'â¹' + price.toLocaleString('en-IN', {maximumFractionDigits:2});
 
-    if (priceEl) priceEl.innerHTML = `${priceStr} <span class="live-chg ${cls}">${sign}${pct.toFixed(2)}% (${sign}₹${Math.abs(chg).toFixed(1)})</span>`;
+    if (priceEl) priceEl.innerHTML = `${priceStr} <span class="live-chg ${cls}">${sign}${pct.toFixed(2)}% (${sign}â¹${Math.abs(chg).toFixed(1)})</span>`;
     if (dateEl)  dateEl.textContent  = 'as of ' + dateStr + ' IST';
     if (lvlEl)   lvlEl.textContent   = priceStr;
   } catch(e) {
     const el = document.getElementById('price-' + stock.id);
-    if (el) el.innerHTML = '<span style="color:var(--text3);font-size:11px">Price unavailable — check TradingView chart</span>';
+    if (el) el.innerHTML = '<span style="color:var(--text3);font-size:11px">Price unavailable â check TradingView chart</span>';
   }
 }
 
@@ -1218,7 +1222,7 @@ setInterval(() => stocks.forEach((s, i) => setTimeout(() => fetchPrice(s), i * 3
 // Update timestamp
 const now = new Date();
 document.getElementById('last-updated').textContent =
-  'Updated: 20 May 2026 · Refreshed: ' +
+  'Updated: 20 May 2026 Â· Refreshed: ' +
   now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
 </script>
 
