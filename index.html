@@ -3,1245 +3,777 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>India Equity Masterlist v3</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>India Equity Dashboard</title>
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg:      #F7F8FA;
-  --bg2:     #FFFFFF;
-  --bg3:     #F0F2F5;
-  --bg4:     #E8EBF0;
-  --border:  #E2E5EC;
-  --border2: #C8CDD8;
-  --text:    #111827;
-  --text2:   #4B5563;
-  --text3:   #9CA3AF;
-  --green:   #059669; --green-dim:#ECFDF5; --green-b:#A7F3D0;
-  --red:     #DC2626; --red-dim:#FEF2F2;   --red-b:#FECACA;
-  --amber:   #D97706; --amber-dim:#FFFBEB; --amber-b:#FDE68A;
-  --blue:    #2563EB; --blue-dim:#EFF6FF;  --blue-b:#BFDBFE;
-  --purple:  #7C3AED; --purple-dim:#F5F3FF;--purple-b:#DDD6FE;
-  --teal:    #0D9488; --teal-dim:#F0FDFA;  --teal-b:#99F6E4;
-  --mono: 'IBM Plex Mono', monospace;
-  --sans: 'Inter', sans-serif;
-  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
-  --shadow2: 0 4px 12px rgba(0,0,0,.10);
+  --orange: #E85D24;
+  --bg-page: #F0EDE8;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F4F0;
+  --bg-tertiary: #EEECE8;
+  --bg-success: #EAF3DE;
+  --bg-warning: #FAEEDA;
+  --bg-danger: #FCEBEB;
+  --bg-info: #E6F1FB;
+  --text-primary: #1A1A18;
+  --text-secondary: #5F5E5A;
+  --text-tertiary: #888780;
+  --text-success: #3B6D11;
+  --text-warning: #854F0B;
+  --text-danger: #A32D2D;
+  --text-info: #185FA5;
+  --border-default: #E0DED8;
+  --border-soft: rgba(26,26,24,0.13);
+  --border-mid: rgba(26,26,24,0.28);
+  --border-success: #C0DD97;
+  --border-warning: #FAC775;
+  --border-danger: #F7C1C1;
+  --border-info: #B5D4F4;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px;line-height:1.5;min-height:100vh}
-.page{max-width:1100px;margin:0 auto;padding:2rem 1.25rem 6rem}
-
-/* HEADER */
-.hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;margin:-2rem -1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;box-shadow:var(--shadow)}
-.title{font-size:20px;font-weight:700;letter-spacing:-.4px;color:var(--text)}
-.title em{color:var(--green);font-style:normal}
-.hdr-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.updated{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);padding:4px 10px;border-radius:20px;border:1px solid var(--border)}
-.live-badge{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--green);background:var(--green-dim);border:1px solid var(--green-b);padding:4px 10px;border-radius:20px}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.sub-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:8px}
-.sub{font-size:13px;color:var(--text2)}
-
-/* SUMMARY STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
-.stat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:4px}
-.stat-val{font-size:22px;font-weight:700;font-family:var(--mono);color:var(--text);line-height:1}
-.stat-sub{font-size:11px;color:var(--text2);margin-top:3px}
-.sv-green{color:var(--green)}.sv-amber{color:var(--amber)}.sv-red{color:var(--red)}.sv-blue{color:var(--blue)}
-
-/* NAV */
-.nav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.25rem;background:var(--bg2);padding:6px;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.nav-pill{font-size:11px;font-weight:500;padding:5px 11px;border-radius:7px;border:none;background:transparent;color:var(--text2);cursor:pointer;transition:all .12s;user-select:none;white-space:nowrap}
-.nav-pill:hover{background:var(--bg3);color:var(--text)}
-.nav-pill.active{background:var(--green);color:#fff;font-weight:600}
-
-/* LEGEND */
-.legend{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.25rem}
-.tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid;letter-spacing:.03em}
-.t-hold   {background:var(--teal-dim);  color:var(--teal);  border-color:var(--teal-b)}
-.t-both   {background:var(--purple-dim);color:var(--purple);border-color:var(--purple-b)}
-.t-fund   {background:var(--blue-dim);  color:var(--blue);  border-color:var(--blue-b)}
-.t-tech   {background:var(--green-dim); color:var(--green); border-color:var(--green-b)}
-.t-growth {background:var(--teal-dim);  color:var(--teal);  border-color:var(--teal-b)}
-.t-trade  {background:var(--amber-dim); color:var(--amber); border-color:var(--amber-b)}
-.t-watch  {background:var(--bg3);color:var(--text2);border-color:var(--border2)}
-.t-caution{background:var(--red-dim);   color:var(--red);   border-color:var(--red-b)}
-
-/* SECTION */
-.sec{margin-bottom:2rem}
-.sec-hd{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:10px}
-.sec-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-
-/* CARD */
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;transition:box-shadow .15s, border-color .15s;box-shadow:var(--shadow)}
-.card:hover{box-shadow:var(--shadow2);border-color:var(--border2)}
-.card.hc{border-left:3px solid var(--green)}
-.card.hc-amber{border-left:3px solid var(--amber)}
-.card.hc-red{border-left:3px solid var(--red)}
-
-/* card header */
-.card-hd{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;padding:13px 16px 0}
-.cname{font-size:14px;font-weight:700;color:var(--text);line-height:1.3}
-.cticker{font-family:var(--mono);font-size:11px;color:var(--text3);margin-left:5px;font-weight:400}
-.cmeta{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.5}
-
-/* price row */
-.price-row{display:flex;align-items:center;gap:8px;padding:6px 16px 0;flex-wrap:wrap}
-.live-price{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text)}
-.live-chg{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 7px;border-radius:5px}
-.chg-up{background:var(--green-dim);color:var(--green)}
-.chg-dn{background:var(--red-dim);color:var(--red)}
-.price-date{font-size:10px;color:var(--text3);font-family:var(--mono)}
-.price-loading{font-size:11px;color:var(--text3);font-style:italic}
-
-/* delta badges */
-.delta{display:inline-flex;align-items:center;font-size:10px;font-weight:600;font-family:var(--mono);padding:1px 6px;border-radius:4px;margin-left:5px}
-.du{background:var(--green-dim);color:var(--green)}
-.dd{background:var(--red-dim);color:var(--red)}
-.df{background:var(--bg3);color:var(--text2)}
-.alert-p{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b);margin-left:5px}
-
-/* pips */
-.pips{display:flex;align-items:center;gap:3px;padding:7px 16px 0}
-.pip-lbl{font-size:9px;color:var(--text3);font-family:var(--mono);letter-spacing:.06em;margin-right:4px;flex-shrink:0;font-weight:600}
-.pip{height:4px;flex:1;border-radius:2px;background:var(--bg3)}
-.p5{background:var(--green)}.p4{background:#16A34A}.p3{background:var(--amber)}.p2{background:var(--blue)}.p1{background:var(--text3)}
-
-/* TABS */
-.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-top:10px;padding:0 12px;background:var(--bg3)}
-.tab-btn{font-size:11px;font-weight:500;padding:7px 13px;color:var(--text2);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .12s;white-space:nowrap}
-.tab-btn:hover{color:var(--text)}
-.tab-btn.active{color:var(--green);border-bottom-color:var(--green);font-weight:600;background:var(--bg2)}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-
-/* LEVELS */
-.levels{display:grid;grid-template-columns:repeat(5,1fr);background:var(--bg2)}
-.lc{padding:10px 14px 11px;border-right:1px solid var(--border)}
-.lc:last-child{border-right:none}
-.ll{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;font-weight:600}
-.lv{font-family:var(--mono);font-size:13px;font-weight:600}
-.cmp{color:var(--text2)}.en{color:var(--blue)}.t1{color:var(--green)}.t2{color:var(--teal)}.sl{color:var(--red)}.na{color:var(--text3)}
-.ls{font-size:10px;color:var(--text3);margin-top:2px}
-
-/* LIVE CHART PANEL */
-.live-panel{padding:12px 14px 14px;background:var(--bg2)}
-.tv-wrap{border-radius:8px;overflow:hidden;border:1px solid var(--border);height:400px}
-
-/* CONVICTION PANEL */
-.conv-panel{padding:14px 16px 16px;background:var(--bg2)}
-
-/* plain english box */
-.plain-eng{background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border:1px solid var(--blue-b);border-radius:8px;padding:12px 14px;margin-bottom:14px}
-.plain-eng-title{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;display:flex;align-items:center;gap:5px}
-.plain-eng-text{font-size:12px;color:#1E3A5F;line-height:1.6}
-
-.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.conv-box{background:var(--bg3);border-radius:8px;padding:11px 13px;border:1px solid var(--border)}
-.conv-box-title{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.bull-t{color:var(--green)}.bear-t{color:var(--red)}.cat-t{color:var(--amber)}.gate-t{color:var(--blue)}
-
-.gate-row{display:flex;align-items:flex-start;gap:7px;padding:5px 0;border-bottom:1px solid var(--border)}
-.gate-row:last-child{border-bottom:none}
-.gate-icon{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;margin-top:1px}
-.gi-pass{background:var(--green-dim);color:var(--green);border:1px solid var(--green-b)}
-.gi-fail{background:var(--red-dim);color:var(--red);border:1px solid var(--red-b)}
-.gi-warn{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-b)}
-.gate-text{font-size:11px;color:var(--text);line-height:1.4;flex:1}
-.gate-sub{font-size:10px;color:var(--text2);font-style:italic;margin-top:1px}
-
-.signal-row{display:flex;align-items:flex-start;gap:7px;padding:4px 0;border-bottom:1px solid var(--border)}
-.signal-row:last-child{border-bottom:none}
-.sig-pts{font-family:var(--mono);font-size:10px;font-weight:700;margin-left:auto;padding-left:8px;flex-shrink:0}
-.pts-pass{color:var(--green)}.pts-fail{color:var(--text3)}.pts-bonus{color:var(--amber)}
-
-.bull-list,.bear-list{padding-left:14px}
-.bull-list li,.bear-list li{font-size:11px;color:var(--text2);margin-bottom:5px;padding-left:2px;line-height:1.5}
-.bull-list li::marker{color:var(--green)}.bear-list li::marker{color:var(--red)}
-
-.analyst-note{background:var(--bg3);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:10px}
-.note-warn{border-left-color:var(--amber);background:var(--amber-dim)}
-.note-red{border-left-color:var(--red);background:var(--red-dim)}
-
-/* card footer */
-.card-ft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;padding:6px 14px 8px;border-top:1px solid var(--border);background:var(--bg3)}
-.cf-hz{font-size:11px;color:var(--text2);font-weight:500}
-.cf-rr{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--text)}
-.cf-note{font-size:10px;color:var(--text3);font-style:italic;text-align:right;max-width:380px}
-
-/* WATCHLIST */
-.wl-card{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:6px;transition:all .15s;box-shadow:var(--shadow)}
-.wl-card:hover{box-shadow:var(--shadow2);border-color:var(--border2)}
-.wl-name{font-size:13px;font-weight:600;color:var(--text)}
-.wl-meta{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.5}
-.wl-right{text-align:right}
-.wl-trigger{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amber)}
-.wl-alert{font-size:10px;color:var(--text3);margin-top:2px}
-
-/* DISC */
-.disc{margin-top:2rem;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;font-size:10px;color:var(--text3);line-height:1.7;font-family:var(--mono);box-shadow:var(--shadow)}
-
-/* section filters */
-.sec-filter{display:none}
-.page.showing-all .sec-filter{display:block}
-.page.showing-holds .sec-filter-holds{display:block}
-.page.showing-hc .sec-filter-hc{display:block}
-.page.showing-high .sec-filter-high{display:block}
-.page.showing-special .sec-filter-special{display:block}
-.page.showing-trades .sec-filter-trades{display:block}
-.page.showing-growth .sec-filter-growth{display:block}
-.page.showing-caution .sec-filter-caution{display:block}
-.page.showing-watchlist .sec-filter-watchlist{display:block}
-
-@media(max-width:700px){
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  .levels{grid-template-columns:repeat(3,1fr)}
-  .lc:nth-child(4),.lc:nth-child(5){border-top:1px solid var(--border)}
-  .conv-grid{grid-template-columns:1fr}
-  .live-panel .tv-wrap{height:300px}
+body { font-family: var(--font-sans); background: var(--bg-page); color: var(--text-primary); font-size: 14px; line-height: 1.5; min-height: 100vh; }
+.app { max-width: 900px; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; }
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 8px; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.flame { width: 34px; height: 34px; background: var(--orange); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.flame svg { width: 18px; height: 18px; }
+.logo-text { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+.logo-sub { font-size: 10px; color: var(--text-tertiary); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 1px; }
+.header-meta { font-size: 11px; color: var(--text-tertiary); text-align: right; }
+.header-meta strong { color: var(--text-secondary); }
+.summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+.stat { background: var(--bg-primary); border-radius: var(--radius-lg); padding: 12px 14px; border: 1px solid var(--border-default); }
+.stat-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 5px; font-weight: 500; }
+.stat-val { font-size: 20px; font-weight: 600; font-family: var(--font-mono); line-height: 1; }
+.stat-val.success { color: var(--text-success); }
+.stat-sub { font-size: 11px; color: var(--text-secondary); margin-top: 3px; }
+.tab-bar { display: flex; gap: 2px; background: var(--bg-primary); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 3px; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.tab { flex: 1; min-width: 70px; padding: 8px 5px; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; cursor: pointer; font-size: 11.5px; font-weight: 500; color: var(--text-secondary); transition: background .15s; white-space: nowrap; }
+.tab:hover { background: var(--bg-secondary); }
+.tab.active { background: var(--bg-secondary); border-color: var(--border-mid); color: var(--text-primary); font-weight: 600; }
+.tab-def { font-size: 12px; color: var(--text-tertiary); margin-bottom: 1rem; padding: 8px 12px; background: var(--bg-secondary); border-radius: var(--radius-md); border-left: 3px solid var(--orange); }
+.filter-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+.ft-btn { padding: 5px 14px; border: 1px solid var(--border-default); border-radius: 20px; background: var(--bg-primary); cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+.ft-btn.active { background: var(--bg-warning); border-color: var(--border-warning); color: var(--text-warning); }
+.filter-note { font-size: 11px; color: var(--text-tertiary); }
+.section-hdr { font-size: 11px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 0 8px; margin-top: 4px; border-bottom: 1px solid var(--border-default); margin-bottom: 10px; }
+.card { background: var(--bg-primary); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 10px; }
+.card:hover { border-color: var(--border-mid); box-shadow: 0 1px 6px rgba(0,0,0,.07); }
+.card.archived { opacity: .75; }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.card-left { flex: 1; min-width: 0; }
+.card-right { flex-shrink: 0; text-align: right; }
+.name-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 2px; }
+.ticker { font-size: 15px; font-weight: 700; }
+.fullname { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+.ft-badge { font-size: 9px; font-weight: 700; background: var(--bg-warning); color: var(--text-warning); border: 1px solid var(--border-warning); border-radius: 4px; padding: 1px 5px; }
+.caution-badge { font-size: 9px; font-weight: 600; background: var(--bg-danger); color: var(--text-danger); border: 1px solid var(--border-danger); border-radius: 4px; padding: 1px 5px; }
+.spec-badge { font-size: 9px; font-weight: 700; background: var(--bg-danger); color: var(--text-danger); border: 1px solid var(--border-danger); border-radius: 4px; padding: 1px 5px; }
+.meta-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+.pill.sector { background: var(--bg-info); color: var(--text-info); }
+.pill.cap,.pill.timeline,.pill.date { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-default); }
+.pill.date { color: var(--text-tertiary); }
+.price { font-size: 17px; font-weight: 600; font-family: var(--font-mono); margin-bottom: 4px; }
+.cv-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; display: inline-block; }
+.cv-highest { background: var(--bg-success); color: var(--text-success); border: 1px solid var(--border-success); }
+.cv-medium { background: var(--bg-warning); color: var(--text-warning); border: 1px solid var(--border-warning); }
+.divider { height: 1px; background: var(--border-default); margin: 10px 0; }
+.levels { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 8px; }
+.lvl-box { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 8px 10px; border: 1px solid var(--border-default); }
+.lvl-val { font-size: 13px; font-weight: 600; font-family: var(--font-mono); }
+.lvl-val.entry { color: var(--text-info); }
+.lvl-val.target { color: var(--text-success); }
+.lvl-val.stop { color: var(--text-danger); }
+.lvl-label { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+.pct { font-size: 10px; opacity: .75; }
+.rr-line { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; font-family: var(--font-mono); }
+.thesis { font-size: 12px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 8px; }
+.caution-note { font-size: 11px; background: var(--bg-danger); border: 1px solid var(--border-danger); color: var(--text-danger); border-radius: var(--radius-md); padding: 7px 10px; margin-bottom: 8px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+.rec-date { font-size: 10px; color: var(--text-tertiary); }
+.det-btn { font-size: 11px; color: var(--text-info); background: none; border: none; cursor: pointer; padding: 2px 0; font-weight: 500; }
+.det-btn:hover { text-decoration: underline; }
+.tech-detail { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-default); }
+.ind-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.ind-table td { padding: 4px 8px; border-bottom: 1px solid var(--border-soft); color: var(--text-secondary); }
+.ind-table td:first-child { color: var(--text-tertiary); font-weight: 500; width: 32%; }
+.ind-table td:last-child { color: var(--text-info); }
+.archive-reason { font-size: 12px; border-radius: var(--radius-md); padding: 8px 12px; margin-top: 8px; }
+.ar-success { background: var(--bg-success); color: var(--text-success); border: 1px solid var(--border-success); }
+.event-box { background: var(--bg-info); border: 1px solid var(--border-info); border-radius: var(--radius-md); padding: 10px 12px; margin-bottom: 8px; font-size: 12px; }
+.event-label { font-size: 10px; font-weight: 700; color: var(--text-info); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+.cscard { background: var(--bg-primary); border: 1px solid var(--border-danger); border-radius: var(--radius-lg); padding: 12px 14px; margin-bottom: 8px; border-left: 4px solid var(--text-danger); }
+.cs-ticker { font-size: 14px; font-weight: 700; }
+.cs-name { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+.cs-type { font-size: 11px; font-weight: 700; color: var(--text-danger); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+.cs-reason { font-size: 12px; color: var(--text-secondary); }
+.cs-since { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
+.wl-card { background: var(--bg-primary); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 10px; }
+.wl-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.wl-left { flex: 1; }
+.wl-right { flex-shrink: 0; text-align: right; }
+.wl-entry-label { font-size: 10px; color: var(--text-tertiary); }
+.wl-entry-price { font-size: 13px; font-weight: 600; font-family: var(--font-mono); color: var(--text-info); }
+.wl-waiting { font-size: 12px; color: var(--text-secondary); background: var(--bg-secondary); border-radius: var(--radius-md); padding: 8px 10px; margin-bottom: 6px; line-height: 1.55; }
+.wl-rr { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 3px; }
+.wl-review { font-size: 10px; color: var(--text-tertiary); }
+.cl-entry { background: var(--bg-primary); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 10px; }
+.cl-date { font-size: 13px; font-weight: 700; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border-default); }
+.cl-section { margin-bottom: 8px; }
+.cl-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+.cl-label.new { color: var(--text-info); }
+.cl-label.caution { color: var(--text-warning); }
+.cl-label.archived { color: var(--text-danger); }
+.cl-label.watchlist { color: var(--text-tertiary); }
+.cl-label.sector { color: var(--text-secondary); }
+.cl-item { font-size: 12px; color: var(--text-secondary); padding: 3px 0 3px 10px; border-left: 2px solid var(--border-default); margin-bottom: 3px; line-height: 1.5; }
+.disclaimer { font-size: 10px; color: var(--text-tertiary); text-align: center; margin-top: 2rem; padding: 10px; border-top: 1px solid var(--border-default); line-height: 1.6; }
+@media (max-width: 600px) {
+  .summary { grid-template-columns: repeat(2,1fr); }
+  .levels { grid-template-columns: repeat(2,1fr); }
+  .tab { font-size: 10px; padding: 6px 3px; min-width: 55px; }
 }
 </style>
 </head>
 <body>
-<div class="page showing-all" id="page">
+<div class="app">
 
-<!-- HEADER -->
-<div class="hdr">
-  <div>
-    <div class="title">India Equity Masterlist <em>v3</em></div>
-    <div style="font-size:12px;color:var(--text2);margin-top:2px">28 stocks · Defence · Pharma · Power · Fintech · Consumption</div>
-  </div>
-  <div class="hdr-right">
-    <div class="live-badge"><span class="live-dot"></span>Prices Live</div>
-    <div class="updated" id="last-updated">Updated: 20 May 2026</div>
-  </div>
-</div>
-
-<!-- SUMMARY STATS -->
-<div class="stats-row">
-  <div class="stat-card">
-    <div class="stat-label">Total Stocks</div>
-    <div class="stat-val">28</div>
-    <div class="stat-sub">Active + Watchlist</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-label">Highest Conviction</div>
-    <div class="stat-val sv-green">6</div>
-    <div class="stat-sub">⭐⭐⭐⭐⭐ names</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-label">Results This Week</div>
-    <div class="stat-val sv-amber">4</div>
-    <div class="stat-sub">BEL · GVT&D · KEC · Solar</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-label">On Watchlist</div>
-    <div class="stat-val sv-blue">10</div>
-    <div class="stat-sub">Waiting for entry</div>
-  </div>
-</div>
-
-<!-- NAV -->
-<div class="nav">
-  <button class="nav-pill active" onclick="filterSection('all',this)">All</button>
-  <button class="nav-pill" onclick="filterSection('holds',this)">📌 Existing Holds</button>
-  <button class="nav-pill" onclick="filterSection('hc',this)">⭐⭐⭐⭐⭐ Highest</button>
-  <button class="nav-pill" onclick="filterSection('high',this)">⭐⭐⭐⭐ High</button>
-  <button class="nav-pill" onclick="filterSection('special',this)">⚡ Special Situation</button>
-  <button class="nav-pill" onclick="filterSection('trades',this)">📈 Trade Setups</button>
-  <button class="nav-pill" onclick="filterSection('growth',this)">🌱 Growth</button>
-  <button class="nav-pill" onclick="filterSection('caution',this)">⚠️ Caution</button>
-  <button class="nav-pill" onclick="filterSection('watchlist',this)">👁 Watchlist</button>
-</div>
-
-<!-- LEGEND -->
-<div class="legend">
-  <span class="tag t-hold">Hold/add</span>
-  <span class="tag t-both">Both F+T</span>
-  <span class="tag t-fund">Fundamental</span>
-  <span class="tag t-tech">Technical</span>
-  <span class="tag t-growth">Growth</span>
-  <span class="tag t-trade">Trade</span>
-  <span class="tag t-watch">Watch</span>
-  <span class="tag t-caution">Caution</span>
-</div>
-
-<!-- helper macro for a stock card -->
-<!-- each card is written out fully below -->
-
-<!-- ═══ EXISTING HOLDS ═══ -->
-<div class="sec sec-filter sec-filter-holds">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Existing holds — updated action</div>
-
-<!-- HAL -->
-<div class="card hc" id="c-HAL">
-  <div class="card-hd">
+<div class="header">
+  <div class="logo">
+    <div class="flame">
+      <svg viewBox="0 0 18 18" fill="none">
+        <path d="M9 1.5C9 1.5 13.5 5 13.5 9C13.5 11.5 11.5 13.5 9 13.5C6.5 13.5 4.5 11.5 4.5 9C4.5 7 6 5.5 6 5.5C6 5.5 6 7.5 8 8C8 8 7 5 9 1.5Z" fill="white" opacity=".95"/>
+        <path d="M9 10C9.83 10 10.5 10.67 10.5 11.5C10.5 12.33 9.83 13 9 13C8.17 13 7.5 12.33 7.5 11.5C7.5 10.67 8.17 10 9 10Z" fill="white" opacity=".7"/>
+      </svg>
+    </div>
     <div>
-      <div class="cname">HAL — Hindustan Aeronautics <span class="cticker">HAL</span><span class="delta dd">▼ −5.9% since 8 May</span></div>
-      <div class="cmeta">Q4 EPS +17% beat. FY26 EPS ₹136.30. Pullback = better add opportunity. Operation Sindoor = defence budget acceleration.</div>
+      <div class="logo-text">India Equity Dashboard</div>
+      <div class="logo-sub">Analyst: Claude &middot; PM: Mudita</div>
     </div>
-    <span class="tag t-hold">Hold / add</span>
   </div>
-  <div class="price-row">
-    <span class="live-price" id="price-HAL">Loading...</span>
-    <span class="price-date" id="date-HAL"></span>
+  <div class="header-meta"><strong>Last refresh:</strong> 30 May 2026<br>Prices live via Yahoo Finance</div>
+</div>
+
+<div class="summary">
+  <div class="stat"><div class="stat-label">Fundamental</div><div class="stat-val success">15</div><div class="stat-sub">Active recommendations</div></div>
+  <div class="stat"><div class="stat-label">Trade</div><div class="stat-val success">2</div><div class="stat-sub">Active setups</div></div>
+  <div class="stat"><div class="stat-label">Special Situation</div><div class="stat-val success">1</div><div class="stat-sub">Event-driven</div></div>
+  <div class="stat"><div class="stat-label">Watchlist</div><div class="stat-val">10</div><div class="stat-sub">Monitoring</div></div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="setTab('f')">Fundamental</button>
+  <button class="tab" onclick="setTab('t')">Trade</button>
+  <button class="tab" onclick="setTab('s')">Special Situation</button>
+  <button class="tab" onclick="setTab('w')">Claude's Watchlist</button>
+  <button class="tab" onclick="setTab('c')">Caution</button>
+  <button class="tab" onclick="setTab('a')">Archive</button>
+  <button class="tab" onclick="setTab('ch')">Weekly Changes</button>
+</div>
+
+<!-- ═══ FUNDAMENTAL ═══ -->
+<div id="pf">
+  <div class="tab-def">Buy because the business is structurally strong. Thesis plays out over 6&#8211;18m+. Entry actionable now.</div>
+  <div class="filter-row">
+    <button class="ft-btn" id="ftbtn" onclick="toggleFT()">&#9889; F+T only</button>
+    <span class="filter-note">Companies strong both fundamentally and technically</span>
   </div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'HAL','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'HAL','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="HAL-levels">
+  <div class="section-hdr">Highest Conviction</div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">LUPIN</span></div><div class="fullname">Lupin Limited</div><div class="meta-pills"><span class="pill sector">Pharmaceuticals</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="LUPIN.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
+    </div>
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-HAL">₹4,421</div></div>
-      <div class="lc"><div class="ll">Add zone</div><div class="lv en">₹4,200–4,400</div><div class="ls">Pullback = buy</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹5,000</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹5,500</div><div class="ls">+24%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,900</div><div class="ls">Below 200DMA</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;2,200&#8211;2,350</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;2,700 <span class="pct">+20%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;3,000+ <span class="pct">+33%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;1,950 <span class="pct">&#8722;13%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.3x to T1 &middot; midpoint entry &#8377;2,275</div>
+    <div class="thesis">Lupin delivered an exceptional FY26: revenue +24% to &#8377;27,488 cr, EBITDA margin +890 bps to 33.6%, net profit +62% to &#8377;5,333 cr. The company is now net cash (&#8377;4,636 cr negative net debt). The margin expansion is structural &#8212; driven by US complex generics mix shift and India branded growth. The stock trades at PE ~20x against a sector median of 32x: a 37% discount that the business quality does not justify. FDA inspection April 2026 closed with zero observations. Final dividend &#8377;18/share declared.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;1,837&#8211;&#8377;2,494</td><td>Near midpoint</td></tr><tr><td>Golden Cross</td><td>Active</td><td>Established</td></tr><tr><td>PE (trailing)</td><td>~20x</td><td>37% discount to sector</td></tr><tr><td>Net Cash</td><td>&#8377;4,636 cr</td><td>Zero net debt</td></tr><tr><td>FY26 EBITDA margin</td><td>33.6%</td><td>+890 bps YoY</td></tr><tr><td>FDA status</td><td>Clean</td><td>Apr 2026, 0 observations</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="HAL-chart">
-    <div class="live-panel">
-      <div class="tv-wrap">
-        <div class="tradingview-widget-container" style="height:100%">
-          <div class="tradingview-widget-container__widget" style="height:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:HAL","interval":"D","width":"100%","height":"100%","colorTheme":"light","isTransparent":false,"locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"hide_side_toolbar":false,"allow_symbol_change":false,"save_image":false,"style":"1","show_popup_button":true}</script>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="tab-panel" id="HAL-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">HAL makes India's fighter jets, helicopters, and military aircraft — and it's the <em>only</em> company in India that can do this at scale. Think of it like a government-protected monopoly in defence manufacturing. Every time India needs to upgrade its air force (which it does regularly), the money flows to HAL. After the India-Pakistan tensions in May 2026, the government is expected to increase the defence budget significantly — which means more orders for HAL. The recent price dip is just normal market noise after a big run-up, not a sign of anything wrong with the business.</div>
-      </div>
-      <div class="conv-grid">
-        <div class="conv-box">
-          <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Price above 200-day average<div class="gate-sub">₹4,421 vs 200DMA ₹4,180 — uptrend intact</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Earnings beat last quarter by 17%<div class="gate-sub">EPS ₹62.74 vs estimate ₹53.42</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">26 analysts say Buy, 0 say Sell<div class="gate-sub">Strong institutional conviction</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">FY26 EPS grew 25% year on year<div class="gate-sub">₹136.30 vs ₹109 — earnings accelerating</div></div></div>
-        </div>
-        <div class="conv-box">
-          <div class="conv-box-title bull-t">Bull case</div>
-          <ul class="bull-list">
-            <li>India's only large-scale aerospace manufacturer — no private competition</li>
-            <li>83 Tejas Mk1A jets confirmed, deliveries through FY30</li>
-            <li>Operation Sindoor = structural shift in defence spending priority</li>
-            <li>ALH helicopter orders ₹2,901 cr recently confirmed</li>
-          </ul>
-          <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
-          <ul class="bear-list">
-            <li>PE of 34x is high for a PSU — any delivery delay is punished</li>
-            <li>Revenue recognition is lumpy — some quarters will disappoint</li>
-          </ul>
-        </div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> HAL is India's highest-conviction defence name. The Q4 beat (+17%) combined with Operation Sindoor creating a structural defence spending shift makes this the most defensible defence hold in the portfolio. Current pullback to ₹4,421 from ₹4,700 is a add opportunity, not a reason to sell. Next catalyst: Q1 FY27 results Aug 7.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 12–18 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Q1 results Aug 7 · Tejas Mk1A deliveries accelerating</span></div>
-</div>
 
-<!-- BSE -->
-<div class="card" id="c-BSE">
-  <div class="card-hd">
-    <div>
-      <div class="cname">BSE Ltd <span class="cticker">BSE</span><span class="delta du">▲ +12.2% since 8 May</span></div>
-      <div class="cmeta">Broke above ₹3,600 resistance — near 52W high ₹4,065. ₹10 dividend record Jul 10. Easy money made — trail stop.</div>
+  <div class="card" data-ft="true">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">HAL</span><span class="ft-badge">F+T</span></div><div class="fullname">Hindustan Aeronautics Limited</div><div class="meta-pills"><span class="pill sector">Defence &amp; Aerospace</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="HAL.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
     </div>
-    <span class="tag t-hold">Hold / trail stop</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-BSE">Loading...</span><span class="price-date" id="date-BSE"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'BSE','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'BSE','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="BSE-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BSE">₹4,038</div></div>
-      <div class="lc"><div class="ll">Trail stop</div><div class="lv en">₹3,700</div><div class="ls">Lock gains</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹4,400</div><div class="ls">+9%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹4,800</div><div class="ls">+19%</div></div>
-      <div class="lc"><div class="ll">Action</div><div class="lv na">Don't add</div><div class="ls">Near ATH</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;3,850&#8211;3,950</div><div class="lvl-label">Entry (pullback)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;4,600 <span class="pct">+18%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;5,100 <span class="pct">+32%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;3,550 <span class="pct">&#8722;8%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~3.0x to T1 &middot; Current ~&#8377;4,304 &#8212; await pullback to entry zone</div>
+    <div class="thesis">HAL is India's only domestic manufacturer of military aircraft and helicopters &#8212; an irreplaceable position in the Atmanirbhar defence ecosystem. Order pipeline stands at &#8377;90,000 cr with LCA Mk1A (20 aircraft by FY27) and HTT-40 deliveries providing multi-year revenue visibility. Zero net debt, GoI promoter, clean governance. The Trade setup is on Watchlist awaiting a pullback to &#8377;3,850&#8211;3,950.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;3,479&#8211;&#8377;5,147</td><td>&#8722;16% from 52W high</td></tr><tr><td>Golden Cross</td><td>Active</td><td>Well established</td></tr><tr><td>Order Book</td><td>&#8377;90,000 cr</td><td>Multi-year visibility</td></tr><tr><td>Net Debt</td><td>Near zero</td><td>Clean balance sheet</td></tr><tr><td>FY26 Results call</td><td>22 May 2026</td><td>Discussed publicly</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="BSE-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:BSE","interval":"D","width":"100%","height":"100%","colorTheme":"light","isTransparent":false,"locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"hide_side_toolbar":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="BSE-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">BSE is one of India's two stock exchanges. Think of it like a toll booth — every trade that happens on BSE earns BSE a small fee. As more Indians start investing (India is adding 3–4 million new investors every month), BSE's toll booth gets busier. The stock has already delivered +12% since we highlighted it. The key now is to protect that profit — we've raised the stop loss to ₹3,700 so if the stock falls, we lock in most of the gain.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> BSE has delivered the return. Now it's about protecting it. Trail stop to ₹3,700. Don't add here near ATH. Next meaningful entry is a dip to ₹3,700–3,900, which may come post the Jul 10 dividend record date as some holders exit post-dividend.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:1.5 at CMP</span><span class="cf-note">Trail stop → ₹3,700 · Add only on dips</span></div>
-</div>
-</div>
 
-<!-- ═══ HIGHEST CONVICTION ═══ -->
-<div class="sec sec-filter sec-filter-hc">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--green)"></span>Highest conviction — buy now or on dips ⭐⭐⭐⭐⭐</div>
-
-<!-- BEL -->
-<div class="card hc" id="c-BEL">
-  <div class="card-hd">
-    <div>
-      <div class="cname">BEL — Bharat Electronics <span class="cticker">BEL</span><span class="delta dd">▼ −1.9%</span><span class="alert-p">⚡ Results 19 May</span></div>
-      <div class="cmeta">RSI divergence breakout. ₹1,251 cr Army order won. ₹73,000 cr order book. 50DMA ₹437 = resistance to clear for T1.</div>
+  <div class="card" data-ft="true">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">SOLARINDS</span><span class="ft-badge">F+T</span></div><div class="fullname">Solar Industries India Limited</div><div class="meta-pills"><span class="pill sector">Defence / Explosives</span><span class="pill cap">Mid cap</span><span class="pill timeline">Long term 12&#8211;24m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="SOLARINDS.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
     </div>
-    <span class="tag t-both">Both F+T</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-BEL">Loading...</span><span class="price-date" id="date-BEL"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'BEL','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'BEL','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="BEL-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-BEL">₹423</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹410–425</div><div class="ls">Current = entry</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹480</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹530</div><div class="ls">+25%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹390</div><div class="ls">Swing low</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;17,800&#8211;18,500</div><div class="lvl-label">Entry (current zone)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;20,500 <span class="pct">+13%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;23,000 <span class="pct">+28%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;15,800 <span class="pct">&#8722;11%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~1.7x to T1 &middot; Goldman Sachs Buy, target &#8377;19,590</div>
+    <div class="thesis">Solar Industries has transformed from India's largest commercial explosives maker into an embedded defence manufacturer. Q4FY26 net profit +70% YoY, revenue +41%. FY27 defence revenue guidance raised to &#8377;4,500 cr (from &#8377;3,000 cr in FY26). EBITDA margin guided at 27% sustainable. The 52W high is being tested &#8212; the next leg requires FY27 defence order confirmation. Trade setup Watchlist entry available on any pullback to &#8377;16,500&#8211;17,000.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;11,646&#8211;&#8377;18,699</td><td>Near 52W high</td></tr><tr><td>Q4FY26 Revenue</td><td>+41% YoY</td><td>&#8377;3,053 cr</td></tr><tr><td>Q4FY26 Net Profit</td><td>+70% YoY</td><td>&#8377;548 cr</td></tr><tr><td>EBITDA Margin</td><td>27%</td><td>Guided sustainable</td></tr><tr><td>FY27 Defence rev</td><td>&#8377;4,500 cr guided</td><td>+50% vs FY26</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="BEL-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:BEL","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"hide_side_toolbar":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="BEL-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">BEL is like the "brain" of India's military — it makes the radars, sonar systems, electronic warfare equipment, and communication systems that go inside jets, ships, and tanks. It doesn't make the hardware itself (HAL does that), it makes the intelligent electronics inside. The business is incredibly profitable (29% EBITDA margin — think of it like keeping 29 paise of every rupee earned, which is exceptional). On top of that, it's just been added to the Sensex 30, which means large mutual funds are forced to buy it every month automatically. The results on 19 May are expected to be strong.</div>
-      </div>
-      <div class="conv-grid">
-        <div class="conv-box">
-          <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">RSI chart pattern breakout<div class="gate-sub">Price fell but momentum rose = classic reversal signal</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">₹73,000 cr order book<div class="gate-sub">3+ years of revenue already locked in</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">EBITDA margin 29%<div class="gate-sub">Exceptional profitability for a PSU</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Sensex 30 inclusion<div class="gate-sub">Auto buying from index funds every month</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-fail">✗</div><div class="gate-text">PE 53x above sector avg 42x<div class="gate-sub">Slight premium — acceptable given quality</div></div></div>
-        </div>
-        <div class="conv-box">
-          <div class="conv-box-title bull-t">Bull case</div>
-          <ul class="bull-list">
-            <li>29 strategic business units inc. Unmanned Systems, Seekers, Arms</li>
-            <li>Defence electronics = highest-margin defence segment</li>
-            <li>Sensex inclusion = guaranteed monthly passive buying</li>
-            <li>Operation Sindoor = accelerated procurement pipeline</li>
-          </ul>
-          <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
-          <ul class="bear-list">
-            <li>19 May results = binary — any miss punished hard</li>
-            <li>PE 53x is stretched; little room for error</li>
-          </ul>
-        </div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> BEL is the single highest-conviction name on this list. RSI divergence breakout (technical) + 4-quarter earnings acceleration (fundamental) + ₹73,000 cr order book + imminent results catalyst = unusually clean timing. Beat expected. R/R 1:2.5 with a binary catalyst is rare.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 1–3 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Results 19 May · Beat strongly expected</span></div>
-</div>
 
-<!-- NATCO -->
-<div class="card hc" id="c-NATCO">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Natco Pharma <span class="cticker">NATCOPHARM</span><span class="delta du">▲ +1.8%</span></div>
-      <div class="cmeta">PE 13.9x — cheapest quality pharma on NSE. Near 52W high. Semaglutide generic launch. Revenue +36% YoY. Biggest upgrade this cycle.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">DATAPATTNS</span></div><div class="fullname">Data Patterns (India) Limited</div><div class="meta-pills"><span class="pill sector">Defence Electronics</span><span class="pill cap">Small cap</span><span class="pill timeline">Long term 12&#8211;24m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="DATAPATTNS.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
     </div>
-    <span class="tag t-both">Both F+T</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-NATCO">Loading...</span><span class="price-date" id="date-NATCO"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'NATCO','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'NATCO','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="NATCO-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-NATCO">₹1,215</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,100–1,180</div><div class="ls">Any dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,420</div><div class="ls">+17%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,600</div><div class="ls">+32%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,010</div><div class="ls">Demand zone</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;3,800&#8211;4,050</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;4,700 <span class="pct">+18%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;5,400 <span class="pct">+37%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;3,300 <span class="pct">&#8722;16%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~1.6x to T1 &middot; Note: small cap, lower liquidity &#8212; size accordingly</div>
+    <div class="thesis">Data Patterns designs and manufactures defence electronics &#8212; radars, electronic warfare, avionics, communications &#8212; for the IAF, Navy and DRDO programmes including Tejas, BrahMos and ALH. 9M FY26 revenue +86% YoY; EBITDA margins at 44.8% are extraordinary for any Indian capital goods company and reflect the high IP content of design-led defence work. Order book &#8377;1,868 cr provides 18+ months visibility. Founder-led, clean governance. Caveat: &#8377;4,000 cr market cap, relatively low liquidity.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Current Price</td><td>~&#8377;4,044</td><td>Within entry zone</td></tr><tr><td>9M FY26 Revenue</td><td>+86% YoY</td><td>&#8377;580 cr</td></tr><tr><td>EBITDA Margin</td><td>44.8%</td><td>Highest in sector</td></tr><tr><td>Order Book</td><td>&#8377;1,868 cr</td><td>18m+ visibility</td></tr><tr><td>Governance</td><td>Founder-led</td><td>Clean, no pledge concerns</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="NATCO-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:NATCOPHARM","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="NATCO-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Natco makes generic versions of very expensive medicines — things like cancer drugs and Hepatitis C treatments — at a fraction of the original cost. The big new product is a generic version of Ozempic (Semaglutide), the blockbuster diabetes and weight-loss drug, launched in India at 90% lower cost than the original. Here's why the valuation is exciting: the stock is near its highest price ever, yet it's one of the cheapest pharma companies by PE ratio. That's unusual — normally expensive stocks have high PEs. When a stock reaches new highs while still being cheap, it usually means the market is just beginning to discover it.</div>
-      </div>
-      <div class="conv-grid">
-        <div class="conv-box">
-          <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">PE 13.9x vs industry 42x average<div class="gate-sub">The single most attractive valuation gap on this list</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Revenue +36% year on year<div class="gate-sub">Accelerating, not slowing</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Near 52W high = Stage 2 breakout<div class="gate-sub">Strong stocks make new highs — this is a good sign</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Semaglutide generic launch<div class="gate-sub">Huge TAM — 77M diabetics in India alone</div></div></div>
-        </div>
-        <div class="conv-box">
-          <div class="conv-box-title bull-t">Bull case</div>
-          <ul class="bull-list">
-            <li>Semaglutide (generic Ozempic) at Indian prices = transformational product</li>
-            <li>First-to-file strategy in US = market exclusivity periods</li>
-            <li>Oncology generics = high barriers, durable margins</li>
-            <li>FII ownership increasing — institutional discovery early</li>
-          </ul>
-          <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
-          <ul class="bear-list">
-            <li>Q3 profit fell -71% QoQ — volatile quarterly earnings</li>
-            <li>Small company (₹21,600 cr) — thin float, big moves both ways</li>
-          </ul>
-        </div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> PE of 13.9x at Stage 2 breakout is a textbook Weinstein setup. The market simply hasn't re-rated it yet despite +36% revenue growth. Semaglutide is the optionality that could cause a sharp re-rating. Buy on any dip to ₹1,100–1,180.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Biggest conviction upgrade · Semaglutide = optionality</span></div>
-</div>
 
-<!-- AJANTA -->
-<div class="card hc" id="c-AJANTA">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Ajanta Pharma <span class="cticker">AJANTPHARM</span><span class="delta df">= flat</span></div>
-      <div class="cmeta">Debt-free. ROCE 33%, ROE 26%. PE below industry. Q4 profit +20% YoY. FDA Form 483 resolution = pending re-rating catalyst.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">DIVISLAB</span></div><div class="fullname">Divi's Laboratories Limited</div><div class="meta-pills"><span class="pill sector">Pharma API / Custom Synthesis</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="DIVISLAB.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
     </div>
-    <span class="tag t-fund">Fundamental</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-AJANTA">Loading...</span><span class="price-date" id="date-AJANTA"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'AJANTA','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'AJANTA','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="AJANTA-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AJANTA">₹2,910</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹2,750–2,900</div><div class="ls">Accumulate</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹3,228</div><div class="ls">52W high</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹3,500</div><div class="ls">+20%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹2,550</div><div class="ls">200DMA</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;6,500&#8211;6,800</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;7,500 <span class="pct">+12%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;8,500 <span class="pct">+27%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;5,800 <span class="pct">&#8722;11%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~1.5x to T1 &middot; Morgan Stanley Overweight, target &#8377;7,541</div>
+    <div class="thesis">Divi's is not a generics company &#8212; it manufactures APIs and intermediates for both generic and innovator drugs, with Custom Synthesis now 56% of revenue. This means Divi's earns from patented blockbuster drugs still under exclusivity: a structurally higher-margin, lower-cyclicality business. FY26: Q4 PAT +13% YoY, full-year PAT ~&#8377;2,568 cr. Net cash balance sheet (&#8377;3,261 cr cash). FDA inspection April 2026 &#8212; zero observations. &#8377;30/share final dividend. Stock consolidating between &#8377;6,300&#8211;&#8377;7,000 for months &#8212; a clean entry point at the lower half of its historical PE band.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026 &middot; Proactive new idea</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;5,637&#8211;&#8377;7,072</td><td>Currently mid-range ~&#8377;6,730</td></tr><tr><td>Custom Synthesis</td><td>56% of revenue</td><td>Growing from 44% in FY23</td></tr><tr><td>Net Cash</td><td>&#8377;3,261 cr</td><td>Zero net debt</td></tr><tr><td>FDA status</td><td>Clean</td><td>Apr 2026 inspection, 0 obs.</td></tr><tr><td>PE (trailing)</td><td>~70x</td><td>Within historical 60&#8211;80x band</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="AJANTA-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:AJANTPHARM","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="AJANTA-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Ajanta is a "sleep well at night" pharma stock. It has zero debt, earns back 33p for every ₹1 invested in the business (that's what ROCE 33% means — exceptional), and sells branded medicines in Africa and Asia where it has strong market recognition. It's cheaper than its competitors despite being better run. The only current worry is a US FDA inspection finding (Form 483) at one of its factories — if the company fixes this, the stock should re-rate sharply upward. Think of it as a quality business temporarily on sale.</div>
-      </div>
-      <div class="conv-grid">
-        <div class="conv-box">
-          <div class="conv-box-title gate-t">Gates &amp; Signals</div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">Zero debt balance sheet<div class="gate-sub">Net cash positive — company owns more than it owes</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">ROCE 33%, ROE 26%<div class="gate-sub">Top quartile — earns exceptional returns on capital</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-pass">✓</div><div class="gate-text">PE below industry average<div class="gate-sub">38x vs industry 43x — undervalued vs peers</div></div></div>
-          <div class="gate-row"><div class="gate-icon gi-warn">!</div><div class="gate-text">FDA Form 483 — Paithan plant<div class="gate-sub">5 observations under review. VETO risk if escalates.</div></div></div>
-        </div>
-        <div class="conv-box">
-          <div class="conv-box-title bull-t">Bull case</div>
-          <ul class="bull-list"><li>Debt-free with 33% ROCE — rare in mid-cap pharma</li><li>Africa + Asia branded generics = sticky, less US pricing risk</li><li>FDA 483 resolution = sharp re-rating catalyst</li><li>Working capital days improved 42→32.7 — executing well</li></ul>
-          <div class="conv-box-title bear-t" style="margin-top:10px">Bear case</div>
-          <ul class="bear-list"><li>FDA Form 483 escalation to Warning Letter = US revenue risk</li><li>Revenue growth modest ~6% QoQ — not a high-growth stock</li></ul>
-        </div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Best risk/reward fundamental entry on this list. Accumulate in tranches at ₹2,750–2,900. FDA 483 resolution = the catalyst for ₹3,500+.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">FDA 483 watch · Cleanest quality entry</span></div>
-</div>
 
-<!-- SOLAR INDUSTRIES -->
-<div class="card hc" id="c-SOLAR">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Solar Industries India <span class="cticker">SOLARINDS</span><span class="delta du">▲ +12.3%</span></div>
-      <div class="cmeta">Defence revenue +72% YoY. ₹18,000 cr order book. Goldman Sachs Buy ₹18,900. CRISIL AA+ upgrade Apr 2026.</div>
+  <div class="section-hdr">Medium Conviction</div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">POWERGRID</span><span class="caution-badge">&#9888; Timing Caution</span></div><div class="fullname">Power Grid Corporation of India</div><div class="meta-pills"><span class="pill sector">Power T&amp;D &middot; Utility</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12m+</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="POWERGRID.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
-    <span class="tag t-fund">Fundamental</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-SOLAR">Loading...</span><span class="price-date" id="date-SOLAR"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div><div class="pip p5"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'SOLAR','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'SOLAR','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="SOLAR-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-SOLAR">₹17,340</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹15,800–16,800</div><div class="ls">Post-results dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹19,500</div><div class="ls">+16%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹22,000</div><div class="ls">+31%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹14,800</div><div class="ls">Pre-run base</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;290&#8211;305</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;340 <span class="pct">+14%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;380 <span class="pct">+28%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;265 <span class="pct">&#8722;9%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.6x to T1 &middot; PE 17x &middot; dividend yield ~3.5%</div>
+    <div class="thesis">Power Grid is India's monopoly inter-state transmission grid operator &#8212; regulated returns, near-zero earnings volatility, and a visible growth pipeline tied to India's renewable integration which requires massive new transmission lines. Q4FY26 net profit +9.7% YoY to &#8377;4,546 cr. At PE 17x and dividend yield ~3.5%, one of the cheapest quality utilities on the exchange. Current price near 52W support zone &#8212; an accumulation opportunity. Hold through near-term market weakness; the thesis is 12m+.</div>
+    <div class="caution-note">&#9888; Timing Caution: broad market selloff 29 May drove PSU selling. Thesis fully intact. Do not add fresh during dislocation &#8212; wait for Nifty RSI to stabilise above 35.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;250&#8211;&#8377;325</td><td>Near support zone</td></tr><tr><td>PE</td><td>17x</td><td>Cheap for regulated utility</td></tr><tr><td>Dividend Yield</td><td>~3.5%</td><td>Consistent payer</td></tr><tr><td>Q4FY26 PAT</td><td>&#8377;4,546 cr</td><td>+9.7% YoY</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="SOLAR-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:SOLARINDS","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="SOLAR-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Solar Industries started as a company that makes explosives for coal mines. But over the last 3 years it has quietly become India's only private-sector manufacturer of rockets, propellants, and ammunition for the military. Think of it as "HAL's ammunition supplier" — while HAL makes the aircraft, Solar makes what the aircraft fires. The government's "Make in India" defence policy means the Army and Air Force must buy ammunition domestically, and Solar is practically the only private company that can supply it. Defence revenue grew 72% last year alone.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Most underrated defence name on NSE. Near-monopoly in private-sector propellants. Goldman Sachs Buy target ₹18,900. Post-results entry at ₹15,800–16,800 preferred over chasing the pre-results run.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Wait for post-results entry · Goldman Buy ₹18,900</span></div>
-</div>
-</div>
 
-<!-- ═══ HIGH CONVICTION ═══ -->
-<div class="sec sec-filter sec-filter-high">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--blue)"></span>High conviction — build position ⭐⭐⭐⭐</div>
-
-<!-- POWER GRID -->
-<div class="card" id="c-POWERGRID">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Power Grid Corp <span class="cticker">POWERGRID</span><span class="delta dd">▼ −4.4%</span><span class="alert-p">⚡ Results 16 May</span></div>
-      <div class="cmeta">Pulled back ₹320→₹306 — better entry. PE 18x. Dividend yield 3.85%. 500 GW renewable target = decade-long capex.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">BEL</span></div><div class="fullname">Bharat Electronics Limited</div><div class="meta-pills"><span class="pill sector">Defence Electronics</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="BEL.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
-    <span class="tag t-both">Both F+T</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-POWERGRID">Loading...</span><span class="price-date" id="date-POWERGRID"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'POWERGRID','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'POWERGRID','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="POWERGRID-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-POWERGRID">₹306</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹295–308</div><div class="ls">Now = entry</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹345</div><div class="ls">+13%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹380</div><div class="ls">+24%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹280</div><div class="ls">Below 50DMA</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;405&#8211;425</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;480 <span class="pct">+16%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;550 <span class="pct">+33%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;370 <span class="pct">&#8722;9%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.0x to T1 &middot; Debt-free defence PSU</div>
+    <div class="thesis">BEL is India's dominant defence electronics PSU &#8212; primary supplier of radars, communication systems, sonars and weapon systems to all three armed forces. The business is strategically protected, the order book provides multi-year revenue predictability, and the company is debt-free. PE ~56x appears rich but reflects the monopoly franchise value and high revenue visibility. Medium conviction because PE is in the upper half of its historical range.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;240&#8211;&#8377;436</td><td>Currently ~&#8377;411</td></tr><tr><td>PE</td><td>~56x</td><td>Upper half of historical range</td></tr><tr><td>Debt</td><td>Zero</td><td>Pristine balance sheet</td></tr><tr><td>Promoter</td><td>GoI 51%</td><td>Strategic PSU</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="POWERGRID-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:POWERGRID","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="POWERGRID-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Power Grid owns and operates the highways that electricity travels on across India — over 172,000 km of high-voltage transmission lines. It's a government company that earns a fixed 15.5% return on every rupee it invests, guaranteed by regulation. Think of it like a toll road, except the government guarantees you'll always get your toll regardless of traffic. As India builds solar and wind farms across the country, all that electricity needs new highways to reach cities — Power Grid builds and owns those highways. It also pays you a 3.85% dividend annually just for holding it.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Most predictable large-cap on this list. Government-guaranteed 15.5% ROE, 88–90% EBITDA margins, PE 18x. The ₹306 pullback is a gift — results 16 May expected to be another beat. Dividend yield means the downside is cushioned.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:2.6</span><span class="cf-note">Results 16 May · Better entry than 8 May</span></div>
-</div>
 
-<!-- TITAN -->
-<div class="card" id="c-TITAN">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Titan Company <span class="cticker">TITAN</span><span class="delta dd">▼ −3.5%</span></div>
-      <div class="cmeta">✅ Q4: PAT +35% YoY, revenue +80%, ₹15 dividend. PE re-rated to 72x. Morgan Stanley TP ₹5,102.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">CDSL</span></div><div class="fullname">Central Depository Services (India) Limited</div><div class="meta-pills"><span class="pill sector">Capital Markets Infrastructure</span><span class="pill cap">Mid cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="CDSL.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
-    <span class="tag t-fund">Fundamental</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-TITAN">Loading...</span><span class="price-date" id="date-TITAN"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'TITAN','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'TITAN','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="TITAN-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-TITAN">₹4,155</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹4,000–4,200</div><div class="ls">Now = zone</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹4,880</div><div class="ls">+17% consensus</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹5,100</div><div class="ls">+23% MS/CLSA</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,750</div><div class="ls">Support base</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;1,200&#8211;1,280</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;1,550 <span class="pct">+26%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;1,750 <span class="pct">+42%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;1,050 <span class="pct">&#8722;14%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.3x to T1 &middot; 31% below 52W high &middot; currently at entry zone</div>
+    <div class="thesis">CDSL operates a regulated duopoly as one of India's two securities depositories &#8212; the infrastructure holding every demat account in the country. Revenue tied to India's capital markets participation, which is structurally growing as households shift savings from physical to financial assets. FY26 EPS &#8377;21.82. The stock has corrected 31% from its &#8377;1,829 52W high as IPO activity softened &#8212; creating an attractive entry. The underlying business compounds at 15&#8211;20% annually even in a softer market environment.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;1,116&#8211;&#8377;1,829</td><td>&#8722;31% from peak</td></tr><tr><td>PE</td><td>~55x</td><td>Duopoly franchise</td></tr><tr><td>EPS FY26</td><td>&#8377;21.82</td><td>Full year</td></tr><tr><td>Current Price</td><td>~&#8377;1,253</td><td>At entry zone</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="TITAN-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:TITAN","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="TITAN-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Titan owns Tanishq (India's most trusted jewellery brand), Titan watches, Fastrack, and Caratlane. It's the Tata Group's consumer brand empire. Here's why it's compelling: jewellery in India is still mostly bought from unorganised local jewellers, but Indians are rapidly shifting to trusted brands like Tanishq. Titan is only 8% of a ₹6 lakh crore market — there's enormous room to grow. The Q4 results were strong (revenue +80% — partly because gold prices jumped) and management has now expanded into the Middle East via Damas (149 stores in UAE, Saudi, Qatar). The stock dipped after results — that's the entry window.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> PE re-rated from 114x to 72x as earnings grew faster than the price — the stock is getting cheaper. Damas + North America are new growth vectors not in the thesis a year ago. Morgan Stanley TP ₹5,102.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 9–12 months</span><span class="cf-rr">R/R 1:2.0</span><span class="cf-note">Q4 cleared · Damas = new growth vector · MS TP ₹5,102</span></div>
-</div>
 
-<!-- AUROBINDO -->
-<div class="card" id="c-AURO">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Aurobindo Pharma <span class="cticker">AUROPHARMA</span><span class="delta du">▲ +7.4%</span></div>
-      <div class="cmeta">Rounding bottom breakout playing out. ₹1,487 — below 52W high ₹1,513. 579 USFDA approvals. PE 23x vs industry 43x.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">GVT&amp;D</span></div><div class="fullname">GE Vernova T&amp;D India Limited</div><div class="meta-pills"><span class="pill sector">Power T&amp;D Equipment</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 18&#8211;24m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="GVT&D.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
-    <span class="tag t-both">Both F+T</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-AURO">Loading...</span><span class="price-date" id="date-AURO"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'AURO','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'AURO','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="AURO-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-AURO">₹1,487</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,420–1,480</div><div class="ls">Wait for dip</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,620</div><div class="ls">+9%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,800</div><div class="ls">+21%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,300</div><div class="ls">Below breakout</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;4,500&#8211;4,700</div><div class="lvl-label">Entry (on pullback)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;5,800 <span class="pct">+27%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;6,500 <span class="pct">+42%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;4,100 <span class="pct">&#8722;10%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.8x to T1 &middot; Current ~&#8377;5,149 above entry &#8212; await pullback</div>
+    <div class="thesis">GE Vernova T&amp;D is the leading supplier of transformers, switchgear and grid automation to India's electricity transmission network &#8212; directly in the path of the country's massive T&amp;D infrastructure upgrade cycle tied to renewable energy integration. Q3FY26 net income +21% QoQ, TTM revenue &#8377;6,206 cr. Strong order book and execution track record justify a valuation premium. Medium conviction on valuation (PE 105x) &#8212; entry is best on a meaningful pullback from current levels.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Current Price</td><td>~&#8377;5,149</td><td>Above entry zone &#8212; await pullback</td></tr><tr><td>PE</td><td>~105x</td><td>Growth premium</td></tr><tr><td>TTM Revenue</td><td>&#8377;6,206 cr</td><td>Growing</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="AURO-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:AUROPHARMA","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="AURO-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Aurobindo is India's largest generic medicines exporter by volume — it sells affordable versions of branded drugs to the US, Europe, and emerging markets. It has 579 approved products in the US alone (the most of any Indian pharma company). The interesting thing about the stock right now is technical: the price chart formed a "rounding bottom" pattern — like a ball rolling along the bottom of a bowl before gaining upward momentum. This pattern often precedes a strong move up. The PE of 23x is half the industry average of 43x, meaning you're getting a large-cap pharma leader at a mid-cap valuation.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Largest-cap pharma at cheapest relative valuation on NSE. Rounding bottom playing out as forecast. Don't chase — wait for dip to ₹1,420–1,480. USFDA injectables approval accelerating is the next catalyst.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:1.8</span><span class="cf-note">Setup playing out · Wait for dip · 579 USFDA approvals</span></div>
-</div>
 
-<!-- CDSL -->
-<div class="card" id="c-CDSL">
-  <div class="card-hd">
-    <div>
-      <div class="cname">CDSL <span class="cticker">CDSL</span><span class="delta dd">▼ −2.2%</span></div>
-      <div class="cmeta">ROE 36%, ROCE 46%. 33% below ATH ₹1,828. Q4 dip on tech costs = temporary. India demat boom = permanent.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">KEC</span></div><div class="fullname">KEC International Limited</div><div class="meta-pills"><span class="pill sector">Power EPC &middot; Infrastructure</span><span class="pill cap">Mid cap</span><span class="pill timeline">Medium term 6&#8211;12m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="KEC.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
-    <span class="tag t-both">Both F+T</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-CDSL">Loading...</span><span class="price-date" id="date-CDSL"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p4"></div><div class="pip p4"></div><div class="pip p4"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'CDSL','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'CDSL','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="CDSL-levels">
+    <div class="divider"></div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-CDSL">₹1,227</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,150–1,230</div><div class="ls">Near support</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,500</div><div class="ls">+22%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,750</div><div class="ls">+43%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,050</div><div class="ls">52W low buffer</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;460&#8211;495</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;600 <span class="pct">+26%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;720 <span class="pct">+52%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;420 <span class="pct">&#8722;11%</span></div><div class="lvl-label">Stop loss</div></div>
     </div>
+    <div class="rr-line">R/R ~2.7x to T1 &middot; down 50% from 52W high &middot; Nomura Neutral &#8377;507</div>
+    <div class="thesis">KEC is the world's largest power transmission EPC company by execution capacity, operating in 100+ countries. The stock is down 50% from its &#8377;947 52W high after weak Q4FY26 margin performance and a Nomura downgrade. However, the order book remains &#8377;33,000+ cr, fresh orders of &#8377;1,303 cr were won 28&#8211;29 May, and FY27 revenue growth guidance is 12&#8211;15%. Current price is approaching a multi-month support cluster &#8212; compelling risk/reward if the margin recovery thesis plays out in FY27.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;501&#8211;&#8377;947</td><td>&#8722;50% from 52W high</td></tr><tr><td>Order Book</td><td>&#8377;33,000+ cr</td><td>Revenue visibility</td></tr><tr><td>Fresh Orders</td><td>&#8377;1,303 cr</td><td>Announced 28&#8211;29 May 2026</td></tr><tr><td>FY27 Guidance</td><td>12&#8211;15% revenue growth</td><td>Management guided</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="CDSL-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:CDSL","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="CDSL-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">CDSL is where your demat account lives. Every time someone in India opens a demat account to invest in stocks, their holdings are stored at either CDSL or NSDL — there are only two companies in India that can do this. Think of CDSL as a digital safe-deposit vault for shares. Every trade, every SIP, every dividend processed — CDSL earns a tiny fee. India is adding 3–4 million new investors every single month. The stock is 33% below its peak because last quarter's profits dipped — but only because they spent money upgrading their technology platform. The underlying business is growing faster than ever.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> One of India's few genuine quasi-monopolies. Q4 profit dip is capex (building next-gen platform), not deterioration. At 33% below ATH with ROE 36%, entry here is structurally sound. India's SIP revolution (₹26,000 cr/month) directly drives CDSL volumes.</div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">LT</span></div><div class="fullname">Larsen &amp; Toubro Limited</div><div class="meta-pills"><span class="pill sector">Infrastructure &middot; Capital Goods</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="LT.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
     </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;3,700&#8211;3,850</div><div class="lvl-label">Entry (pullback)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;4,400 <span class="pct">+18%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;4,900 <span class="pct">+32%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;3,500 <span class="pct">&#8722;6%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.5x to T1 &middot; Current &#8377;4,077 &#8212; await pullback to entry zone</div>
+    <div class="thesis">L&amp;T is India's pre-eminent infrastructure and engineering conglomerate &#8212; spanning construction, power, defence, technology services and financial services. It is the clearest long-term play on India's infrastructure buildout: every major project in the country involves L&amp;T. Revenue and order book growing consistently. Clean governance, disciplined capital allocation. At current &#8377;4,077, entry is slightly stretched &#8212; preferred entry is &#8377;3,700&#8211;3,850 on any correction.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Current Price</td><td>~&#8377;4,077</td><td>Above preferred entry</td></tr><tr><td>PE</td><td>~35x</td><td>Fair for quality compounder</td></tr></table></div>
   </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–12 months</span><span class="cf-rr">R/R 1:2.4</span><span class="cf-note">India demat boom structural · Q4 dip = noise</span></div>
-</div>
-</div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">BSE</span></div><div class="fullname">BSE Limited</div><div class="meta-pills"><span class="pill sector">Capital Markets Infrastructure</span><span class="pill cap">Mid cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="BSE.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;3,900&#8211;4,150</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;4,700 <span class="pct">+18%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;5,500 <span class="pct">+38%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;3,600 <span class="pct">&#8722;9%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.4x to T1 &middot; FY26 revenue +59.5%</div>
+    <div class="thesis">BSE is undergoing a genuine business model expansion &#8212; moving from a secondary exchange to a dynamic derivatives and SME platform. FY26 revenue +59.5% to &#8377;5,124 cr, earnings +88.3%. The key driver: explosive growth in BSE Options volume after SEBI regulatory changes channelled F&amp;O activity to BSE weekly expiry contracts. Also a beneficiary of the SME IPO boom. BSE did a 2:1 bonus in May 2025 &#8212; current &#8377;4,147 price is on the post-bonus base and is approximately at the entry zone.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;2,022&#8211;&#8377;4,447</td><td>Post 2:1 bonus base (May 2025)</td></tr><tr><td>PE</td><td>~69x</td><td>Supported by earnings growth</td></tr><tr><td>FY26 Revenue</td><td>+59.5% YoY</td><td>&#8377;5,124 cr</td></tr><tr><td>FY26 Earnings</td><td>+88.3% YoY</td><td>&#8377;2,497 cr</td></tr></table></div>
+  </div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">COFORGE</span></div><div class="fullname">Coforge Limited</div><div class="meta-pills"><span class="pill sector">IT Services</span><span class="pill cap">Mid cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="COFORGE.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;1,350&#8211;1,450</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;1,750 <span class="pct">+27%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;2,000 <span class="pct">+45%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;1,200 <span class="pct">&#8722;12%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.5x to T1 &middot; 28% below 52W high &middot; currently at entry zone</div>
+    <div class="thesis">Coforge is a mid-cap IT services company with strong BFSI and travel vertical exposure internationally &#8212; sticky, recurring revenue from insurance policy administration systems and travel technology platforms. Revenue has compounded consistently over 4 years. At &#8377;1,422, 28% below its &#8377;1,994 52W high &#8212; an attractive entry for a quality IT compounder. PE ~34x is reasonable for this growth rate. Key risk: US financial services spending slowdown.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Current Price</td><td>&#8377;1,422</td><td>&#8722;28% from 52W high</td></tr><tr><td>52W Range</td><td>&#8377;1,191&#8211;&#8377;1,994</td><td>Good entry zone</td></tr><tr><td>PE</td><td>~34x</td><td>Reasonable for IT mid-cap</td></tr></table></div>
+  </div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">LODHA</span></div><div class="fullname">Macrotech Developers Limited</div><div class="meta-pills"><span class="pill sector">Real Estate</span><span class="pill cap">Large cap</span><span class="pill timeline">Medium term 9&#8211;15m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="LODHA.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;1,150&#8211;1,280</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;1,550 <span class="pct">+30%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;1,800 <span class="pct">+52%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;1,020 <span class="pct">&#8722;13%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.7x to T1 &middot; Analyst consensus target &#8377;1,454 &middot; Proactive new idea</div>
+    <div class="thesis">Lodha has delivered 20% pre-sales growth for four consecutive years since IPO &#8212; a rare track record of disciplined execution in a sector typically associated with governance risk. Q4FY26 PAT +9.4% YoY; full-year PAT +24%. Net Debt/Equity at 0.2x &#8212; well below its own 0.5x ceiling. Expanding from Mumbai&#8211;Pune into Bengaluru with nine Pune projects and five Bangalore locations active. India's premium residential cycle in land-scarce metros remains mid-cycle. Medium conviction: real estate accounting complexity prevents Highest.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026 &middot; Proactive new idea</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Q4FY26 PAT</td><td>&#8377;1,008 cr</td><td>+9.4% YoY</td></tr><tr><td>FY26 PAT growth</td><td>+24% YoY</td><td>4th consecutive year</td></tr><tr><td>Net Debt/Equity</td><td>0.2x</td><td>Below 0.5x ceiling</td></tr><tr><td>Pre-sales CAGR</td><td>20%</td><td>4 years since IPO</td></tr></table></div>
+  </div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">ICICIGI</span></div><div class="fullname">ICICI Lombard General Insurance</div><div class="meta-pills"><span class="pill sector">General Insurance</span><span class="pill cap">Large cap</span><span class="pill timeline">Long term 12&#8211;18m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="ICICIGI.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;1,680&#8211;1,800</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;2,100 <span class="pct">+21%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;2,400 <span class="pct">+38%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;1,450 <span class="pct">&#8722;13%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.0x to T1 &middot; &#8722;6% in last year despite business compounding &middot; Proactive new idea</div>
+    <div class="thesis">India's general insurance penetration is 1% of GDP versus a global average of 3% &#8212; a structural gap that will close over the next decade as incomes rise and motor/health mandates expand. ICICI Lombard is the dominant private player. The stock is &#8722;6% over one year despite the business compounding steadily &#8212; an attractive disconnect. ICICI Bank promoter at ~48%, clean IRDAI compliance. Medium conviction: combined ratio of 102&#8211;104% means profitability depends on investment income.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026 &middot; Proactive new idea</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;1,480&#8211;&#8377;1,960</td><td>&#8722;6% 1Y return</td></tr><tr><td>GWP Growth FY26</td><td>14&#8211;18% guided</td><td>Non-life sector leader</td></tr><tr><td>Combined Ratio</td><td>102&#8211;104%</td><td>Profitable via investment income</td></tr><tr><td>Promoter</td><td>ICICI Bank ~48%</td><td>Strong institutional backing</td></tr></table></div>
+  </div>
+
+</div><!-- end fundamental -->
+
+<!-- ═══ TRADE ═══ -->
+<div id="pt" style="display:none">
+  <div class="tab-def">Technical setup is compelling now. 2&#8211;8 week horizon. Defined entry, stop and target. Fundamentals are context, not the primary driver.</div>
+  <div class="section-hdr">Medium Conviction</div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">STLTECH</span></div><div class="fullname">Sterlite Technologies Limited</div><div class="meta-pills"><span class="pill sector">Telecom Infra &middot; Data Centres</span><span class="pill cap">Small cap</span><span class="pill timeline">Trade 4&#8211;8 weeks</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="STLTECH.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;480&#8211;515</div><div class="lvl-label">Entry (pullback)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;610 <span class="pct">+24%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;690 <span class="pct">+40%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;430 <span class="pct">&#8722;13%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~2.1x to T1 &middot; Current &#8377;536 slightly above entry &#8212; await small pullback</div>
+    <div class="thesis">STL has delivered a genuine FY26 turnaround: revenue +18.8% to &#8377;4,745 cr, EBITDA margin 13.2% (sixth consecutive quarter of expansion), net profit &#8377;56 cr after a &#8377;72 cr loss in FY25. Order intake surged 110% YoY, bringing the open order book to &#8377;7,309 cr &#8212; 18 months of revenue visibility. The company is pivoting into AI-ready data centre connectivity (Neuralis) and launched India's first Hollow Core Fibre cable. Trade thesis: order book re-rating as margins continue expanding toward 15%+ in FY27. Not yet a Fundamental recommendation &#8212; margins need to sustain above 13% for 2 more quarters first.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Current Price</td><td>&#8377;536</td><td>Slightly above entry zone</td></tr><tr><td>FY26 Revenue</td><td>&#8377;4,745 cr</td><td>+18.8% YoY</td></tr><tr><td>EBITDA Margin</td><td>13.2%</td><td>6th consec. quarterly improvement</td></tr><tr><td>Order Book</td><td>&#8377;7,309 cr</td><td>+67% YoY</td></tr><tr><td>Net Debt</td><td>&#8377;1,128 cr</td><td>Declining</td></tr></table></div>
+  </div>
+
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">ETERNAL</span><span class="spec-badge">Speculative</span></div><div class="fullname">Eternal Limited (formerly Zomato)</div><div class="meta-pills"><span class="pill sector">Quick Commerce &middot; Food Delivery</span><span class="pill cap">Large cap</span><span class="pill timeline">Trade 4&#8211;6 weeks</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="ETERNAL.NS">&#8377;&#8212;</div><div class="cv-badge cv-medium">Medium</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="levels">
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;240&#8211;258</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;305 <span class="pct">+24%</span></div><div class="lvl-label">T1</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;345 <span class="pct">+38%</span></div><div class="lvl-label">T2</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;210 <span class="pct">&#8722;16%</span></div><div class="lvl-label">Stop loss</div></div>
+    </div>
+    <div class="rr-line">R/R ~1.5x to T1 &middot; Speculative &#8212; size small &middot; CEO change under monitor</div>
+    <div class="thesis">Eternal's Blinkit quick commerce segment is building category dominance in 10-minute grocery delivery &#8212; a market that barely existed 3 years ago and grew to &#8377;37,779 cr revenue in FY26. Q4FY26 net profit +346% YoY to &#8377;174 cr with profitability trending clearly upward. Trade thesis: price has corrected 31% from its &#8377;368 52W high and is near the &#8377;213 52W support zone &#8212; acceptable risk/reward for a small speculative position. This is NOT a Fundamental recommendation; PE 677x on trailing makes no sense as a value metric at this stage. Note: Deepinder Goyal stepped down as CEO in February 2026. Albinder Dhindsa now leads &#8212; monitoring transition.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026</span><button class="det-btn" onclick="toggleDet(event,this)">Technical detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>52W Range</td><td>&#8377;213&#8211;&#8377;368</td><td>Near 52W support</td></tr><tr><td>Blinkit FY26 Revenue</td><td>&#8377;37,779 cr</td><td>+626% (accounting change)</td></tr><tr><td>Q4FY26 Net Profit</td><td>&#8377;174 cr</td><td>+346% YoY</td></tr><tr><td>CEO Change</td><td>Feb 2026</td><td>Albinder Dhindsa &#8212; monitoring</td></tr></table></div>
+  </div>
+</div><!-- end trade -->
 
 <!-- ═══ SPECIAL SITUATION ═══ -->
-<div class="sec sec-filter sec-filter-special">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Special situation — act on the event ⚡</div>
+<div id="ps" style="display:none">
+  <div class="tab-def">One-off event creating a time-bound opportunity. Each card explains the event, the value mechanism, the timeline and the exit trigger in plain English.</div>
+  <div class="section-hdr">Highest Conviction</div>
 
-<!-- GVT&D -->
-<div class="card hc-amber" id="c-GVTD">
-  <div class="card-hd">
-    <div>
-      <div class="cname">GE Vernova T&D India <span class="cticker">GVT&D</span><span class="delta dd">▼ −5.7%</span><span class="alert-p">⚡ Board 18 May</span></div>
-      <div class="cmeta">FY26 results + dividend on 18 May. Last quarter +28% EPS surprise. Two scenarios — beat or miss. Do NOT enter before results.</div>
+  <div class="card" data-ft="false">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">APOLLOHOSP</span></div><div class="fullname">Apollo Hospitals Enterprise Limited</div><div class="meta-pills"><span class="pill sector">Healthcare</span><span class="pill cap">Large cap</span><span class="pill timeline">Special Situation 9&#8211;15m</span><span class="pill date">Rec: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="price live-price" data-ticker="APOLLOHOSP.NS">&#8377;&#8212;</div><div class="cv-badge cv-highest">Highest</div></div>
     </div>
-    <span class="tag t-watch">Wait</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-GVTD">Loading...</span><span class="price-date" id="date-GVTD"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p3"></div><div class="pip p3"></div><div class="pip p3"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'GVTD','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'GVTD','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="GVTD-levels">
+    <div class="divider"></div>
+    <div class="event-box">
+      <div class="event-label">The Event</div>
+      Apollo Hospitals is demerging its pharmacy and digital health businesses (Apollo HealthCo) into a separately listed entity. Shareholders receive 195.2 shares of Apollo HealthCo for every 100 Apollo shares. Shareholder EGM vote: 24 June 2026. NCLT approval expected Q4FY27.
+    </div>
     <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-GVTD">₹4,274</div></div>
-      <div class="lc"><div class="ll">If beat</div><div class="lv en">Buy ₹4,500+</div><div class="ls">Post-results gap</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹5,000</div><div class="ls">ATH break</div></div>
-      <div class="lc"><div class="ll">If miss</div><div class="lv t2">Buy ₹3,800–4,000</div><div class="ls">Better entry</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹3,600</div><div class="ls">Pre-breakout</div></div>
+      <div class="lvl-box"><div class="lvl-val entry">&#8377;8,000&#8211;8,400</div><div class="lvl-label">Entry</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;9,500 <span class="pct">+16%</span></div><div class="lvl-label">T1 (pure hospital re-rating)</div></div>
+      <div class="lvl-box"><div class="lvl-val target">&#8377;10,500 <span class="pct">+29%</span></div><div class="lvl-label">T2 (post-listing)</div></div>
+      <div class="lvl-box"><div class="lvl-val stop">&#8377;7,200 <span class="pct">&#8722;11%</span></div><div class="lvl-label">Stop (deal collapse)</div></div>
     </div>
+    <div class="thesis">Apollo has always been two fundamentally different businesses in one entity &#8212; a premium hospital network (high margins, defensible moat) and a pharmacy/digital health platform (lower margins, loss-making diagnostics). Bundling them together has discounted the hospital business's true value: consolidated EBITDA margins at ~15% are weighed down by the pharmacy segment. Once separated, the pure hospital business should command a re-rating to 60&#8211;70x PE. FY26: Revenue +16% to &#8377;25,229 cr; PAT +34% to &#8377;1,942 cr. Underlying business quality is genuinely excellent. What kills the thesis: shareholder vote rejection on 24 June 2026, NCLT rejection, or material regulatory complication.</div>
+    <div class="card-footer"><span class="rec-date">Rec: 30 May 2026 &middot; Key date: 24 Jun 2026 shareholder vote</span><button class="det-btn" onclick="toggleDet(event,this)">Event detail &#9660;</button></div>
+    <div class="tech-detail" style="display:none"><table class="ind-table"><tr><td>Event</td><td colspan="2">Composite demerger-merger scheme</td></tr><tr><td>New Entity</td><td colspan="2">Apollo HealthCo (pharmacy + digital health)</td></tr><tr><td>Share Ratio</td><td colspan="2">195.2 HealthCo shares per 100 Apollo shares</td></tr><tr><td>Shareholder Vote</td><td colspan="2">24 June 2026 (EGM)</td></tr><tr><td>NCLT Timeline</td><td colspan="2">Q4FY27 expected</td></tr><tr><td>Thesis kill</td><td colspan="2">Vote failure / NCLT rejection</td></tr><tr><td>FY26 Revenue</td><td colspan="2">&#8377;25,229 cr (+16% YoY)</td></tr><tr><td>FY26 PAT</td><td colspan="2">&#8377;1,942 cr (+34% YoY)</td></tr></table></div>
   </div>
-  <div class="tab-panel" id="GVTD-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:GVT%26D","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="GVTD-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">GE Vernova T&D India makes the big transformers and high-voltage equipment that move electricity across India's national grid. Think of it as the "plumbing" of India's power network — without their equipment, the electricity from solar farms can't reach cities. The company is backed by GE (the American industrial giant) and has over 100 years of experience. The stock is currently sitting in what traders call "no man's land" — it's neither cheap enough to buy now nor has it had the results announcement that would confirm direction. The smart move is to wait for the 18 May board meeting results before deciding.</div>
-      </div>
-      <div class="analyst-note note-warn">⚠️ <strong>Analyst note:</strong> Do NOT enter before 18 May results. Current ₹4,274 is between both scenarios — no edge at this price. Wait for the event, then act on the reaction. Beat = buy ₹4,500+. Miss = buy ₹3,800–4,000.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Results 18 May → 3–6M</span><span class="cf-rr">Event-driven</span><span class="cf-note">Two clear scenarios · Both have better entries than today</span></div>
-</div>
-</div>
-
-<!-- ═══ TRADE SETUPS ═══ -->
-<div class="sec sec-filter sec-filter-trades">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--amber)"></span>Trade setups — momentum and recovery ⭐⭐⭐</div>
-
-<!-- COFORGE -->
-<div class="card" id="c-COFORGE">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Coforge <span class="cticker">COFORGE</span><span class="delta df">≈ flat</span></div>
-      <div class="cmeta">Q4 PAT +134% YoY. EBITDA margin +370bps. FY27 EBITDA guidance 20.5%+. PL Capital TP ₹2,020. 37% below ATH ₹1,994.</div>
-    </div>
-    <span class="tag t-trade">Trade setup</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-COFORGE">Loading...</span><span class="price-date" id="date-COFORGE"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p3"></div><div class="pip p3"></div><div class="pip p3"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'COFORGE','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'COFORGE','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="COFORGE-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-COFORGE">₹1,285</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹1,200–1,275</div><div class="ls">On weakness</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,600</div><div class="ls">+25%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹2,020</div><div class="ls">+57% PL TP</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹1,020</div><div class="ls">52W low</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="COFORGE-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:COFORGE","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="COFORGE-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Coforge is a mid-sized IT services company (like a smaller version of Infosys or TCS) that has quietly had an excellent year while the broader IT sector has been struggling. It recently acquired Encora, an AI and digital engineering firm, which nearly doubles its size and gives it strong capabilities in the US market. The stock is 37% below its peak — not because the business is bad, but because IT stocks across the board have been out of favour. If/when investor sentiment toward IT improves, Coforge should bounce sharply given its strong underlying results. Treat it as a small, recovery-focused position — not a core holding.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Best individual IT story on NSE in a tough sector. Encora deal creates $2.5Bn AI-native platform. PL Capital TP ₹2,020 = +57% from here. Keep position small (3–5%) until sector turns.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 3–6 months</span><span class="cf-rr">R/R 1:2.5</span><span class="cf-note">Small position only · IT sector headwind persists</span></div>
-</div>
-
-<!-- ETERNAL -->
-<div class="card" id="c-ETERNAL">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Eternal (Zomato) <span class="cticker">ETERNAL</span><span class="delta dd">▼ −5.0%</span></div>
-      <div class="cmeta">₹244 — near 52W support ₹212. 34% below ATH ₹368. Blinkit GOV accelerating. Quick commerce structural play.</div>
-    </div>
-    <span class="tag t-trade">Trade setup</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-ETERNAL">Loading...</span><span class="price-date" id="date-ETERNAL"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p3"></div><div class="pip p3"></div><div class="pip p3"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'ETERNAL','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'ETERNAL','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="ETERNAL-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ETERNAL">₹244</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹220–245</div><div class="ls">Near support</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹295</div><div class="ls">+21%</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹345</div><div class="ls">+41%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹200</div><div class="ls">52W low</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="ETERNAL-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:ETERNAL","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="ETERNAL-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Eternal (formerly Zomato) is best known for food delivery, but the real story is Blinkit — its 10-minute grocery and essentials delivery service. Blinkit is growing at 80%+ annually and is close to becoming consistently profitable. The stock has fallen 34% from its peak, putting it near its lowest price in a year — which is why the risk/reward looks interesting now. The maximum downside is roughly ₹44 to the 52W low, while the upside to the previous high is over ₹100. That's an asymmetric bet on India's urban consumption and quick commerce trend.</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Near 52W support = asymmetric setup. ₹44 downside vs ₹100+ upside. Blinkit GOV acceleration is the key metric — not headline PE. 6–9 month trade, not a long-term hold.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:2.1</span><span class="cf-note">Near 52W support · Blinkit profitability = catalyst</span></div>
-</div>
-</div>
-
-<!-- ═══ GROWTH ═══ -->
-<div class="sec sec-filter sec-filter-growth">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--teal)"></span>Growth / pre-profit — max 5% allocation ⭐⭐</div>
-
-<!-- ATHER -->
-<div class="card" id="c-ATHER">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Ather Energy <span class="cticker">ATHERENERG</span><span class="delta du">▲ +3.3%</span></div>
-      <div class="cmeta">₹940, near ATH ₹989. Revenue +66% FY26. First operating cash flow positive. Ola Electric collapsing = Ather gains. 18.6% market share.</div>
-    </div>
-    <span class="tag t-growth">Growth</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-ATHER">Loading...</span><span class="price-date" id="date-ATHER"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p2"></div><div class="pip p2"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'ATHER','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'ATHER','conviction')">Why Conviction?</button>
-  </div>
-  <div class="tab-panel active" id="ATHER-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-ATHER">₹940</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹850–920</div><div class="ls">On pullback</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹1,050</div><div class="ls">HSBC TP</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹1,200</div><div class="ls">+28%</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹750</div><div class="ls">Below 50DMA</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="ATHER-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:ATHERENERG","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="ATHER-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English</div>
-        <div class="plain-eng-text">Ather makes premium electric scooters (Rizta, 450X). Unlike most EV companies that just assemble parts, Ather designs everything in-house including the software — more like Tesla than a traditional scooter company. The business is still losing money, but the losses are shrinking fast. For the first time ever, it generated positive operating cash flow in FY26 — a major milestone. Meanwhile, Ola Electric (its main competitor) is in serious trouble with falling sales and customer complaints. Every scooter Ola loses is a potential Ather sale. India's EV policy will make electric-only scooters mandatory from FY29 — Ather is well-positioned for that shift. But because it's still loss-making, keep this to a small bet (5% of your portfolio).</div>
-      </div>
-      <div class="analyst-note">📊 <strong>Analyst note:</strong> Highest-quality pure EV 2W play in India. Operating cash flow positive FY26 = major milestone. Max 5% allocation. Key milestone to watch: 50,000 units/month consistently = EBITDA breakeven.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 12–18 months</span><span class="cf-rr">R/R 1:1.5</span><span class="cf-note">Max 5% · Milestone: 50k units/month = breakeven</span></div>
-</div>
-</div>
-
-<!-- ═══ CAUTION ═══ -->
-<div class="sec sec-filter sec-filter-caution">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--red)"></span>Caution / downgraded — re-evaluate</div>
-
-<!-- KEC -->
-<div class="card hc-red" id="c-KEC">
-  <div class="card-hd">
-    <div>
-      <div class="cname">KEC International <span class="cticker">KEC</span><span class="delta dd">▼ −10% TODAY</span><span class="alert-p">⚠ Earnings call 10am</span></div>
-      <div class="cmeta">Q4 profit −28% YoY. NWC stuck at 137 days. FY26 full year was record. Conviction downgraded from ⭐⭐⭐ to ⭐⭐. Stop ₹490 now live.</div>
-    </div>
-    <span class="tag t-caution">Caution</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-KEC">Loading...</span><span class="price-date" id="date-KEC"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p2"></div><div class="pip p2"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'KEC','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'KEC','conviction')">Revised View</button>
-  </div>
-  <div class="tab-panel active" id="KEC-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-KEC">~₹530</div></div>
-      <div class="lc"><div class="ll">Wait</div><div class="lv na">Hear 10am call</div><div class="ls">No entry now</div></div>
-      <div class="lc"><div class="ll">If call good</div><div class="lv t1">Buy ₹490–540</div><div class="ls">FY27 guidance key</div></div>
-      <div class="lc"><div class="ll">If call poor</div><div class="lv sl">Exit ₹490</div><div class="ls">Thesis broken</div></div>
-      <div class="lc"><div class="ll">Hard stop</div><div class="lv sl">₹490</div><div class="ls">52W low</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="KEC-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:KEC","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="KEC-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — what went wrong</div>
-        <div class="plain-eng-text">KEC builds power transmission towers and railway lines across India and internationally. The long-term story is still good — they just won record new orders. But the Q4 profit fell 28% because: (1) revenue from one segment (civil construction) dropped, and (2) customers owed them a lot of money that they expected to collect in Q4 but didn't. That unpaid money (called "working capital") staying stuck means KEC has to borrow more to fund its own operations, which is expensive. The market is selling because management had promised this would improve, and it didn't. The 10am earnings call today is critical — listen to hear if management has a credible plan to fix this.</div>
-      </div>
-      <div class="analyst-note note-red">🔴 <strong>Revised view:</strong> Downgraded from ⭐⭐⭐ to ⭐⭐. Business is not broken (record order intake is real) but margin miss + NWC stuck + revenue decline = management credibility dented. Stop ₹490 is now live. Three questions for the 10am call: (1) FY27 revenue + margin guidance, (2) NWC reduction timeline, (3) civil recovery plan. Answers determine whether to hold or exit.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Decision today 10am</span><span class="cf-rr">Stop ₹490 live</span><span class="cf-note">Do not add before hearing the call</span></div>
-</div>
-
-<!-- LUPIN -->
-<div class="card" id="c-LUPIN">
-  <div class="card-hd">
-    <div>
-      <div class="cname">Lupin <span class="cticker">LUPIN</span><span class="delta dd">▼ −7.0%</span></div>
-      <div class="cmeta">⬇️ DOWNGRADED. Q4 PAT +89% YoY but market sold off on results. Avg analyst TP ₹2,435 = only 6.5% upside. Somerset FDA Form 483 new overhang.</div>
-    </div>
-    <span class="tag t-caution">Caution</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-LUPIN">Loading...</span><span class="price-date" id="date-LUPIN"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION</span><div class="pip p2"></div><div class="pip p2"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'LUPIN','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'LUPIN','conviction')">Why Downgraded?</button>
-  </div>
-  <div class="tab-panel active" id="LUPIN-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-LUPIN">₹2,287</div></div>
-      <div class="lc"><div class="ll">Entry zone</div><div class="lv en">₹2,050–2,150</div><div class="ls">Only if oversold</div></div>
-      <div class="lc"><div class="ll">Target 1</div><div class="lv t1">₹2,450</div><div class="ls">Avg analyst TP</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹2,700</div><div class="ls">Bull case only</div></div>
-      <div class="lc"><div class="ll">Stop loss</div><div class="lv sl">₹2,000</div><div class="ls">Round support</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="LUPIN-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:LUPIN","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="LUPIN-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — why downgraded</div>
-        <div class="plain-eng-text">Lupin is a good business — it makes generic medicines and its profits grew 89% last year. So why is it downgraded? Because the stock fell even on strong results. In investing, when good news doesn't push a stock higher, it's a warning sign that there are bigger sellers than buyers. Combined with a new FDA finding at one of its factories and limited upside to analyst price targets, the risk/reward is not attractive right now. We'd need to see the stock fall further (to ₹2,050–2,150) before it becomes compelling again.</div>
-      </div>
-      <div class="analyst-note note-red">🔴 <strong>Downgrade note:</strong> Strong results + stock selling off = warning signal. Avg analyst TP ₹2,435 = only 6.5% upside from original 8 May price. Somerset FDA Form 483 is new overhang. Wait for ₹2,050–2,150 before reconsidering. Only re-upgrade when Somerset 483 is resolved.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ 6–9 months</span><span class="cf-rr">R/R 1:1.2 — marginal</span><span class="cf-note">Wait for ₹2,050 · Somerset Form 483 watch</span></div>
-</div>
-
-<!-- STL TECH -->
-<div class="card" id="c-STL">
-  <div class="card-hd">
-    <div>
-      <div class="cname">STL Tech (Sterlite) <span class="cticker">STLTECH</span><span class="delta df">= at ATH ₹376</span></div>
-      <div class="cmeta">PE 312x on 1.2% margins. AI fibre story is real. Price is not. Set alert ₹260–300. Do not buy at ATH.</div>
-    </div>
-    <span class="tag t-watch">Watch only</span>
-  </div>
-  <div class="price-row"><span class="live-price" id="price-STL">Loading...</span><span class="price-date" id="date-STL"></span></div>
-  <div class="pips"><span class="pip-lbl">CONVICTION NOW</span><div class="pip p1"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'STL','levels')">Levels</button>
-    
-    <button class="tab-btn" onclick="switchTab(this,'STL','conviction')">Why Watch Only?</button>
-  </div>
-  <div class="tab-panel active" id="STL-levels">
-    <div class="levels">
-      <div class="lc"><div class="ll">CMP</div><div class="lv cmp" id="lvl-STL">₹376 (ATH)</div></div>
-      <div class="lc"><div class="ll">Alert zone</div><div class="lv en">₹260–300</div><div class="ls">Set price alert</div></div>
-      <div class="lc"><div class="ll">Target then</div><div class="lv t1">₹420</div><div class="ls">+40% from entry</div></div>
-      <div class="lc"><div class="ll">Target 2</div><div class="lv t2">₹500</div><div class="ls">+67%</div></div>
-      <div class="lc"><div class="ll">Do not buy</div><div class="lv na">₹376</div><div class="ls">ATH = no entry</div></div>
-    </div>
-  </div>
-  <div class="tab-panel" id="STL-chart">
-    <div class="live-panel"><div class="tv-wrap"><div class="tradingview-widget-container" style="height:100%"><div class="tradingview-widget-container__widget" style="height:100%"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>{"symbol":"NSE:STLTECH","interval":"D","width":"100%","height":"100%","colorTheme":"light","locale":"en","toolbar_bg":"#f8f9fa","enable_publishing":false,"allow_symbol_change":false,"save_image":false,"style":"1"}</script></div></div></div>
-  </div>
-  <div class="tab-panel" id="STL-conviction">
-    <div class="conv-panel">
-      <div class="plain-eng">
-        <div class="plain-eng-title">💡 In plain English — why we're waiting</div>
-        <div class="plain-eng-text">STL makes optical fibre — the cables that carry internet data. As AI data centres get built across the world, they all need massive amounts of fibre. STL has genuinely benefited from this and the business is improving. But the stock has risen 481% in one year, and the company only keeps 1.2p of profit for every ₹1 of revenue. The stock is priced as if the company will be hugely profitable for years — but it's not yet. The rule here is simple: the story is right, the entry price is wrong. We wait for a 25–30% pullback to ₹260–300 before buying. If the stock keeps going up without us, that's fine — there will always be another opportunity.</div>
-      </div>
-      <div class="analyst-note note-warn">⚠️ <strong>Watch note:</strong> Set price alert at ₹260–300. At that level with same story intact = compelling entry with +40–67% upside. Never chase ATH when margins are 1.2%. Next earnings Jul 23.</div>
-    </div>
-  </div>
-  <div class="card-ft"><span class="cf-hz">⏱ Set alert · wait</span><span class="cf-rr">Not actionable today</span><span class="cf-note">Alert ₹260–300 · Next earnings Jul 23</span></div>
-</div>
-</div>
+</div><!-- end special -->
 
 <!-- ═══ WATCHLIST ═══ -->
-<div class="sec sec-filter sec-filter-watchlist">
-<div class="sec-hd"><span class="sec-dot" style="background:var(--purple)"></span>Watchlist — monitoring, not yet buying</div>
+<div id="pw" style="display:none">
+  <div class="tab-def">Thesis building or entry not yet met. Claude promotes independently when conditions are met &#8212; no action needed from PM until then.</div>
 
-<div class="wl-card">
-  <div><div class="wl-name">Mazagon Dock Shipbuilders <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">MAZDOCK</span></div><div class="wl-meta">Navy submarines + destroyers · 100% order book from Navy · PE 27x · Excellent quality · Near 52W high</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹2,000–2,200</div><div class="wl-alert">Pullback from ATH ₹3,017 needed</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Hitachi Energy India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">POWERINDIA</span></div><div class="wl-meta">HVDC grid tech · Profit +90% YoY · PE 178x too expensive now · Earnings 27 May</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹28,000–30,000</div><div class="wl-alert">−15% from ATH needed · Earnings 27 May catalyst</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">ABB India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">ABB</span></div><div class="wl-meta">Power + industrial automation · ROE 27% · PE 75x · GVT&D peer · Same theme, also expensive</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹5,800–6,200</div><div class="wl-alert">CMP ~₹7,400 · Wait for 20% correction</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Torrent Pharmaceuticals <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TORNTPHARM</span></div><div class="wl-meta">Quality domestic pharma compounder · ROE 28% · Outperformed sector +29% YoY · Near fair value</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹3,000–3,200</div><div class="wl-alert">CMP ~₹3,400 · Small margin over entry</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Dixon Technologies <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">DIXON</span></div><div class="wl-meta">India's electronics manufacturer · Apple + Samsung PLI · Revenue +60% YoY · PE 120x = wait for correction</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹13,000–14,000</div><div class="wl-alert">CMP ~₹17,000 · Need 20% pullback</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Tata Elxsi <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">TATAELXSI</span></div><div class="wl-meta">Engineering R&D · Automotive + media tech · Deep pullback from ₹9,000 ATH · Quality compounder in distress</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹5,000–5,500</div><div class="wl-alert">CMP ~₹5,800 · Watch for base formation</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Kaynes Technology <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">KAYNES</span></div><div class="wl-meta">Electronic systems manufacturing · Defence + aerospace + automotive · ESDM play · High quality, expensive</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹4,500–5,000</div><div class="wl-alert">PE 120x currently · Wait for sector correction</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">IRFC <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">IRFC</span></div><div class="wl-meta">Railway financing arm · PE 14x · Dividend yield 1.8% · Cheap, boring, and approaching entry zone</div></div>
-  <div class="wl-right"><div class="wl-trigger">Buy ₹150–165</div><div class="wl-alert">CMP ~₹175 · Near entry</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Granules India <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">GRANULES</span></div><div class="wl-meta">API + finished dose pharma · PE 20x · Near 52W low · Deep value · USFDA approvals building</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹475–520</div><div class="wl-alert">Near 52W low · Watch for reversal signal</div></div>
-</div>
-<div class="wl-card">
-  <div><div class="wl-name">Paytm (One97 Comms) <span style="color:var(--text3);font-size:11px;font-family:var(--mono)">PAYTM</span></div><div class="wl-meta">Fintech recovery · Post-RBI ban stabilising · Revenue recovering · Speculative — small bet only</div></div>
-  <div class="wl-right"><div class="wl-trigger">Watch ₹750–850</div><div class="wl-alert">CMP ~₹900 · High risk · Wait for base</div></div>
-</div>
-</div>
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">HAL</span> <span class="ft-badge">Trade Setup</span><div class="fullname">Hindustan Aeronautics Limited</div><div class="meta-pills"><span class="pill sector">Defence</span><span class="pill cap">Large cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="HAL.NS">&#8377;&#8212;</div><div class="wl-entry-label">Target entry</div><div class="wl-entry-price">&#8377;3,850&#8211;3,950</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Pullback from current &#8377;4,304 to &#8377;3,850&#8211;3,950 support zone with volume confirmation. Golden Cross must remain intact. RSI in 45&#8211;62 range at entry.</div>
+    <div class="wl-rr">Indicative R/R at entry: T1 &#8377;4,600 = ~3.0x &middot; T2 &#8377;5,100 = ~6.0x &middot; SL &#8377;3,550</div>
+    <div class="wl-review">Promotion condition: Highest conviction Trade if all conditions met simultaneously.</div>
+  </div>
 
-<!-- DISCLAIMER -->
-<div class="disc">
-  INDIA EQUITY MASTERLIST v3 · Prices via TradingView (live on page open) · Analysis updated 20 May 2026<br>
-  Conviction scores and entry/exit levels are qualitative analyst estimates — not guaranteed returns or financial advice.<br>
-  Stop losses assume EOD closing prices, not intraday wicks. Past performance does not guarantee future results.<br>
-  This document is for informational purposes only. Consult a SEBI-registered investment advisor before investing.<br><br>
-  HOW TO UPDATE: Share this file with Claude weekly and say "update the masterlist". Prices auto-update via TradingView every time you open the file.
-</div>
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">SOLARINDS</span> <span class="ft-badge">Trade Setup</span><div class="fullname">Solar Industries India Limited</div><div class="meta-pills"><span class="pill sector">Defence / Explosives</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="SOLARINDS.NS">&#8377;&#8212;</div><div class="wl-entry-label">Target entry</div><div class="wl-entry-price">&#8377;16,500&#8211;17,000</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Pullback from current &#8377;18,400+ to &#8377;16,500&#8211;17,000 support zone corresponding to the March&#8211;April 2026 breakout level.</div>
+    <div class="wl-rr">Indicative R/R: T1 &#8377;19,500 = ~1.7x &middot; T2 &#8377;21,500 = ~3.1x &middot; SL &#8377;15,800</div>
+    <div class="wl-review">Promotion condition: Highest conviction Trade on pullback with volume support.</div>
+  </div>
 
-</div><!-- end .page -->
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">ATHERENERG</span><div class="fullname">Ather Energy Limited</div><div class="meta-pills"><span class="pill sector">EV &middot; Two-Wheelers</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="ATHERENERG.NS">&#8377;&#8212;</div><div class="wl-entry-label">Target entry</div><div class="wl-entry-price">&#8377;780&#8211;840</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Pullback to &#8377;780&#8211;840 support zone. Current ~&#8377;964 is near the &#8377;1,004 52W high &#8212; not an entry. EV policy mandate (all-EV two-wheelers mandatory from FY29) is a strong structural catalyst. Net loss narrowing rapidly.</div>
+    <div class="wl-rr">Indicative R/R at &#8377;810: T1 &#8377;1,000 = ~2.3x &middot; SL &#8377;730</div>
+    <div class="wl-review">Promotion condition: Medium conviction Trade if pullback met with RSI 45&#8211;60 and Golden Cross intact.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">NATCOPHARM</span><div class="fullname">Natco Pharma Limited</div><div class="meta-pills"><span class="pill sector">Pharmaceuticals</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="NATCOPHARM.NS">&#8377;&#8212;</div><div class="wl-entry-label">Monitoring</div><div class="wl-entry-price">Revenue trend</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Q4FY26 results (earnings call 29 May 2026) to confirm whether revenue decline is reversing. Revenue declined sharply QoQ for 2 consecutive quarters. Note: Natco has announced demerger of its agrochem division (Natco Crop Health Sciences, record date 1 Oct 2026, 1:1 ratio) &#8212; a separate Special Situation to monitor.</div>
+    <div class="wl-rr">Fundamental entry if promoted: &#8377;1,100&#8211;1,200. T1 &#8377;1,400. SL &#8377;980.</div>
+    <div class="wl-review">Review: immediately post Q4FY26 results.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">BDL</span><div class="fullname">Bharat Dynamics Limited</div><div class="meta-pills"><span class="pill sector">Defence &middot; Missiles</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="BDL.NS">&#8377;&#8212;</div><div class="wl-entry-label">Monitoring</div><div class="wl-entry-price">~&#8377;1,150&#8211;1,250</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Full fundamental review. BDL is India's sole manufacturer of surface-to-air and air-to-air missiles &#8212; irreplaceable position. Down 36% from 52W high of &#8377;1,880. Revenue +20%+ YoY, order book &#8377;7,000+ cr. Autonomous Tier 2 Defence screen pick (30 May). Needs: Golden Cross confirmation, SMA200 check, governance review.</div>
+    <div class="wl-review">Promotion condition: Full review next cycle. If gates pass &#8594; Fundamental Highest conviction.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">GESHIP</span><div class="fullname">The Great Eastern Shipping Company Limited</div><div class="meta-pills"><span class="pill sector">Shipping &middot; Offshore</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="GESHIP.NS">&#8377;&#8212;</div><div class="wl-entry-label">Monitoring</div><div class="wl-entry-price">Post-correction</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Charter rate outlook assessment. India's best-managed private shipping company &#8212; fleet utilisation 94%, PAT expected &#8377;1,800+ cr in FY26. PE ~8x but cyclical. Down 6.1% today on market selloff. Full fundamental review next cycle on charter rate sustainability.</div>
+    <div class="wl-review">Review: next cycle.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">SIEMENS</span><div class="fullname">Siemens Limited</div><div class="meta-pills"><span class="pill sector">Capital Goods / Automation</span><span class="pill cap">Large cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="SIEMENS.NS">&#8377;&#8212;</div><div class="wl-entry-label">Monitoring</div><div class="wl-entry-price">Post-demerger scope</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Clarity on remaining entity scope post T&D demerger. Siemens India no longer includes the T&amp;D power business (now GVT&amp;D). Remaining entity: industrial automation, building technologies, smart infrastructure, mobility. Need a clean fundamental assessment on the restructured scope before recommending.</div>
+    <div class="wl-review">Review: next cycle after post-demerger financials available.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">AUROPHARMA</span><div class="fullname">Aurobindo Pharma Limited</div><div class="meta-pills"><span class="pill sector">Pharmaceuticals</span><span class="pill cap">Mid cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="AUROPHARMA.NS">&#8377;&#8212;</div><div class="wl-entry-label">Target entry</div><div class="wl-entry-price">&#8377;1,400&#8211;1,450</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Pullback from current near-52W-high (~&#8377;1,537). US generics franchise strong, margins recovering. Entry timing not ideal at current levels.</div>
+    <div class="wl-rr">Indicative R/R at &#8377;1,425: T1 &#8377;1,650 = ~2.5x &middot; SL &#8377;1,280</div>
+    <div class="wl-review">Promotion condition: Medium conviction Fundamental on any 8&#8211;10% pullback.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">VEDL</span><div class="fullname">Vedanta Limited</div><div class="meta-pills"><span class="pill sector">Metals &amp; Mining</span><span class="pill cap">Large cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="VEDL.NS">&#8377;&#8212;</div><div class="wl-entry-label">Monitoring</div><div class="wl-entry-price">Post-demerger clarity</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Demerger effective 1 May 2026 created four separate entities (aluminium, power, oil &amp; gas, iron ore). FY26 record results (PAT &#8377;25,096 cr, +22%). Need to evaluate each entity separately. Promoter pledge history is a governance concern to assess.</div>
+    <div class="wl-review">Review: next 2 cycles as demerged entity financials become clearer.</div>
+  </div>
+
+  <div class="wl-card">
+    <div class="wl-top"><div class="wl-left"><span class="ticker">GVT&amp;D</span> <span class="ft-badge">Trade Setup</span><div class="fullname">GE Vernova T&amp;D India Limited</div><div class="meta-pills"><span class="pill sector">Power T&amp;D</span><span class="pill cap">Large cap</span><span class="pill date">Added: 30 May 2026</span></div></div><div class="wl-right"><div class="price live-price" data-ticker="GVT&D.NS">&#8377;&#8212;</div><div class="wl-entry-label">Target entry</div><div class="wl-entry-price">&#8377;4,500&#8211;4,700</div></div></div>
+    <div class="wl-waiting"><strong>Waiting for:</strong> Pullback from current ~&#8377;5,149. Trade entry only &#8212; Fundamental already active at a separate entry zone.</div>
+    <div class="wl-rr">Indicative R/R at &#8377;4,600: T1 &#8377;5,600 = ~2.2x &middot; SL &#8377;4,100</div>
+    <div class="wl-review">Promotion condition: Medium conviction Trade on pullback with volume confirmation.</div>
+  </div>
+
+</div><!-- end watchlist -->
+
+<!-- ═══ CAUTION ═══ -->
+<div id="pc" style="display:none">
+  <div class="tab-def">Do not add fresh. Something short-term has changed &#8212; hold existing positions and re-evaluate. Full cards remain in their original tab.</div>
+
+  <div class="cscard">
+    <div class="cs-ticker">POWERGRID</div>
+    <div class="cs-name">Power Grid Corporation of India</div>
+    <div class="cs-type">Timing Caution</div>
+    <div class="cs-reason">Broad market selloff 29 May (Nifty &#8722;1.9%, RSI 26.8) drove PSU selling. Thesis fully intact. Do not add fresh during market dislocation. Hold existing. Re-evaluate when Nifty RSI stabilises above 35.</div>
+    <div class="cs-since">Since: 30 May 2026</div>
+  </div>
+
+  <div class="cscard">
+    <div class="cs-ticker">TDPOWERSYS</div>
+    <div class="cs-name">TD Power Systems Limited</div>
+    <div class="cs-type">Timing Caution</div>
+    <div class="cs-reason">Q4FY26 EBITDA margin contracted to 17.4% from 20.7% despite strong revenue growth (+47% FY26). Stock is up 186% in one year and approaching T1 of &#8377;1,450. Do not add fresh. Hold existing. Expiry: next quarterly results.</div>
+    <div class="cs-since">Since: 30 May 2026</div>
+  </div>
+
+</div><!-- end caution -->
+
+<!-- ═══ ARCHIVE ═══ -->
+<div id="pa" style="display:none">
+  <div class="tab-def">Closed recommendations. Implied return from recommended entry midpoint to removal price. Track record is honest &#8212; bad calls shown as losses.</div>
+
+  <div class="card archived">
+    <div class="card-top">
+      <div class="card-left"><div class="name-row"><span class="ticker">HFCL</span></div><div class="fullname">HFCL Limited</div><div class="meta-pills"><span class="pill sector">Telecom / Defence</span><span class="pill cap">Mid cap</span><span class="pill date">Removed: 30 May 2026</span></div></div>
+      <div class="card-right"><div class="cv-badge cv-medium" style="opacity:.6">Medium (Archived)</div></div>
+    </div>
+    <div class="archive-reason ar-success"><strong>Removed 30 May 2026 &#8212; Target 1 reached.</strong> Entry midpoint &#8377;141.50 &#8594; T1 exit &#8377;180.00 = <strong>+27.3% implied return.</strong> Q4FY26 net sales +128% YoY confirmed real turnaround. New RailTel AMC order &#8377;135 cr won same day as archive. If re-initiating: fresh entry &#8377;170&#8211;180 with updated levels.</div>
+  </div>
+
+</div><!-- end archive -->
+
+<!-- ═══ WEEKLY CHANGES ═══ -->
+<div id="pch" style="display:none">
+  <div class="tab-def">Running changelog. Most recent entry at top. Never cleared.</div>
+
+  <div class="cl-entry">
+    <div class="cl-date">30 May 2026 &#8212; First Framework Audit &amp; Weekly Refresh</div>
+
+    <div class="cl-section">
+      <div class="cl-label new">New Fundamental &#8212; Highest Conviction</div>
+      <div class="cl-item">LUPIN &#8594; FY26 exceptional: revenue +24%, EBITDA margin +890 bps, net cash. PE 20x vs sector 32x. Entry &#8377;2,200&#8211;2,350.</div>
+      <div class="cl-item">HAL &#8594; &#8377;90,000 cr order pipeline, defence monopoly, zero net debt. Entry &#8377;3,850&#8211;3,950 on pullback.</div>
+      <div class="cl-item">SOLARINDS &#8594; Q4FY26 profit +70%, defence revenue guidance &#8377;4,500 cr FY27. Entry &#8377;17,800&#8211;18,500.</div>
+      <div class="cl-item">DATAPATTNS &#8594; 44% EBITDA margin in defence electronics. Extraordinary quality. Entry &#8377;3,800&#8211;4,050.</div>
+      <div class="cl-item">DIVISLAB &#8594; Custom synthesis 56% of revenue (patented drugs). Net cash. FDA clean. Entry &#8377;6,500&#8211;6,800. Proactive new idea.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label new">New Fundamental &#8212; Medium Conviction</div>
+      <div class="cl-item">POWERGRID &#8594; PE 17x, near 52W support, dividend 3.5%. Entry &#8377;290&#8211;305. Timing Caution applied.</div>
+      <div class="cl-item">BEL &#8594; Debt-free defence PSU. Entry &#8377;405&#8211;425.</div>
+      <div class="cl-item">CDSL &#8594; 31% below 52W high, duopoly infrastructure. Entry &#8377;1,200&#8211;1,280.</div>
+      <div class="cl-item">GVT&amp;D (relabelled as GE Vernova T&amp;D India) &#8594; T&amp;D capex cycle. Entry pullback &#8377;4,500&#8211;4,700.</div>
+      <div class="cl-item">KEC &#8594; 50% below 52W high, order book &#8377;33,000+ cr. Entry &#8377;460&#8211;495.</div>
+      <div class="cl-item">LT &#8594; India's infrastructure backbone. Entry &#8377;3,700&#8211;3,850.</div>
+      <div class="cl-item">BSE &#8594; FY26 revenue +59.5%, derivatives growth story. Entry &#8377;3,900&#8211;4,150.</div>
+      <div class="cl-item">COFORGE &#8594; IT mid-cap, 28% below 52W high. Entry &#8377;1,350&#8211;1,450.</div>
+      <div class="cl-item">LODHA &#8594; 4 years 20% pre-sales CAGR, 0.2x net debt/equity. Entry &#8377;1,150&#8211;1,280. Proactive new idea.</div>
+      <div class="cl-item">ICICIGI &#8594; India insurance penetration structural growth. Entry &#8377;1,680&#8211;1,800. Proactive new idea.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label new">New Trade</div>
+      <div class="cl-item">STLTECH &#8594; Medium conviction. FY26 turnaround: revenue +19%, EBITDA margin 13.2%, order book +110%. Entry &#8377;480&#8211;515.</div>
+      <div class="cl-item">ETERNAL &#8594; Speculative, Medium. Blinkit dominance, price near 52W support. Entry &#8377;240&#8211;258. CEO change monitored.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label new">New Special Situation</div>
+      <div class="cl-item">APOLLOHOSP &#8594; Highest conviction. Demerger of Apollo HealthCo creating pure-play hospital re-rating. Shareholder EGM vote 24 June 2026. Entry &#8377;8,000&#8211;8,400.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label caution">Caution Flags Applied</div>
+      <div class="cl-item">POWERGRID &#8212; Timing Caution. Market-wide PSU selling 29 May. Thesis intact.</div>
+      <div class="cl-item">TDPOWERSYS &#8212; Timing Caution. Q4 margin contraction, price near T1.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label archived">Archived</div>
+      <div class="cl-item">HFCL &#8212; Target 1 reached. Entry &#8377;141.50 &#8594; Exit &#8377;180.00 = +27.3% implied return.</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label watchlist">Watchlist</div>
+      <div class="cl-item">Added: HAL Trade (pullback &#8377;3,850&#8211;3,950), SOLARINDS Trade (pullback &#8377;16,500&#8211;17,000), ATHERENERG (EV play, await &#8377;780&#8211;840), NATCOPHARM (pending Q4 revenue data), GVT&amp;D Trade, AUROPHARMA (await pullback), SIEMENS (post-demerger scope), BDL (Tier 2 Defence screen), GESHIP (charter rate review), VEDL (entity review).</div>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-label sector">Sector &amp; Market Note</div>
+      <div class="cl-item">Nifty closed at 23,547 on 29 May &#8212; sharp final-hour selloff on MSCI rebalancing + IMD monsoon downgrade (92% &#8594; 90% LPA) + US-Iran ceasefire uncertainty. Nifty RSI 26.8 &#8212; technically oversold. Pharma is the standout sector (Lupin FY26 exceptional). Defence pulled back structurally intact. The oversold condition creates entry opportunities in quality names: POWERGRID, CDSL, KEC. 28 May was a market holiday (Bakri Eid).</div>
+    </div>
+
+  </div>
+</div><!-- end changes -->
+
+<div class="disclaimer">This dashboard is for personal research and information only. Not financial advice. All investment decisions are the PM's alone. Analyst: Claude (Anthropic). Data: Yahoo Finance, Screener.in, company filings. Prices live via Yahoo Finance &#8212; may be delayed.</div>
+
+</div><!-- app -->
 
 <script>
-// ─── TAB SWITCHING ───
-function switchTab(btn, id, panel) {
-  const card = document.getElementById('c-' + id);
-  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(id + '-' + panel).classList.add('active');
+const tabs = {f:'pf',t:'pt',s:'ps',w:'pw',c:'pc',a:'pa',ch:'pch'};
+const tabBtns = document.querySelectorAll('.tab');
+let activeTab = 'f';
+
+function setTab(id) {
+  Object.values(tabs).forEach(p => { const el = document.getElementById(p); if(el) el.style.display = 'none'; });
+  const el = document.getElementById(tabs[id]);
+  if (el) el.style.display = '';
+  tabBtns.forEach((b,i) => b.classList.toggle('active', Object.keys(tabs)[i] === id));
+  activeTab = id;
 }
 
-// ─── SECTION FILTER ───
-function filterSection(section, btn) {
-  document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('page').className = 'page showing-' + section;
+function toggleDet(e, btn) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const detail = card.querySelector('.tech-detail');
+  if (!detail) return;
+  const open = detail.style.display !== 'none';
+  detail.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'Technical detail \u25BE' : 'Technical detail \u25B4';
 }
 
-// ─── LIVE PRICES via Yahoo Finance (unofficial, free, no API key) ───
-const stocks = [
-  { id:'HAL',       sym:'HAL.NS' },
-  { id:'BSE',       sym:'BSE.NS' },
-  { id:'BEL',       sym:'BEL.NS' },
-  { id:'NATCO',     sym:'NATCOPHARM.NS' },
-  { id:'AJANTA',    sym:'AJANTPHARM.NS' },
-  { id:'SOLAR',     sym:'SOLARINDS.NS' },
-  { id:'POWERGRID', sym:'POWERGRID.NS' },
-  { id:'TITAN',     sym:'TITAN.NS' },
-  { id:'AURO',      sym:'AUROPHARMA.NS' },
-  { id:'CDSL',      sym:'CDSL.NS' },
-  { id:'GVTD',      sym:'GVT%26D.NS' },
-  { id:'COFORGE',   sym:'COFORGE.NS' },
-  { id:'ETERNAL',   sym:'ETERNAL.NS' },
-  { id:'ATHER',     sym:'ATHERENERG.NS' },
-  { id:'KEC',       sym:'KEC.NS' },
-  { id:'LUPIN',     sym:'LUPIN.NS' },
-  { id:'STL',       sym:'STLTECH.NS' },
-];
+function toggleFT() {
+  const btn = document.getElementById('ftbtn');
+  const active = btn.classList.toggle('active');
+  document.querySelectorAll('#pf .card').forEach(card => {
+    card.style.display = active ? (card.dataset.ft === 'true' ? '' : 'none') : '';
+  });
+}
 
-async function fetchPrice(stock) {
-  try {
-    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${stock.sym}?interval=1d&range=1d&corsDomain=finance.yahoo.com`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
-    const meta = data.chart.result[0].meta;
-    const price = meta.regularMarketPrice;
-    const prev  = meta.chartPreviousClose || meta.previousClose;
-    const chg   = price - prev;
-    const pct   = (chg / prev * 100);
-    const ts    = new Date(meta.regularMarketTime * 1000);
-    const dateStr = ts.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) +
-                    ' ' + ts.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-
-    const priceEl = document.getElementById('price-' + stock.id);
-    const dateEl  = document.getElementById('date-'  + stock.id);
-    const lvlEl   = document.getElementById('lvl-'   + stock.id);
-
-    const sign = chg >= 0 ? '+' : '';
-    const cls  = chg >= 0 ? 'chg-up' : 'chg-dn';
-    const priceStr = '₹' + price.toLocaleString('en-IN', {maximumFractionDigits:2});
-
-    if (priceEl) priceEl.innerHTML = `${priceStr} <span class="live-chg ${cls}">${sign}${pct.toFixed(2)}% (${sign}₹${Math.abs(chg).toFixed(1)})</span>`;
-    if (dateEl)  dateEl.textContent  = 'as of ' + dateStr + ' IST';
-    if (lvlEl)   lvlEl.textContent   = priceStr;
-  } catch(e) {
-    // Fallback: try Stooq
+async function loadPrices() {
+  const els = document.querySelectorAll('.live-price[data-ticker]');
+  const tickers = [...new Set([...els].map(el => el.dataset.ticker))];
+  for (const ticker of tickers) {
     try {
-      const stooqUrl = `https://stooq.com/q/l/?s=${stock.sym.replace('.NS','.ns').toLowerCase()}&f=sd2t2ohlcv&e=json`;
-      const sr = await fetch(stooqUrl);
-      const sd = await sr.json();
-      if (sd.symbols && sd.symbols[0]) {
-        const s = sd.symbols[0];
-        const price = parseFloat(s.close);
-        const prev = parseFloat(s.open);
-        const chg = price - prev;
-        const pct = (chg/prev*100);
-        const sign = chg >= 0 ? '+' : '';
-        const cls = chg >= 0 ? 'chg-up' : 'chg-dn';
-        const priceStr = '₹' + price.toLocaleString('en-IN',{maximumFractionDigits:2});
-        const el = document.getElementById('price-' + stock.id);
-        const lvl = document.getElementById('lvl-' + stock.id);
-        if (el) el.innerHTML = priceStr + ' <span class="live-chg ' + cls + '">' + sign + pct.toFixed(2) + '% today</span>';
-        if (lvl) lvl.textContent = priceStr;
-        return;
+      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1d`);
+      const d = await r.json();
+      const price = d?.chart?.result?.[0]?.meta?.regularMarketPrice;
+      const prev = d?.chart?.result?.[0]?.meta?.previousClose;
+      if (price) {
+        const pct = prev ? ((price-prev)/prev*100).toFixed(2) : null;
+        const sign = pct > 0 ? '+' : '';
+        const col = pct > 0 ? 'var(--text-success)' : pct < 0 ? 'var(--text-danger)' : 'var(--text-secondary)';
+        document.querySelectorAll(`.live-price[data-ticker="${ticker}"]`).forEach(el => {
+          el.innerHTML = '\u20B9' + price.toLocaleString('en-IN',{maximumFractionDigits:2}) +
+            (pct !== null ? ` <span style="font-size:11px;color:${col}">${sign}${pct}%</span>` : '');
+        });
       }
-    } catch(e2) {}
-    const el = document.getElementById('price-' + stock.id);
-    if (el) el.innerHTML = '<span style="color:var(--text3);font-size:11px">—</span>';
+    } catch(e) {
+      try {
+        const st = ticker.replace('.NS','.IN').replace('.BO','.IN').toLowerCase();
+        const r2 = await fetch(`https://stooq.com/q/l/?s=${st}&f=sd2t2ohlcv&h&e=csv`);
+        const txt = await r2.text();
+        const parts = txt.trim().split('\n')[1]?.split(',');
+        const p2 = parseFloat(parts?.[4]);
+        if (p2 > 0) {
+          document.querySelectorAll(`.live-price[data-ticker="${ticker}"]`).forEach(el => {
+            el.innerHTML = '\u20B9' + p2.toLocaleString('en-IN',{maximumFractionDigits:2}) + ' <span style="font-size:10px;color:var(--text-tertiary)">(d)</span>';
+          });
+        }
+      } catch(e2) {}
+    }
+    await new Promise(r => setTimeout(r, 350));
   }
 }
 
-// Fetch all prices on load with staggered delay to avoid rate limits
-stocks.forEach((s, i) => setTimeout(() => fetchPrice(s), i * 300));
-
-// Refresh every 5 minutes
-setInterval(() => stocks.forEach((s, i) => setTimeout(() => fetchPrice(s), i * 300)), 300000);
-
-// Update timestamp
-const now = new Date();
-document.getElementById('last-updated').textContent =
-  'Updated: 20 May 2026 · Refreshed: ' +
-  now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+document.addEventListener('DOMContentLoaded', loadPrices);
 </script>
-
 </body>
 </html>
